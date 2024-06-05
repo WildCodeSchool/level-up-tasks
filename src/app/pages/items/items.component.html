@@ -1,16 +1,15 @@
 <section>
-  <a routerLink="/home"><span>Back to home</span></a>
-  <h1>Items li<span>s</span>t</h1>
-  <ul>
+<a routerLink="/home"><span>Back to home</span></a><br/>
+  <img src="assets/pictures/travail.jpg" alt="team" class="teamwork"/>
+  
+  <p >Bienvenue sur notre page<span> "About us" </span> ! Nous sommes une équipe passionnée de développeurs dévoués à la création de solutions web innovantes et intuitives. Chaque membre de notre équipe apporte son expertise unique, son enthousiasme et son engagement pour transformer des idées en réalité. Découvrez ci-dessous les talents derrière notre projet.</p>
+
+<ul>
     @for(item of items; track item.id) {
-    <li id="item_{{ item.id }}">
+    <div id="item_{{ item.id }}">
       <app-item [item]="item"></app-item>
-    </li>
+    </div>
     }
   </ul>
-  <p>
-    <span>Cette page est une démo</span>, une fois familiarisé avec
-    l'architecture, <span>supprimer les éléments</span> veillez à de
-    démonstration afin de ne garder que les composants utiles à votre projet !
-  </p>
+ 
 </section>

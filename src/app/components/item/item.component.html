@@ -1,5 +1,17 @@
+
 <article>
-  <img src="assets/pictures/{{ item.picture }}" alt="{{ item.name }}" />
-  <h2>{{ item.name }}</h2>
-  <h3>{{ item.price }}€</h3>
-</article>
+  
+    <img src="assets/pictures/{{ item.picture }}" alt="{{ item.name }}" />
+    <h3 >{{ item.name }}</h3>
+    <h3>E-mail :</h3>
+    <h3>{{ item.email }}</h3>
+    <div class="social-icons">
+      <a [href]="item.iconeGit" target="_blank">
+        <img src="assets/pictures/git.png" alt="GitHub">
+      </a>
+      <a [href]="item.iconeLink" target="_blank">
+        <img src="assets/pictures/linkedin.png" alt="linkdin">
+      </a>
+    </div>
+    
+  </article>
