@@ -1,7 +1,8 @@
-article {
+   article {
     width: 100%;
    
-  }
+   
+    
     
     img {
       display: block;
@@ -35,6 +36,54 @@ article {
     .social-icons img:hover {
       transform: scale(1.1);
     }
+  }
+    @media (min-width: 384px) and (max-width: 471px) {
+      article {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: auto;
+       margin-left: 50px;
+
+      }
+    
+      article img {
+        width: 100px;
+    height: 100px;
+      }
+    
+      article h3 {
+        font-size: 1rem;
+        text-align: center;
+      }
+    
+      .social-icons {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+    
+      .social-icons img {
+        width: 30px;
+        height: 30px;
+        margin: 0 5px;
+        transition: transform 0.3s;
+      }
+    
+      .social-icons img:hover {
+        transform: scale(1.1);
+      }
+      div{
+        align-items: center;
+        text-align: center;
+       
+      }
+    }
+    
+    
     
     
    
