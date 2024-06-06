@@ -1,0 +1,18 @@
+<section class="task-list-container">
+    <div class="task-list-title" (click)="changeState()">
+        <h1>Liste des tâches:</h1>
+        <div class="task-title-arrow">
+            @if (isActive) {
+                ▾
+            }
+            @else{
+                ▴
+            }   
+        </div>
+    </div>
+    <ul class="task-list" [ngStyle]="{'max-height' : height}">
+        <li *ngFor="let task of taskList" >
+            <app-task [task]="task"></app-task>
+        </li>
+    </ul>
+</section>
