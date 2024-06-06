@@ -1,0 +1,30 @@
+@use "./../../../import" as *;
+
+.task-list-container {
+    max-width: 500px;
+}
+
+.task-list{
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.task-list-title{
+   font-weight: bold;
+   padding: 1rem;
+   color: $title-text-color;
+   border-bottom: 1px solid $button-color;
+   cursor: pointer;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.task-title-arrow{
+    color: $title-text-color;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
