@@ -10,7 +10,6 @@
 }
 
 .task-list-title{
-   font-weight: bold;
    padding: 1rem;
    color: $title-text-color;
    border-bottom: 1px solid $button-color;
@@ -18,6 +17,11 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
+}
+
+.task-list-title h1 {
+    font-weight: 700;
+    font-size: 30px;
 }
 
 .task-title-arrow{
