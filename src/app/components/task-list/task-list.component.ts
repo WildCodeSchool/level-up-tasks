@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Task } from '../../model/item/task';
+import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
 
 @Component({
