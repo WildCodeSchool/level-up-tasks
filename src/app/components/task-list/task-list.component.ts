@@ -13,7 +13,6 @@ import { TaskComponent } from '../task/task.component';
 export class TaskListComponent {
   isActive = true;
   height : string = '100%';
-  listHeight !: string;
 
   //mock data for task list, will be empty once addTask is implemented
   taskList : Task[] = [
@@ -22,14 +21,7 @@ export class TaskListComponent {
   ];
 
   changeState(): void { 
-    (this.height === '0') ? this.height = this.listHeight : this.height = '0';
+    (this.height === '0') ? this.height = '100%' : this.height = '0';
     this.isActive = !this.isActive;
-  }
-
-  @ViewChild('myIdentifier')
-  myIdentifier!: ElementRef;
-
-  ngAfterViewInit() {
-    this.listHeight = this.myIdentifier.nativeElement.offsetHeight + "px";
   }
 }
