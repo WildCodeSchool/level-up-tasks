@@ -1,0 +1,14 @@
+<section>
+    <a routerLink="/home"><span>Back to home</span></a><br/>
+      <img src="assets/pictures/travail.jpg" alt="team" class="teamwork"/>
+      <p >Bienvenue sur notre page<span> "About us" </span> ! Nous sommes une équipe passionnée de développeurs dévoués à la création de solutions web innovantes et intuitives. Chaque membre de notre équipe apporte son expertise unique, son enthousiasme et son engagement pour transformer des idées en réalité. Découvrez ci-dessous les talents derrière notre projet.</p>
+    <ul>
+        @for(team of teams; track team.id) {
+        <div id="team_{{ team.id }}">
+          <app-team [team]="team"></app-team>
+        </div>
+        }
+      </ul>
+     
+    </section>
+    

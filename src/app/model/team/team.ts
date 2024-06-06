@@ -1,4 +1,4 @@
-export class Item {
+export class Team{
   
     constructor(
         readonly id: number,
