@@ -5,10 +5,12 @@
             <p>LevelUpTask</p>
         </div>
         @if (isMobileView) {
-            <div class="burger-menu" [class.open]="isOpen" (click)="toggleNavbar()" >
+            <div  class="mobile" >
+                <div (click)="toggleNavbar()"  [class.open]="isOpen" class="burger-menu">
+                    <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
-                <div class="bar"></div>
+                </div>
                 <div *ngIf="isOpen" class="menu-mobile">
                     <ul class="top-items">
                         <li><a routerLink="/profil" routerLinkActive="active">Profil</a></li>
