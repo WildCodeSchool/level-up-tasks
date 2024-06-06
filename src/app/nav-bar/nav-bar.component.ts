@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,12 +8,31 @@ import { Component } from '@angular/core';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
 })
-export class NavBarComponent {
-
+export class NavBarComponent { 
+  
+  public isMobileView!: boolean;
+  public innerWidth: any;
+  ngOnInit(){
+    this.onResize();
+  }
+  
+  
+ @HostListener('window:resize', ['$event'])
+onResize() {
+  this.innerWidth = window.innerWidth;
+  if(this.innerWidth < 768){
+    this.isMobileView = true;
+  }else{
+    this.isMobileView = false;
+  }
+}
     isOpen = false;
+ 
 
   toggleNavbar() {
     this.isOpen = !this.isOpen;
   }
-
 }
+
+
+

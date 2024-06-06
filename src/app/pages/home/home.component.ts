@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 
@@ -9,4 +9,6 @@ import { NavBarComponent } from '../../nav-bar/nav-bar.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {}
+export class HomeComponent {
+
+}

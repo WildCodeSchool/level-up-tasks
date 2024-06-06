@@ -93,11 +93,8 @@
         transform: translateY(-9px) rotate(-45deg);
         z-index: 100;
       }
-      .menu-desktop{
-        display: none;
-      }
       
-@media screen and (min-width: 668px){ 
+@media screen and (min-width: 768px){ 
     .nav-bar{
     display: flex;
     justify-content: space-between;
@@ -118,14 +115,7 @@
     }
 
     
-    .menu-mobile{
-        display: none;
-    }
-    .burger-menu{
-        display: none;
-    }
     .menu-desktop{
-        display: block;
         color: $light-text-color;
         ul{
             display: flex;
