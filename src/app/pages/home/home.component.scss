@@ -1,10 +1,6 @@
 @use "../../../import" as *;
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
+
 
 .header {
   position: relative;
@@ -46,7 +42,6 @@ body {
 }
 
 nav {
-  background-color:$secondary-backround-color;
   text-align: center;
   padding: 10px 0;
 }
@@ -164,7 +159,9 @@ nav ul button:hover {
 
   .image-item {
     width: 100%;
+  
   }
+  
 }
 
 @media (max-width: 480px) {
@@ -176,16 +173,26 @@ nav ul button:hover {
   .overlay h1 {
     font-size: 1.5em;
   }
-
-  .mobile-image {
+  
+  .mobile-image  {
     display: block;
-    width: 100%;
-    height: auto;
+    width: 142px;
+    height: 142px;
+    
   }
+  .description{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+  }
+
+
 
   nav ul button {
     width: 100%;
     padding: 8px 16px;
+    
   }
 
   .image-item {
@@ -198,6 +205,7 @@ nav ul button:hover {
   .image-item img {
     width: 50%;
     height: auto;
+
   }
 
   .image-item .text {

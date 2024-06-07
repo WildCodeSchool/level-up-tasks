@@ -3,26 +3,29 @@
   <div  class="overlay">
     <h1>LevelUpTasks</h1>
     
-    <img class="mobile-image" src="assets/pictures/LevelUpTasks.jpg" alt="Mobile Header Image">
+    
   </div>
 </section>
 <section class="description">
   <p>Bienvenue sur LevelUpTasks, votre solution complète pour la gestion des tâches. Organisez vos projets, créez des expéditions, et collaborez efficacement avec votre équipe. Simplifiez votre workflow et augmentez votre productivité avec notre interface intuitive et nos outils puissants.</p>
+  <img class="mobile-image" src="assets/pictures/LevelUpTasks.jpg" alt="Mobile Header Image">
 </section>
 <section>
   <nav>
     <ul>
-      <button><a href="#">Inscription</a></button>
-      <button><a href="#">Connexion</a></button>
+      <li><button> <a [routerLink]="['/inscription']">INSCRIPTION</a></button></li>
+      <li><button> <a [routerLink]="['/connexion']">CONNEXION</a></button></li>
+      
     </ul>
-    <h1>Les Fonctionnalités</h1>
+    
   </nav>
 </section>
 <section>
-  <div class="content">
+  <h2>Les Fonctionnalités</h2>
+  <article class="content">
     
-    <div class="image-container">
-      <div class="image-item">
+    <ul class="image-container">
+      <li class="image-item">
         
         <h3>Créer des taches !</h3>
         <div class="image-and-text">
@@ -31,10 +34,13 @@
         <p>Gérez efficacement vos tâches quotidiennes et suivez leur progression grâce à notre interface intuitive.</p>
       </div>
         </div>
-      </div>
+      </li>
       
-      <div class="image-item">
+      
+      
+      <li class="image-item">
         
+          
         <h3>Créer des expéditions !</h3>
         <div class="image-and-text">
         <img class="image" src="assets/pictures/expedition.jpg" alt="Content Image">
@@ -42,8 +48,11 @@
         <p>Planifiez des projets et des expéditions avec une organisation optimale pour atteindre vos objectifs.</p>
       </div>
     </div>
-      </div>
-      <div class="image-item">
+  </li>
+
+      
+      <li class="image-item">
+      
         <h3>Organiser des groupes !</h3>
         <div class="image-and-text">
         <img class="image" src="assets/pictures/team.jpg" alt="Right Image">
@@ -51,9 +60,9 @@
         <p>Collaborez avec votre équipe en organisant des groupes de travail pour une efficacité maximale.</p>
       </div>
       </div>
-    </div>
-  </div>
-  </div>
+    </li>
+    </ul>
+  </article>
 </section>
 <!--section>
   <img class="mobile-image" src="assets/pictures/LevelUpTasks.jpg" alt="Mobile Header Image">
