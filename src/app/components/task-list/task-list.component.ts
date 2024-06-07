@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
+import { ModalService } from '../../service/modal/modal.service';
 
 @Component({
   selector: 'app-task-list',
@@ -23,5 +24,16 @@ export class TaskListComponent {
   changeState(): void { 
     (this.height === '0') ? this.height = '100%' : this.height = '0';
     this.isActive = !this.isActive;
+  }
+
+  constructor(private modalService: ModalService) {}
+
+  openModal() {
+    this.modalService
+      .open()
+      .subscribe((action) => {
+        console.log('modalAction', action);
+        this.taskList.push();
+      });
   }
 }

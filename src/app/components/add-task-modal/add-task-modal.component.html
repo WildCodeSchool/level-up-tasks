@@ -1,7 +1,7 @@
 <div class="modal">
   <form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()">
-    <input id="title-order" name="title-order" type="text" [(ngModel)]="description" #title="ngModel" required minlength="5" maxlength="30" placeholder="Nom de la tâche"/>
-    <input id="date-order" name="date-order" type="date" [(ngModel)]="date" #date="ngModel" required>
+    <input name="task-name" type="text" [(ngModel)]="description" #name="ngModel" required minlength="1" placeholder="Nom de la tâche"/>
+    <input name="task-date" type="date" [ngModel]="taskDate" (ngModelChange)="taskDate = $event" #date="ngModel" required>
     <button type="submit"  [disabled]="!myForm.valid">+</button>
   </form>
 </div>

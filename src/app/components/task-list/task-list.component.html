@@ -14,5 +14,11 @@
         <li *ngFor="let task of taskList" >
             <app-task [task]="task"></app-task>
         </li>
+        <li>
+            <div class="add-task-button">
+                <button  (click)="openModal()">+</button>
+                <p>Ajouter une tâche</p>
+            </div>
+        </li>
     </ul>
 </section>

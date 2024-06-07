@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Task } from '../../model/task/task';
 
 @Component({
   selector: 'app-add-task-modal',
@@ -10,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddTaskModalComponent {
   @Output() closeEvent = new EventEmitter();
-  @Output() submitEvent = new EventEmitter();
+  @Output() submitEvent : EventEmitter<Task> = new EventEmitter();
 
   constructor(private elementRef: ElementRef) {}
 
@@ -19,18 +20,13 @@ export class AddTaskModalComponent {
     this.closeEvent.emit();
   }
 
-  submit(): void {
-    this.elementRef.nativeElement.remove();
-    this.submitEvent.emit();
-  }
-
   onSubmit() : void {
     console.log("Description:" + this.description);
-    console.log("Date:" + this.date);
+    console.log("Date:" + this.taskDate);
     this.elementRef.nativeElement.remove();
-    this.submitEvent.emit();
+    this.submitEvent.emit(new Task(1,this.description, this.taskDate,false));
   }
 
   description : string = "";
-  date ?: Date;
+  taskDate : Date = new Date();
 }
