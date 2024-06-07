@@ -1,21 +1,219 @@
 @use "../../../import" as *;
 
-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  max-width: 1200px;
-  margin: 0 auto;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-h1,
-h2,
-p {
+.header {
+  position: relative;
+  text-align: center;
+  background-image: url('../../../assets/pictures/progress.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  .overlay {
+    align-items: center;
+    
+    h1 {
+      font-size: 3em;
+      text-align: center;
+      padding-top: 100px;
+      color: $title-text-color ;
+      
+    }
+  }
+}
+
+.mobile-image {
+  display: none;
+}
+
+.description {
+  text-align: center;
+  padding: 20px;
+  background-color: $secondary-backround-color;
+  border-bottom: 1px solid #ddd;
+}
+
+.description p {
+  margin: 0;
+  font-size: 1.2em;
+  color: #555;
+  margin-top: 10px;
+}
+
+nav {
+  background-color:$secondary-backround-color;
+  text-align: center;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  
+}
+nav h1{
+  color: $title-text-color;
+}
+nav ul button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: $button-color;
+  border: none;
+  border-radius: 4px;
+}
+
+nav ul button a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+nav ul button:hover {
+  background-color: $button-color;
+}
+
+
+
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content {
+  padding: 20px;
   text-align: center;
 }
 
-h2 {
-  margin: 0.5rem 0 1.5rem;
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
+
+.image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.image-item .image-and-text {
+  display: flex;
+  align-items: center;
+}
+
+.image-item .image-and-text .text {
+  margin-left: 20px;
+}
+
+.image-item img {
+  max-width: 100%;
+  height: auto;
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.image-item .text {
+  text-align: center;
+}
+.image-item .text h3 {
+  margin-top: 0; 
+  margin-bottom: 30px;
+}
+
+.image-item h3 {
+  color: $title-text-color;
+  margin: 10px 0 5px 0;
+}
+
+.image-item p {
+  margin: 0;
+}
+
+
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul button {
+    width: 30%;
+    padding: 8px 16px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .image-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    background-image: none;
+    display: none;
+  }
+
+  .overlay h1 {
+    font-size: 1.5em;
+  }
+
+  .mobile-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  nav ul button {
+    width: 100%;
+    padding: 8px 16px;
+  }
+
+  .image-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .image-item img {
+    width: 50%;
+    height: auto;
+  }
+
+  .image-item .text {
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .image-item h3 {
+    margin: 0 0 5px 0;
+  }
+
+  .image-item p {
+    margin: 0;
+  }
+}
+
+
+
+
