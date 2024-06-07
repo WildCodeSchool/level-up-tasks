@@ -1,6 +1,10 @@
 @use '../../../import'as *;
 /* navbar.component.css */
-
+header {
+    position: sticky;
+    top: 0;
+   z-index:8 ;
+}
 
     .nav-bar{
         display: flex;
@@ -10,6 +14,8 @@
         padding-left: 10px;
         padding-right: 10px;
         background-color:  $navbar-color;
+
+        
         h2{
             font-size: 1em ;
         }
@@ -52,13 +58,14 @@
         background-color: $navbar-color;
         position: absolute;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        height: 88%;
+        height: 100%;
         position: fixed;
         width: 50%;
         top: 0;
         right: 0px;
         bottom: 0;
         border-radius: 2%;
+        //z-index: 3;
        .top-items{ 
         position: fixed;
         top: 10%;
@@ -66,6 +73,7 @@
         grid-template-columns: 1fr; 
         gap: 20px;
         color: $light-text-color;
+
         }
         .botom-items{
             position: absolute;
@@ -73,6 +81,8 @@
             display: flex;
             flex-direction: column;
             color: $dark-text-color;
+            gap: 10px;
+           
             
             }
       }
@@ -85,7 +95,7 @@
       
       .burger-menu.open .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
-        z-index: 2;
+       z-index: 9;
       }
       
       .burger-menu.open .bar:nth-child(2) {
@@ -94,7 +104,7 @@
       
       .burger-menu.open .bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
-        z-index: 2;
+        z-index: 9;
       }
       
 @media screen and (min-width: 768px){ 
