@@ -1,4 +1,4 @@
-@use '../../import' as *;
+@use '../../../import'as *;
 /* navbar.component.css */
 
 
@@ -26,6 +26,7 @@
         }
     
     }
+    
     .burger-menu {
         width: 30px;
         height: 21px;
@@ -34,6 +35,7 @@
         justify-content: space-between;
         cursor: pointer;
         margin-right: 3%;
+
         
       }
       
@@ -59,7 +61,7 @@
         border-radius: 2%;
        .top-items{ 
         position: fixed;
-        top: 20px;
+        top: 10%;
         display: grid;
         grid-template-columns: 1fr; 
         gap: 20px;
@@ -78,6 +80,7 @@
       .menu-mobile a {
         padding: 10px 20px;
         text-decoration: none;
+        cursor: pointer;
       }
       
       .burger-menu.open .bar:nth-child(1) {
@@ -105,7 +108,7 @@
         display: flex;
         justify-content: start;
         align-items: center;
-        h2{
+        p{
             color: $dark-text-color;
             font-size: 2em ;
         }
@@ -125,7 +128,10 @@
             margin: 0;
             li{
                 margin: 0 10px;
-                cursor: pointer;
+                a{
+                    
+                    cursor: pointer;
+                }
             }
         }
     }
