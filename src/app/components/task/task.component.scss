@@ -1,0 +1,32 @@
+@use "./../../../import" as *;
+
+.task-container {
+    color: $dark-text-color;
+    border-bottom: 1px solid $button-color;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+    padding: 0.5rem;
+}
+
+.checkbox-container {
+    height: 36px;
+    min-width: 36px;
+    border: 2px solid $dark-text-color;
+    border-radius: 50%;
+}
+
+.task-information {
+    margin-left: 1rem;
+}
+
+.task-date{
+    display: flex;
+    align-items: center;
+}
+
+.task-date img{
+    height: 24px;
+    margin-right: 0.5rem;
+}
