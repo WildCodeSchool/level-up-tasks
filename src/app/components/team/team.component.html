@@ -1,8 +1,11 @@
 <article>
     <img src="assets/pictures/{{ team.picture }}" alt="{{ team.name }}" />
-    <h1 >{{ team.name }}</h1>
-    <h2>E-mail :</h2>
-    <h2>{{ team.email }}</h2>
+    <h1>{{ team.name }}</h1>
+    <address>
+      E-mail :<br>
+      {{team.email}}
+      </address>
+    
     <div class="social-icons">
       <a [href]="team.iconeGit" target="_blank">
         <img src="assets/pictures/github.png" alt="GitHub">
