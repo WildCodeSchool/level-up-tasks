@@ -27,8 +27,9 @@ input {
 }
 
 ul,
-li {
+li ,p {
   list-style: none;
+  color: $title-text-color;
 }
 
 span {
