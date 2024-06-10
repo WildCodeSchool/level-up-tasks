@@ -1,5 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
-import { ModalService } from '../../service/modal/modal.service';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -9,35 +8,21 @@ import { ModalService } from '../../service/modal/modal.service';
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-    @Input() id?: string;
-    isOpen = false;
     private element: any;
 
-    constructor(private modalService: ModalService, private el: ElementRef) {
+    constructor(private el: ElementRef) {
         this.element = el.nativeElement;
     }
 
+    @Output()
+    closeModal: EventEmitter<any> = new EventEmitter();
+    
     ngOnInit() {
-        this.modalService.add(this);
         this.element.addEventListener('click', (el: any) => {
             if (el.target.className === 'modal-container') {
-                this.close();
+                this.closeModal.emit();
             }
         });
-    }
-
-    ngOnDestroy() {
-        this.element.remove();
-    }
-
-    open() {
-        this.element.style.display = 'block';
-        this.isOpen = true;
-    }
-
-    close() {
-        this.element.style.display = 'none';
-        this.isOpen = false;
     }
 }
 

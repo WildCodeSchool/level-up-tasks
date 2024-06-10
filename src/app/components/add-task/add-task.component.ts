@@ -1,18 +1,20 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
-import { ModalService } from '../../service/modal/modal.service';
 import { FormsModule } from '@angular/forms';
 import { Task } from '../../model/task/task';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [ModalComponent, FormsModule],
+  imports: [ModalComponent, FormsModule, CommonModule],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
 })
 export class AddTaskComponent {
-  constructor(protected modalService: ModalService) { }
+  taskModalOpen : boolean = false;
+  description : string = "";
+  taskDate : Date = new Date();
 
   @Output()
   addNewTaskToParent: EventEmitter<Task> = new EventEmitter();
@@ -28,9 +30,16 @@ export class AddTaskComponent {
     ));
     this.description = "";
     this.taskDate = new Date();
-    this.modalService.close();
+    this.closeAddTaskModal();
   }
 
-  description : string = "";
-  taskDate : Date = new Date();
+  closeAddTaskModal() : void {
+    console.log("close add task");
+    this.taskModalOpen = false;
+  }
+
+  test(id: string) : void {
+    console.log("test");
+    this.taskModalOpen = true;
+  }
 }

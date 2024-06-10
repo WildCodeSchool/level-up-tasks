@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
-import { ModalService } from '../../service/modal/modal.service';
 import { AddTaskComponent } from '../add-task/add-task.component';
 
 @Component({
