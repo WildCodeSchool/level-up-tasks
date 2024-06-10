@@ -1,6 +1,10 @@
-@use '../../import' as *;
+@use '../../../import'as *;
 /* navbar.component.css */
-
+header {
+    position: sticky;
+    top: 0;
+   z-index:8 ;
+}
 
     .nav-bar{
         display: flex;
@@ -10,6 +14,8 @@
         padding-left: 10px;
         padding-right: 10px;
         background-color:  $navbar-color;
+
+        
         h2{
             font-size: 1em ;
         }
@@ -26,6 +32,7 @@
         }
     
     }
+    
     .burger-menu {
         width: 30px;
         height: 21px;
@@ -34,6 +41,7 @@
         justify-content: space-between;
         cursor: pointer;
         margin-right: 3%;
+
         
       }
       
@@ -57,20 +65,24 @@
         right: 0px;
         bottom: 0;
         border-radius: 2%;
+        //z-index: 3;
        .top-items{ 
         position: fixed;
-        top: 20px;
+        top: 10%;
         display: grid;
         grid-template-columns: 1fr; 
         gap: 20px;
         color: $light-text-color;
+
         }
         .botom-items{
-            position: fixed;
+            position: absolute;
             bottom: 2%;
             display: flex;
             flex-direction: column;
             color: $dark-text-color;
+            gap: 10px;
+           
             
             }
       }
@@ -78,11 +90,12 @@
       .menu-mobile a {
         padding: 10px 20px;
         text-decoration: none;
+        cursor: pointer;
       }
       
       .burger-menu.open .bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
-        z-index: 100;
+       z-index: 9;
       }
       
       .burger-menu.open .bar:nth-child(2) {
@@ -91,7 +104,7 @@
       
       .burger-menu.open .bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
-        z-index: 100;
+        z-index: 9;
       }
       
 @media screen and (min-width: 768px){ 
@@ -105,7 +118,7 @@
         display: flex;
         justify-content: start;
         align-items: center;
-        h2{
+        p{
             color: $dark-text-color;
             font-size: 2em ;
         }
@@ -125,7 +138,10 @@
             margin: 0;
             li{
                 margin: 0 10px;
-                cursor: pointer;
+                a{
+                    
+                    cursor: pointer;
+                }
             }
         }
     }
