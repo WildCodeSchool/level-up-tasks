@@ -3,11 +3,12 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
 import { ModalService } from '../../service/modal/modal.service';
+import { AddTaskComponent } from '../add-task/add-task.component';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, TaskComponent],
+  imports: [CommonModule, TaskComponent, AddTaskComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
 })
@@ -26,14 +27,7 @@ export class TaskListComponent {
     this.isActive = !this.isActive;
   }
 
-  constructor(private modalService: ModalService) {}
-
-  openModal() {
-    this.modalService
-      .open()
-      .subscribe((action) => {
-        console.log('modalAction', action);
-        this.taskList.push();
-      });
+  onReceiveNewTask(event : Task) : void {
+    this.taskList.push(event);
   }
 }

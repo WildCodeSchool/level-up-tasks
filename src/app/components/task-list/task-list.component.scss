@@ -30,23 +30,4 @@
     font-size: 30px;
 }
 
-.add-task-button{
-    color: $dark-text-color;
-    margin: 0 1rem;
-    display: flex;
-    align-items: center;
-    line-height: 1.4;
-    padding: 0.5rem;
-}
 
-.add-task-button button{
-    height: 36px;
-    min-width: 36px;
-    background-color: $dark-text-color;
-    color: $main-background-color;
-    border-radius: 50%;
-}
-
-.add-task-button p{
-    margin-left: 1rem;
-}

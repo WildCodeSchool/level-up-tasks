@@ -1,42 +1,35 @@
-import { DOCUMENT } from '@angular/common';
-import { ComponentFactoryResolver, Inject, Injectable, Injector, TemplateRef } from '@angular/core';
-import { Subject } from 'rxjs';
-import { AddTaskModalComponent } from '../../components/add-task-modal/add-task-modal.component';
+import { Injectable} from '@angular/core';
+import { ModalComponent } from '../../components/modal/modal.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
+  private modals: ModalComponent[] = [];
 
-  private modalNotifier?: Subject<string>;
-  constructor(
-    private resolver: ComponentFactoryResolver,
-    private injector: Injector,
-    @Inject(DOCUMENT) private document: Document
-  ) {}
-
-  open() {
-    const modalComponentFactory = this.resolver.resolveComponentFactory(
-      AddTaskModalComponent
-    );
-    const modalComponent = modalComponentFactory.create(this.injector);
-
-    modalComponent.instance.closeEvent.subscribe(() => this.closeModal());
-    modalComponent.instance.submitEvent.subscribe(() => this.submitModal());
-
-    modalComponent.hostView.detectChanges();
-
-    this.document.body.appendChild(modalComponent.location.nativeElement);
-    this.modalNotifier = new Subject();
-    return this.modalNotifier?.asObservable();
+  add(modal: ModalComponent) {
+      if (!modal.id || this.modals.find(x => x.id === modal.id)) {
+          throw new Error('modal must have a unique id attribute');
+      }
+      this.modals.push(modal);
   }
 
-  closeModal() {
-    this.modalNotifier?.complete();
+  remove(modal: ModalComponent) {
+      this.modals = this.modals.filter(x => x === modal);
   }
 
-  submitModal() {
-    this.modalNotifier?.next('confirm');
-    this.closeModal();
+  open(id: string) {
+      const modal = this.modals.find(x => x.id === id);
+
+      if (!modal) {
+          throw new Error(`modal '${id}' not found`);
+      }
+
+      modal.open();
+  }
+
+  close() {
+      const modal = this.modals.find(x => x.isOpen);
+      modal?.close();
   }
 }

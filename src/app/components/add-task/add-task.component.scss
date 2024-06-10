@@ -1,0 +1,60 @@
+@use "./../../../import" as *;
+
+.add-task-button{
+    color: $dark-text-color;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+    padding: 0.5rem;
+}
+
+.add-task-button button{
+    height: 36px;
+    min-width: 36px;
+    background-color: $dark-text-color;
+    color: $main-background-color;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.add-task-button p{
+    margin-left: 1rem;
+}
+  
+app-modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+app-modal form input[type=text] {
+  font-size: 24px;
+  color: $dark-text-color;
+}
+
+app-modal form input[type=text]::placeholder {
+  color: $navbar-color;
+}
+
+app-modal form input[type=date] {
+  width: 144px;
+  font-size: 20px;
+  height: 42px;
+}
+
+app-modal form button {
+  justify-self: flex-end;
+  align-self: flex-end;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  border-radius: 200px;
+  color: $main-background-color;
+  background-color: $dark-text-color;
+  font-size: 32px;
+  font-weight: bolder;
+}
+
+app-modal form button:disabled {
+  background-color: $navbar-color;
+}

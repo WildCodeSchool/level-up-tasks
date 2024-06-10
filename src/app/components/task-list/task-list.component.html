@@ -15,10 +15,7 @@
             <app-task [task]="task"></app-task>
         </li>
         <li>
-            <div class="add-task-button">
-                <button  (click)="openModal()">+</button>
-                <p>Ajouter une tâche</p>
-            </div>
+            <app-add-task (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
         </li>
     </ul>
 </section>
