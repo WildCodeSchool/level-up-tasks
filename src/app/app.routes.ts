@@ -3,8 +3,8 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { TaskPageComponent } from './pages/task-page/task-page.component';
 
-import { InscriptionComponent } from './pages/inscription/inscription.component';
-import { ConnexionComponent } from './pages/connexion/connexion.component';
+import { SignupComponent} from './pages/signup/signup.component';
+import {LoginComponent } from './pages/login/login.component';
 
 import { TeamsComponent } from './pages/teams/teams.component';
 
@@ -29,11 +29,11 @@ export const routes: Routes = [
     component: TaskPageComponent,
   },
   {
-    path: 'inscription',
-    component: InscriptionComponent,
+    path: 'signup',
+    component: SignupComponent,
   },
   {
-    path: 'connexion',
-    component: ConnexionComponent,
+    path: 'login',
+    component: LoginComponent,
   }
 ];
