@@ -1,7 +1,7 @@
 import { UserTeams } from "./user-teams";
 
 
-export class Profil {
+export class User {
 
     constructor(
         public id: number,

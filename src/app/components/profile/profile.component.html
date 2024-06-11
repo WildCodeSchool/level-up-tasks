@@ -1,0 +1,13 @@
+<section class="user-card">
+  @if(user){
+    <div class="user-img">
+        <img src="{{ user.profilImage }}" alt="user.firstname" />
+    </div>
+    <div class="user-description">
+        <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+        <p>Niveau : {{ user.level }}</p>
+        <p>Recompense : {{ user.reward }}</p>
+        <button (click)="editUser()">Editer</button>
+    </div>
+  } 
+</section>

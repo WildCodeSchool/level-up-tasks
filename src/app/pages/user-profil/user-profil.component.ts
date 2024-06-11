@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { UserComponent } from '../../components/user/usercomponent';
+import { ProfileComponent } from '../../components/profile/profile.component';
 
 @Component({
   selector: 'app-user-profil',
   standalone: true,
-  imports: [UserComponent],
+  imports: [ProfileComponent],
   templateUrl: './user-profil.component.html',
   styleUrl: './user-profil.component.scss'
 })
