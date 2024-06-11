@@ -1,10 +1,67 @@
-<section>
-  <h1>Your <span>Angular</span> Project 2024</h1>
-  <h2>Bienvenue dans votre projet Angular !</h2>
-  <p>
-    Prenez le temps de vous familiariser avec l'architecture que vous propose le
-    <span>framework Angular</span>, le routeur est imlpémenté dans sa version la
-    plus simple. Vous trouverez également des exemples de composants sur la page
-    items dispon ible via <a routerLink="/items"><span>Ce lien</span></a>
-  </p>
+
+<section class="header">
+  <div  class="overlay">
+    <h1>LevelUpTasks</h1>
+  </div>
 </section>
+<section class="description">
+  <p>Bienvenue sur LevelUpTasks, votre solution complète pour la gestion des tâches. Organisez vos projets, créez des expéditions, et collaborez efficacement avec votre équipe. Simplifiez votre workflow et augmentez votre productivité avec notre interface intuitive et nos outils puissants.</p>
+  <img class="mobile-image" src="assets/pictures/LevelUpTasks.jpg" alt="Mobile Header Image">
+</section>
+<section>
+  <nav>
+    <ul>
+      <li><button> <a [routerLink]="['/inscription']">INSCRIPTION</a></button></li>
+      <li><button> <a [routerLink]="['/connexion']">CONNEXION</a></button></li>
+    </ul>
+  </nav>
+</section>
+<section>
+  <h2>Les Fonctionnalités</h2>
+  <div class="content">
+    <ul class="image-container">
+      <li class="image-item">
+        <article>
+          <h3>Créer des taches !</h3>
+        <div class="image-and-text">
+        <img class="image" src="assets/pictures/tasks.jpg" alt="Left Image">
+        <div class="text">
+        <p>Gérez efficacement vos tâches quotidiennes et suivez leur progression grâce à notre interface intuitive.</p>
+      </div>
+        </div>
+      </article>
+      </li>
+      
+      <li class="image-item">
+        <article>
+        <h3>Créer des expéditions !</h3>
+        <div class="image-and-text">
+        <img class="image" src="assets/pictures/expedition.jpg" alt="Content Image">
+        <div class="text">
+        <p>Planifiez des projets et des expéditions avec une organisation optimale pour atteindre vos objectifs.</p>
+      </div>
+    </div>
+  </article>
+  </li>
+
+      
+        <li class="image-item">
+          <article>
+        <h3>Organiser des groupes !</h3>
+        <div class="image-and-text">
+        <img class="image" src="assets/pictures/team.jpg" alt="Right Image">
+        <div class="text">
+        <p>Collaborez avec votre équipe en organisant des groupes de travail pour une efficacité maximale.</p>
+      </div>
+      </div>
+    </article>
+    </li>
+    </ul>
+  </div>
+</section>
+<!--section>
+  <img class="mobile-image" src="assets/pictures/LevelUpTasks.jpg" alt="Mobile Header Image">
+</!--section-->
+
+
+
