@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './add-task.component.scss'
 })
 export class AddTaskComponent {
-  taskModalOpen : boolean = false;
+  isTaskModalOpen : boolean = false;
   description : string = "";
   taskDate : Date = new Date();
 
@@ -20,6 +20,7 @@ export class AddTaskComponent {
   addNewTaskToParent: EventEmitter<Task> = new EventEmitter();
 
   onSubmit() : void {
+    //the 1 is the id, this needs to be changed when backend gets added
     this.addNewTaskToParent.emit(new Task(
       1, 
       this.description, 
@@ -32,17 +33,16 @@ export class AddTaskComponent {
   }
 
   closeAddTaskModal() : void {
-    this.taskModalOpen = false;
+    this.isTaskModalOpen = false;
   }
 
   openAddTaskModal() : void {
-    this.taskModalOpen = true;
+    this.isTaskModalOpen = true;
   }
 
   //this function is to make the textarea expend when the user types out the task's description
   autogrow(){
     let textArea = document.getElementById("task-name")       
-    //textArea!.style.overflow = 'hidden';
     textArea!.style.height = '0px';
     textArea!.style.height = textArea!.scrollHeight + 'px';
   }
