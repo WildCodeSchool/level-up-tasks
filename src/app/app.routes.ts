@@ -2,17 +2,22 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 
 import { TaskPageComponent } from './pages/task-page/task-page.component';
+
+import { SignupComponent} from './pages/signup/signup.component';
+import {LoginComponent } from './pages/login/login.component';
+
 import { TeamsComponent } from './pages/teams/teams.component';
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 
+
 export const routes: Routes = [
   {
-    path: 'home',
+    path: 'accueil',
     component: HomeComponent,
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/accueil',
     pathMatch: 'full',
   },
 
@@ -21,11 +26,15 @@ export const routes: Routes = [
     component: TeamsComponent,
   },
   {
-    path: 'tasks',
+    path: 'taches',
     component: TaskPageComponent,
   },
   {
-    path:'profil',
-    component: UserProfilComponent
+    path: 'inscription',
+    component: SignupComponent,
+  },
+  {
+    path: 'connexion',
+    component: LoginComponent,
   }
 ];

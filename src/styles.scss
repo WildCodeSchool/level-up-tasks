@@ -10,6 +10,12 @@
   font-size: inherit;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $main-background-color;
+}
 a,
 a:visited {
   color: inherit;
