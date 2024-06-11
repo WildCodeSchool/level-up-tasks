@@ -11,12 +11,12 @@ import { TeamsComponent } from './pages/teams/teams.component';
 
 export const routes: Routes = [
   {
-    path: 'home',
+    path: 'accueil',
     component: HomeComponent,
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/accueil',
     pathMatch: 'full',
   },
 
@@ -25,15 +25,15 @@ export const routes: Routes = [
     component: TeamsComponent,
   },
   {
-    path: 'tasks',
+    path: 'taches',
     component: TaskPageComponent,
   },
   {
-    path: 'signup',
+    path: 'inscription',
     component: SignupComponent,
   },
   {
-    path: 'login',
+    path: 'connexion',
     component: LoginComponent,
   }
 ];
