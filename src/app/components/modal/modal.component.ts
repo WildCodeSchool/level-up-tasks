@@ -8,6 +8,7 @@ import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/cor
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
+    //This component can be reused for any modal the app needs
     private element: any;
 
     constructor(private el: ElementRef) {

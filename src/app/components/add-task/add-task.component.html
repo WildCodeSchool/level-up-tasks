@@ -1,12 +1,12 @@
 <div class="add-task-button">
-    <button (click)="test('add-task-modal')">+</button>
+    <button (click)="openAddTaskModal()">+</button>
     <label>Ajouter une tâche</label>
 </div>
 
 <app-modal id="add-task-modal" *ngIf="taskModalOpen" (closeModal)="closeAddTaskModal()">
-    <form #myForm="ngForm" (ngSubmit)="myForm.valid && onSubmit()">
-        <input name="task-name" type="text" [(ngModel)]="description" #name="ngModel" required minlength="1" placeholder="Nom de la tâche"/>
-        <input name="task-date" type="date" [ngModel]="taskDate" #date="ngModel" required>
-        <button type="submit"  [disabled]="!myForm.valid">+</button>
+    <form #addTaskForm="ngForm" (ngSubmit)="addTaskForm.valid && onSubmit()">
+        <textarea id="task-name" (input)="autogrow()" name="task-name" type="text" [(ngModel)]="description" #name="ngModel" required minlength="1" placeholder="Nom de la tâche"></textarea>
+        <input name="task-date" type="date" [(ngModel)]="taskDate" #date="ngModel" required>
+        <button type="submit"  [disabled]="!addTaskForm.valid || !date.dirty">+</button>
       </form>
 </app-modal>

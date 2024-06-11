@@ -20,12 +20,10 @@ export class AddTaskComponent {
   addNewTaskToParent: EventEmitter<Task> = new EventEmitter();
 
   onSubmit() : void {
-    console.log("Description:" + this.description);
-    console.log("Date:" + this.taskDate);
     this.addNewTaskToParent.emit(new Task(
       1, 
       this.description, 
-      new Date(this.taskDate.getFullYear(),this.taskDate.getMonth(),this.taskDate.getDay()), 
+      new Date(this.taskDate), 
       false
     ));
     this.description = "";
@@ -34,12 +32,18 @@ export class AddTaskComponent {
   }
 
   closeAddTaskModal() : void {
-    console.log("close add task");
     this.taskModalOpen = false;
   }
 
-  test(id: string) : void {
-    console.log("test");
+  openAddTaskModal() : void {
     this.taskModalOpen = true;
+  }
+
+  //this function is to make the textarea expend when the user types out the task's description
+  autogrow(){
+    let textArea = document.getElementById("task-name")       
+    //textArea!.style.overflow = 'hidden';
+    textArea!.style.height = '0px';
+    textArea!.style.height = textArea!.scrollHeight + 'px';
   }
 }

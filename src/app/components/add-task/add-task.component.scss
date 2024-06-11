@@ -27,12 +27,21 @@ app-modal form {
   flex-direction: column;
 }
 
-app-modal form input[type=text] {
+app-modal form textarea {
   font-size: 24px;
   color: $dark-text-color;
+  background: transparent;
+  border: 0 none;
+  resize: none;
+  overflow: hidden;
+  height: 30px;
 }
 
-app-modal form input[type=text]::placeholder {
+app-modal form textarea:focus {
+  outline: none;
+}
+
+app-modal form textarea::placeholder {
   color: $navbar-color;
 }
 
