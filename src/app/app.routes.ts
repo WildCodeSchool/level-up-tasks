@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { TaskPageComponent } from './pages/task-page/task-page.component';
 import { TeamsComponent } from './pages/teams/teams.component';
+import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 
 export const routes: Routes = [
   {
@@ -23,4 +24,8 @@ export const routes: Routes = [
     path: 'tasks',
     component: TaskPageComponent,
   },
+  {
+    path:'profil',
+    component: UserProfilComponent
+  }
 ];
