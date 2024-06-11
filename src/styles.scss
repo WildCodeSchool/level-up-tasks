@@ -33,13 +33,9 @@ input {
 }
 
 ul,
-li ,p {
+li,
+p {
   list-style: none;
-  color: $title-text-color;
-}
-
-span {
-  color: $mainColor;
 }
 
 h1 {

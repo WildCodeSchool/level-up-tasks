@@ -1,5 +1,5 @@
-import { Component, HostListener } from '@angular/core';
 
+import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { SignupComponent } from '../signup/signup.component';
 
@@ -15,8 +15,8 @@ import { SignupComponent } from '../signup/signup.component';
 })
 
 export class HomeComponent {
-  
 
 }
+
 
 
