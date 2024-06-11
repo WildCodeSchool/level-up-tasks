@@ -36,5 +36,10 @@ export const routes: Routes = [
   {
     path: 'connexion',
     component: LoginComponent,
+  },
+  {
+    path:'profil',
+    component: UserProfilComponent,
   }
+
 ];

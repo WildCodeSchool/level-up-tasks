@@ -1,3 +1,6 @@
+import { UserTeams } from "./user-teams";
+
+
 export class Profil {
 
     constructor(
@@ -6,9 +9,8 @@ export class Profil {
         public lastname: string,
         public email: string,
         public password: string,
-        public role: string,
-        public team: string,
-        public image: string,
+        public team: UserTeams[],
+        public profilImage: string,
         public level: number,
         public reward: number,
     ){}
