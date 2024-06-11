@@ -89,3 +89,14 @@ section{
         }
     }
 }
+@media screen and (min-width: 1025px){
+    section{
+        width: 40%;
+        .user-img{
+            width: 30%;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
