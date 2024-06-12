@@ -13,14 +13,14 @@ import { TeamsRoles } from '../../model/user/teams-roles';
 })
 export class ProfileComponent {
 
-  modalIsOppen: boolean = false;
+  isModalOpen: boolean = false;
   teams: UserTeams[] = [{id: 1, name: 'teams1',role:TeamsRoles.Admin}, {id: 2, name: 'teams2',role:TeamsRoles.Member}, {id: 3, name: 'teams3',role:TeamsRoles.Member}];
   img: string = '../../../assets/pictures/Graphic.png';
 
   user: User = new User(1, 'Timfa', 'Emard', '', '', this.teams, this.img, 1, 0);
 
   editUser(){
-    this.modalIsOppen = true;
+    this.isModalOpen = true;
 
   }
 }
