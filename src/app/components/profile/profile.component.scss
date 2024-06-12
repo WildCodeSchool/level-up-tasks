@@ -1,6 +1,6 @@
 @use "../../../import" as *;
 
-section {
+.user-card {
   width: 90%;
   margin: 5% auto;
   background-color: $secondary-backround-color;
@@ -40,23 +40,86 @@ section {
       width: 50%;
     }
   }
-  .modal-container{
-    
+  .modal-container {
     button {
-        background-color: $button-color;
-        color: $light-text-color;
-        padding: 1%;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        margin: 2%;
-        width: 20%;
+      background-color: $button-color;
+      color: $light-text-color;
+      padding: 1%;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 2%;
+      width: 20%;
+    }
   }
+}
+.reward {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  button {
+    background-color: $button-color;
+    color: $light-text-color;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px auto;
+    width: 80%;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  .img-fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      width: 50%;
+      margin: auto;
+    }
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    label {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #0a0a0a;
+      border-radius: 5px;
+      font-size: 1em;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: $secondary-backround-color;
+    }
+  }
+  button {
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: $button-color;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
   }
 }
 
 @media screen and (min-width: 721px) {
-  section {
+  .user-card {
     width: 50%;
     margin: 5% 10% 5% 40%;
     background-color: $secondary-backround-color;
@@ -95,6 +158,22 @@ section {
         cursor: pointer;
         width: 50%;
       }
+    }
+  }
+  .reward {
+    width: 50%;
+    margin: 5% 10% 5% 40%;
+    display: flex;
+    flex-direction: column;
+    button {
+      background-color: $button-color;
+      color: $light-text-color;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 20px auto;
+      width: 60%;
     }
   }
 }
