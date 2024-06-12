@@ -12,7 +12,7 @@
     </div>
     <div>
       <label for="password">Mot de passe</label>
-      <input id="password" [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+      <input id="password" [type]="isPasswordHidden ? 'password' : 'text'" formControlName="password" required>
     </div>
     <div>
       <input type="checkbox" id="showPassword" (change)="togglePasswordVisibility()">

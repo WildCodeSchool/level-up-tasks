@@ -31,6 +31,7 @@ export class SignupComponent {
     if (this.signupForm.valid) {
       const { firstName, lastName, email, password } = this.signupForm.value;
       this.signupForm.reset();
+      this.router.navigate(['/connexion']);
       
     }
   }

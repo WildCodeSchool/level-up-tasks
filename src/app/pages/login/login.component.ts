@@ -12,7 +12,7 @@ import { Router, RouterLink } from '@angular/router';
 
 export class LoginComponent {
   loginForm: FormGroup;
-  hidePassword = true;
+  isPasswordHidden = true;
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -22,15 +22,15 @@ export class LoginComponent {
   }
 
   togglePasswordVisibility() {
-    this.hidePassword = !this.hidePassword;
+    this.isPasswordHidden = !this.isPasswordHidden;
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.loginForm.reset();
-      this.hidePassword = true;
-      
+      this.isPasswordHidden = true;
+      this.router.navigate(['/accueil']);
     }
   }
   

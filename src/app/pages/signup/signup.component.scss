@@ -13,10 +13,10 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  .active {
+.active {
     background-color: $button-color;
     color: white;
-  }
+}
 }
 
 .nav-buttons button:not(.active) {
@@ -36,14 +36,16 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-    div {
+
+  div {
         margin-bottom: 15px;
-      }
-      label {
+    }
+
+  label {
         display: block;
         margin-bottom: 5px;
-      }
-      button {
+     }
+  button {
         width: 100%;
         padding: 10px;
         background-color: $button-color;
@@ -51,15 +53,15 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-      }
-      button:hover {
+         }
+  button:hover {
         background-color: $navbar-color;
-      }
+               }
   }
   
-  .signup-container input[type="text"],
-  .signup-container input[type="email"],
-  .signup-container input[type="password"] {
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -85,14 +87,14 @@
       margin-bottom: 0;
     }
   
-    .signup-container input[type="text"],
-    .signup-container input[type="email"],
-    .signup-container input[type="password"] {
+  .signup-container input[type="text"],
+  .signup-container input[type="email"],
+  .signup-container input[type="password"] {
       padding: 10px;
       font-size: 14px;
     }
   
-    .signup-container button[type="submit"] {
+  .signup-container button[type="submit"] {
       padding: 12px;
       font-size: 16px;
     }
