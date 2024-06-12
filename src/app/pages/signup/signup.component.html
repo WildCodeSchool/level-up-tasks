@@ -1,7 +1,8 @@
 <div class="signup-container">
   <div class="nav-buttons">
-    <button class="toggle-button" (click)="navigateToLogin()">Connexion</button>
     <button class="toggle-button active">Inscription</button>
+    <button class="toggle-button"><a [routerLink]="['/connexion']">Connexion</a>
+    </button>
   </div>
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="form-group">

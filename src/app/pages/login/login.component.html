@@ -1,7 +1,8 @@
 
 <div class="login-container">
   <div class="nav-buttons">
-    <button class="toggle-button" (click)="navigateToSignup()">Inscription</button>
+    <button class="toggle-button"><a [routerLink]="['/inscription']">Inscription</a>
+    </button>
     <button class="toggle-button active">Connexion</button>
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -19,5 +20,8 @@
     </div>
     <button type="submit">Login</button>
   </form>
+  <div class="forgot-password">
+    <a routerLink="/motdepasseoublie">Mot de passe oublié ?</a>
+  </div>
 </div>
 

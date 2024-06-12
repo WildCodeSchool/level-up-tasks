@@ -5,7 +5,7 @@ import { TaskPageComponent } from './pages/task-page/task-page.component';
 import { SignupComponent} from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TeamsComponent } from './pages/teams/teams.component';
-
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 export const routes: Routes = [
@@ -34,5 +34,8 @@ export const routes: Routes = [
   {
     path: 'connexion',
     component: LoginComponent,
-  }
+  },
+  { path: 'motdepasseoublie', 
+    component: ForgotPasswordComponent
+   }
 ];

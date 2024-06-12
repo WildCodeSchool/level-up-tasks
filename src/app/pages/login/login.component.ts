@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
+
 export class LoginComponent {
   loginForm: FormGroup;
   hidePassword = true;
@@ -27,14 +28,10 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      console.log('Email:', email);
-      console.log('Password:', password);
       this.loginForm.reset();
       this.hidePassword = true;
       
     }
   }
-  navigateToSignup() {
-    this.router.navigate(['/inscription']);
-  }
+  
 }

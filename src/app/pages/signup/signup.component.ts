@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -26,17 +26,12 @@ export class SignupComponent {
       ? null : { mismatch: true };
   }
 
-  navigateToLogin() {
-    this.router.navigate(['/connexion']);
-  }
-
+ 
   onSubmit() {
     if (this.signupForm.valid) {
       const { firstName, lastName, email, password } = this.signupForm.value;
-      console.log('First Name:', firstName);
-      console.log('Last Name:', lastName);
-      console.log('Email:', email);
-      console.log('Password:', password);
+      this.signupForm.reset();
+      
     }
   }
 }
