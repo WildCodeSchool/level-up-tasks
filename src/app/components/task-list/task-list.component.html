@@ -10,9 +10,12 @@
             }   
         </div>
     </div>
-    <ul class="task-list" [ngStyle]="{'max-height' : height}">
-        <li *ngFor="let task of taskList" >
-            <app-task [task]="task"></app-task>
-        </li>
-    </ul>
+    <div class="task-list-expendable"  [ngStyle]="{'max-height' : height}">
+        <ul class="task-list">
+            <li *ngFor="let task of taskList" >
+                <app-task [task]="task"></app-task>
+            </li>
+        </ul>
+        <app-add-task (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
+    </div>
 </section>

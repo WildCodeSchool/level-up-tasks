@@ -12,6 +12,7 @@
   font-size: inherit;
 }
 
+<<<<<<< HEAD
   body{
     position: relative;
     font-family: 'Roboto', sans-serif;
@@ -19,6 +20,14 @@
   }
 
 
+=======
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $main-background-color;
+}
+>>>>>>> 5aeefeda55f7b4d13a2f02dd8cff5f4860d38f08
 a,
 a:visited {
   color: inherit;
@@ -39,7 +48,6 @@ ul,
 li,
 p {
   list-style: none;
-  //color: $title-text-color;
 }
 
 h1 {

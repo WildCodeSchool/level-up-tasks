@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
+import { AddTaskComponent } from '../add-task/add-task.component';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, TaskComponent],
+  imports: [CommonModule, TaskComponent, AddTaskComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
 })
@@ -23,5 +24,9 @@ export class TaskListComponent {
   changeState(): void { 
     (this.height === '0') ? this.height = '100%' : this.height = '0';
     this.isActive = !this.isActive;
+  }
+
+  onReceiveNewTask(event : Task) : void {
+    this.taskList.push(event);
   }
 }
