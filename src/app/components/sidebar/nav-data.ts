@@ -2,22 +2,22 @@
 export const navbarData=[
     
     {
-        routeLink:'profile-page',
+        routerLink:'/profil',
         icon :'fal fa-user-circle',
         label:'Profil'
     },
     {
-        routeLink:'task-page',
+        routerLink :'/taches',
         icon :'fal fa-tasks',
-        label:'Tasks'
+        label:'Tâches'
     },
     {
-        routeLink:'message-page',
+        routerLink:'message-page',
         icon :'fal fa-envelope',
         label:'Messages'
     },
     {
-        routeLink:'profile-page',
+        routerLink:'profile-page',
         icon :'fal fa-users',
         label:'Groupes'
     }

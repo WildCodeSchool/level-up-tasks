@@ -1,7 +1,13 @@
 import { Routes , RouterModule} from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { TaskPageComponent } from './pages/task-page/task-page.component';
+
+import { SignupComponent} from './pages/signup/signup.component';
+import {LoginComponent } from './pages/login/login.component';
+
 import { TeamsComponent } from './pages/teams/teams.component';
+import { UserProfilComponent } from './pages/user-profil/user-profil.component';
+
 
 export const routes: Routes = [
   {
@@ -22,11 +28,18 @@ export const routes: Routes = [
     path: 'taches',
     component: TaskPageComponent,
   },
+
   {
-    path: 'task-page',
-    component: TaskPageComponent,
+    path: 'inscription',
+    component: SignupComponent,
   },
- 
-  
+  {
+    path: 'connexion',
+    component: LoginComponent,
+  },
+  {
+    path:'profil',
+    component: UserProfilComponent,
+  }
 
 ];
