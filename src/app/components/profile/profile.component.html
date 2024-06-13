@@ -19,7 +19,7 @@
 @if (isModalOpen) {
     
 <app-modal id="edit-user-modal" class="edit-user-modal" (closeModal)="toggleModale()">
-  <form #edditUserform="ngForm" (ngSubmit)="editUser()">
+  <form #editUserform="ngForm" (ngSubmit)="editUser()">
     <fieldset class="img-fieldset">
       <input
         type="file"
@@ -67,7 +67,7 @@
       <span *ngIf="lastname.errors?.['required']">Le prénom est requis</span>
     </div>
 
-    <button type="submit" [disabled]="edditUserform.invalid">Modifier</button>
+    <button type="submit" [disabled]="editUserform.invalid">Modifier</button>
   </form>
 </app-modal>
 }
