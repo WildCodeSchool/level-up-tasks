@@ -13,6 +13,8 @@
 <app-modal id="add-task-modal" *ngIf="isDeleteModalOpen" (closeModal)="closeDeleteTaskModal()">
     <div class="confirmation-message">
         <span>Voulez-vous supprimer cette tâche ?</span>
-        <button type="submit" (click)="deleteTask()"></button>
+        <button (click)="deleteTask()">
+            <div class="checkmark"></div>
+        </button>
     </div>
 </app-modal>

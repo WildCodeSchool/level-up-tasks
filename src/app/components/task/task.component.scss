@@ -54,14 +54,49 @@
     display: flex;
     flex-direction: column;
     gap : 8px;
+    --size : 36px;
 }
 
 .confirmation-message button {
     cursor: pointer;
-    height: 36px;
-    width: 36px;
+    height: var(--size);
+    width: var(--size);
     border-radius: 50%;
     color: $main-background-color;
     background-color: $dark-text-color;
     align-self: flex-end;
+}
+
+.confirmation-message button:active {
+    transform: scale(0.9);
+}
+
+//Checkmark inside the confirm button
+.confirmation-message button .checkmark {
+    position: relative;
+    left: calc(var(--size) * -.05);
+    width: calc(var(--size) * .6);
+    height: calc(var(--size) * .6);
+    margin-left: calc(var(--size) * .14);
+    transform: rotateZ(-40deg);
+}
+
+.confirmation-message button .checkmark:before,
+.confirmation-message button .checkmark:after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    background-color: $main-background-color;
+    border-radius: 5px;
+}
+
+.confirmation-message button .checkmark:before {
+    width: calc(var(--size) * .1);
+    height: calc(var(--size) * .3);
+}
+
+.confirmation-message button .checkmark:after {
+    width: 100%;
+    height: calc(var(--size) * .1);
 }
