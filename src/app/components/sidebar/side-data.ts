@@ -1,5 +1,5 @@
 
-export const sidbarData=[
+export const sidebarData=[
     
     {
         routerLink:'/profil',

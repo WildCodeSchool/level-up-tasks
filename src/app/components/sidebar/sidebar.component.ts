@@ -2,7 +2,7 @@ import { Component, EventEmitter, HostListener, OnInit, Output, output } from '@
 import {  RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { sidbarData } from './side-data';
+import { sidebarData } from './side-data';
 
 interface SideNavToggle{
   screenWidth:number;
@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit{
 @Output() onToggleSidenav :  EventEmitter<SideNavToggle> =new EventEmitter();
 Iscollapsed = false;
   screenWidth = 0 ;
-  navData=sidbarData;
+  navData=sidebarData;
   @HostListener('window:resize',['$event'])
   onResize(event:any):void{
     this.screenWidth = window.innerWidth;
