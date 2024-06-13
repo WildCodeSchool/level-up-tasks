@@ -30,3 +30,21 @@
     height: 24px;
     margin-right: 0.5rem;
 }
+
+.task-delete-button{
+    cursor: pointer;
+    align-self: flex-start;
+    padding-left: 8px;
+    padding-top: 2px;
+    margin-left: auto;
+    color: $navbar-color;
+}
+
+.task-delete-button:hover{
+    color: $title-text-color;
+    font-weight: bolder;
+}
+
+.task-delete-button:active{
+    transform: scale(0.9);
+}

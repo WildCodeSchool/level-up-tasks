@@ -17,9 +17,15 @@ export class TaskListComponent {
 
   //mock data for task list, will be empty once addTask is implemented
   taskList : Task[] = [
-    new Task(1, 'Faire 30 minutes de yoga', new Date("2024-05-16"), false),
-    new Task(2, 'Réunion', new Date("2024-06-08"), false)
+    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), false),
+    new Task('Réunion', new Date("2024-06-08"), false),
+    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), false),
+    new Task('Réunion', new Date("2024-06-08"), false)
   ];
+
+  ngOnInit(){
+    console.log(this.taskList);
+  }
 
   changeState(): void { 
     (this.height === '0') ? this.height = '100%' : this.height = '0';
@@ -28,5 +34,11 @@ export class TaskListComponent {
 
   onReceiveNewTask(event : Task) : void {
     this.taskList.push(event);
+  }
+
+  onReceiveDeleteTask(event : Task) : void {
+    this.taskList.filter( (task, index) => {
+      if(task.id === event.id) this.taskList.splice(index, 1);
+    });
   }
 }

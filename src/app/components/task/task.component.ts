@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../model/task/task';
 
 @Component({
@@ -9,5 +9,12 @@ import { Task } from '../../model/task/task';
   styleUrl: './task.component.scss'
 })
 export class TaskComponent {
-  @Input() public task : Task = new Task(0, 'Placeholder Placeholder Placeholder', new Date(), false);
+  @Input() public task : Task = new Task('Placeholder Placeholder Placeholder', new Date(), false);
+
+  @Output()
+  deleteTaskToParent: EventEmitter<Task> = new EventEmitter();
+
+  deleteTask() : void{
+    this.deleteTaskToParent.emit(this.task);
+  }
 }
