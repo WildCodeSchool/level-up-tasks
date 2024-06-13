@@ -3,6 +3,14 @@ export class Task {
     readonly id: number,
     readonly description: string,
     readonly date: Date,
-    readonly completed: boolean
+    private completed: boolean
   ) {}
+
+  public isCompleted(){
+    return this.completed;
+  }
+
+  public changeCompleted(){
+    this.completed = !this.completed;
+  }
 }
