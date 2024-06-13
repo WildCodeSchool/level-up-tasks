@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -30,7 +31,7 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.loginForm.reset();
       this.isPasswordHidden = true;
-      this.router.navigate(['/accueil']);
+      this.router.navigate(['/profil']);
     }
   }
   

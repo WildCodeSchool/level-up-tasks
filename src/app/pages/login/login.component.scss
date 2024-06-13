@@ -40,8 +40,10 @@
     display: block;
     margin-bottom: 5px;
   }
+ 
 }
  
+
 .login-container input[type="email"],
 .login-container input[type="password"],
 .login-container input[type="text"] {
@@ -62,6 +64,16 @@
     background-color: $navbar-color;
   }
 }
+
+.error-message {
+  color: $title-text-color;
+  font-size: 0.875em;
+}
+
+.is-invalid {
+  border-color: $title-text-color;
+}
+
 
 
 @media (max-width: 600px) {
