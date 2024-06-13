@@ -7,6 +7,7 @@ import { SignupComponent} from './pages/signup/signup.component';
 import {LoginComponent } from './pages/login/login.component';
 
 import { TeamsComponent } from './pages/teams/teams.component';
+import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 
 
 export const routes: Routes = [
@@ -35,5 +36,10 @@ export const routes: Routes = [
   {
     path: 'connexion',
     component: LoginComponent,
+  },
+  {
+    path:'profil',
+    component: UserProfilComponent,
   }
+
 ];
