@@ -17,7 +17,7 @@ export const navbarData=[
         label:'Messages'
     },
     {
-        routerLink:'profile-page',
+        routerLink:'/profil',
         icon :'fal fa-users',
         label:'Groupes'
     }

@@ -1,14 +1,14 @@
 
-
+@use '../../../import'as *;
 .sidenav {
    
-    background:#a99892;
+    background-color:$navbar-color;
     transition: all 1.5s ease;
     z-index: 1;
     top: 0;
     width: 5rem;
     height: 95vh;
-    box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+    box-shadow: 0.063rem 0 1.25rem 0;
     position: fixed;
     padding-top: 140px; 
 
@@ -24,7 +24,7 @@
     }
     
     .logo{
-        background:#a99892;
+        background-color:$navbar-color;
         text-align: center;
         width: 3rem;
         min-width: 3rem;
@@ -39,7 +39,7 @@
         margin-left: 1.5rem;
         font-size: 24px;
         font-weight: 700;
-        color: #eee8e6
+        color:$title-text-color
 
     }
     .btn-close{
@@ -51,13 +51,13 @@
         background-color: transparent;
         border: none;
         .fa-times{
-            color:white;
+            color:$secondary-backround-color;
             font-size: 24px;
         }
     }
   }
 }
-.sidenav-collapsed{
+.sidenav-Iscollapsed{
     width: 16.5625rem;
 
 }
@@ -78,7 +78,7 @@
             display: flex;
             align-items: center;
             height: 3rem;
-            color: white;
+            color:$button-color;
             text-decoration: none;
             transition: all 0.3s ease;
             border-radius: 0.625rem;
@@ -97,8 +97,8 @@
     .sidenav-nav-item{
         .sidenav-nav-link{
 
-                background-color: white;
-                color:black;
+                background-color:$main-background-color;
+                color:$title-text-color;
             
         }
     }
@@ -106,10 +106,10 @@
 
 }
 .active{
-    background-color: #eee8e6;
+    background-color: $main-background-color;
     .sidenav-link-icon
     .sidenav-link-text{
-        color: black;
+        color:$title-text-color;
     }
 
 }
