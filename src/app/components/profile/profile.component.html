@@ -1,13 +1,74 @@
 <section class="user-card">
   @if(user){
-    <div class="user-img">
-        <img src="{{ user.profilImage }}" alt="user.firstname" />
-    </div>
-    <div class="user-description">
-        <h3>{{ user.firstname }} {{ user.lastname }}</h3>
-        <p>Niveau : {{ user.level }}</p>
-        <p>Recompense : {{ user.rewardNumber }}</p>
-        <button (click)="editUser()">Editer</button>
-    </div>
-  } 
+  <div class="user-img">
+    <img src="{{ user.profilImage }}" alt="user.firstname" />
+  </div>
+  <div class="user-description">
+    <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+    <p>Niveau : {{ user.level }}</p>
+    <p>Recompense : {{ user.rewardPercentage }}</p>
+    <button (click)="toggleModale()">Editer</button>
+  </div>
+  }
 </section>
+<section class="reward">
+  <app-progress-bar [result]="user.rewardPercentage"></app-progress-bar>
+  <button><a [routerLink]="['/reward']"></a>Voir les recompences</button>
+</section>
+
+@if (isModalOpen) {
+    
+<app-modal id="edit-user-modal" class="edit-user-modal" (closeModal)="toggleModale()">
+  <form #editUserform="ngForm" (ngSubmit)="editUser()">
+    <fieldset class="img-fieldset">
+      
+      <img src="{{ user.profilImage }}" alt="firstname" />
+      <input
+      class="pencil"
+        type="file"
+        id="profilImage"
+        name="profilImage"
+        [(ngModel)]="user.profilImage"
+        (change)="onFileSelected($event)"
+      />
+      <!-- waiting for the merge with the Sirine branch to use google icon-->
+      <a > 🖉 </a>
+    </fieldset>
+    <fieldset>
+      <input
+        type="text"
+        class="form-control"
+        id="firstname"
+        name="firstname"
+        placeholder="firstname"
+        required
+        [(ngModel)]="user.firstname"
+        #firstname="ngModel"
+        value="{{ user.firstname }}"
+      />
+    </fieldset>
+
+    <div *ngIf="submitted && firstname.errors">
+      <span *ngIf="firstname.errors?.['required']">Le nom est requis</span>
+    </div>
+    <fieldset>
+      <input
+        type="text"
+        class="form-control"
+        id="lastname"
+        name="lastname"
+        placeholder="lastname"
+        required
+        [(ngModel)]="user.lastname"
+        #lastname="ngModel"
+        value="{{ user.lastname }}"
+      />
+    </fieldset>
+    <div *ngIf="submitted && lastname.errors">
+      <span *ngIf="lastname.errors?.['required']">Le prénom est requis</span>
+    </div>
+
+    <button type="submit" [disabled]="editUserform.invalid">Modifier</button>
+  </form>
+</app-modal>
+}
