@@ -33,11 +33,11 @@ export class SignupComponent {
   onSubmit() {
     if (this.signupForm.valid) {
       const { firstName, lastName, email, password, confirmPassword } = this.signupForm.value;
-      console.log('User registered');
       this.signupForm.reset();
       this.router.navigate(['/connexion']);
+      alert('Inscription réussie. Un email de confirmation a été envoyé.');
     } else {
-      console.log('Form is invalid');
+      alert('Veuillez remplir correctement tous les champs du formulaire.');
     }
   }
 }
