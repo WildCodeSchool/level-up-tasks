@@ -18,10 +18,15 @@
   cursor: pointer;
 }
 
+.add-task-button button:active{
+  transform: scale(0.9);
+}
+
 .add-task-button label{
   margin-left: 1rem;
 }
-  
+
+//Modal styling
 app-modal form {
   display: flex;
   flex-direction: column;
@@ -34,7 +39,7 @@ app-modal form textarea {
   border: 0 none;
   resize: none;
   overflow: hidden;
-  height: 30px;
+  height: 28px;
 }
 
 app-modal form textarea:focus {
@@ -62,6 +67,10 @@ app-modal form button {
   background-color: $dark-text-color;
   font-size: 32px;
   font-weight: bolder;
+}
+
+app-modal form button:active {
+  transform: scale(0.9);
 }
 
 app-modal form button:disabled {

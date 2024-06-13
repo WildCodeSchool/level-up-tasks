@@ -12,6 +12,6 @@ export class User {
         public team: UserTeams[],
         public profilImage: string,
         public level: number,
-        public rewardNumber: number,
+        public rewardPercentage: number,
     ){}
 }

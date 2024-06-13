@@ -20,9 +20,7 @@ export class AddTaskComponent {
   addNewTaskToParent: EventEmitter<Task> = new EventEmitter();
 
   onSubmit() : void {
-    //the 1 is the id, this needs to be changed when backend gets added
     this.addNewTaskToParent.emit(new Task(
-      1, 
       this.description, 
       new Date(this.taskDate), 
       false

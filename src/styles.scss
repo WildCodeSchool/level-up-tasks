@@ -1,4 +1,6 @@
 @use "./import" as *;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 
 * {
   margin: 0;
@@ -15,6 +17,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: $main-background-color;
+  main{
+    min-height: calc(100vh - 101px - 51px);
+  }
 }
 a,
 a:visited {

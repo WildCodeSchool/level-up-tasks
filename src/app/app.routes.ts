@@ -1,5 +1,7 @@
+
 import { Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { Routes , RouterModule} from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { TaskPageComponent } from './pages/task-page/task-page.component';
 import { SignupComponent} from './pages/signup/signup.component';
@@ -19,7 +21,7 @@ export const routes: Routes = [
     redirectTo: '/accueil',
     pathMatch: 'full',
   },
-
+  
   {
     path: 'teams',
     component: TeamsComponent,
@@ -28,6 +30,7 @@ export const routes: Routes = [
     path: 'taches',
     component: TaskPageComponent,
   },
+
   {
     path: 'inscription',
     component: SignupComponent,
