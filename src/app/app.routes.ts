@@ -1,11 +1,11 @@
-import { Routes , RouterModule} from '@angular/router';
+
+import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { TaskPageComponent } from './pages/task-page/task-page.component';
-
 import { SignupComponent} from './pages/signup/signup.component';
-import {LoginComponent } from './pages/login/login.component';
-
+import { LoginComponent } from './pages/login/login.component';
 import { TeamsComponent } from './pages/teams/teams.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
 
 
@@ -37,9 +37,15 @@ export const routes: Routes = [
     path: 'connexion',
     component: LoginComponent,
   },
+  
+  { path: 'mot-de-passe-oublie', 
+    component: ForgotPasswordComponent
+   },
+
   {
     path:'profil',
     component: UserProfilComponent,
   }
+
 
 ];

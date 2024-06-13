@@ -159,13 +159,13 @@ nav ul button:hover {
   
 
   nav ul {
-    display: none;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     align-items: center;
   }
 
   nav ul button {
-    width: 30%;
+    width: 100%;
     padding: 8px 16px;
   }
 
@@ -216,7 +216,9 @@ nav ul button:hover {
     padding: 8px 16px;
     
   }
-
+  nav ul {
+    flex-direction: column;
+  }
   .image-item {
     flex-direction: row;
     align-items: center;
