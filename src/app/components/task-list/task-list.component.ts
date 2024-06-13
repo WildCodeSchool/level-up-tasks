@@ -17,7 +17,7 @@ export class TaskListComponent {
 
   //mock data for task list, will be empty once backend is implemented
   taskList : Task[] = [
-    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), false),
+    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true),
     new Task('Réunion', new Date("2024-06-08"), false)
   ];
 

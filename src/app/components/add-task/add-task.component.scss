@@ -39,7 +39,7 @@ app-modal form textarea {
   border: 0 none;
   resize: none;
   overflow: hidden;
-  height: 30px;
+  height: 28px;
 }
 
 app-modal form textarea:focus {
@@ -53,7 +53,7 @@ app-modal form textarea::placeholder {
 app-modal form input[type=date] {
   width: 144px;
   font-size: 20px;
-  height: 40px;
+  height: 42px;
 }
 
 app-modal form button {
