@@ -17,8 +17,8 @@ export class TaskListComponent {
 
   //mock data for task list, will be empty once backend is implemented
   taskList : Task[] = [
-    new Task(1, 'Faire 30 minutes de yoga', new Date("2024-05-16"), true),
-    new Task(2, 'Réunion', new Date("2024-06-08"), false)
+    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true),
+    new Task('Réunion', new Date("2024-06-08"), false)
   ];
 
   changeState(): void { 
@@ -28,5 +28,11 @@ export class TaskListComponent {
 
   onReceiveNewTask(event : Task) : void {
     this.taskList.push(event);
+  }
+
+  onReceiveDeleteTask(event : Task) : void {
+    this.taskList.filter( (task, index) => {
+      if(task.id === event.id) this.taskList.splice(index, 1);
+    });
   }
 }

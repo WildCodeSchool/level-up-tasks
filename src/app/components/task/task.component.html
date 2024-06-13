@@ -12,4 +12,14 @@
             <p>{{task.date.toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })}}</p>
         </div>
     </div>
+    <button class="task-delete-button" (click)="toggleDeleteTaskModal()">X</button>
 </div>
+
+<app-modal id="add-task-modal" *ngIf="isDeleteModalOpen" (closeModal)="toggleDeleteTaskModal()">
+    <div class="confirmation-message">
+        <span>Voulez-vous supprimer cette tâche ?</span>
+        <button (click)="deleteTask()">
+            <div class="checkmark"></div>
+        </button>
+    </div>
+</app-modal>
