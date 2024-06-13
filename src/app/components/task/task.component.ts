@@ -18,15 +18,11 @@ export class TaskComponent {
   deleteTaskToParent: EventEmitter<Task> = new EventEmitter();
 
   deleteTask() : void{
-    this.closeDeleteTaskModal();
+    this.toggleDeleteTaskModal();
     this.deleteTaskToParent.emit(this.task);
   }
 
-  closeDeleteTaskModal() : void {
-    this.isDeleteModalOpen = false;
-  }
-
-  openDeleteTaskModal() : void {
-    this.isDeleteModalOpen = true;
+  toggleDeleteTaskModal() : void {
+    this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
 }
