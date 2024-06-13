@@ -6,9 +6,18 @@ export class Task {
   constructor(
     readonly description: string,
     readonly date: Date,
-    readonly completed: boolean
+    private completed: boolean
   ) {
     Task._id++;
     this.id = Task._id;
   }
+
+  public isCompleted(){
+    return this.completed;
+  }
+
+  public changeCompleted(){
+    this.completed = !this.completed;
+  }
+  
 }

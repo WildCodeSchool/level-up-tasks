@@ -15,7 +15,7 @@ export class TaskListComponent {
   isActive = true;
   height : string = '100%';
 
-  //mock data for task list, will be empty once addTask is implemented
+  //mock data for task list, will be empty once backend is implemented
   taskList : Task[] = [
     new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), false),
     new Task('Réunion', new Date("2024-06-08"), false)

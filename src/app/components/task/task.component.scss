@@ -10,13 +10,6 @@
     padding: 0.5rem;
 }
 
-.checkbox-container {
-    height: 36px;
-    min-width: 36px;
-    border: 2px solid $dark-text-color;
-    border-radius: 50%;
-}
-
 .task-information {
     margin-left: 1rem;
 }
@@ -29,6 +22,81 @@
 .task-date img{
     height: 24px;
     margin-right: 0.5rem;
+}
+
+//Checkbox
+
+.checkbox-container {
+    --size: 36px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-container:active {
+    transform: scale(0.9);
+}
+
+// Ckeckbox exterior
+.checkmark-container {
+    cursor: pointer;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 7px $dark-text-color inset;
+    transition: 0.2s ease transform, 0.2s ease box-shadow;
+}
+
+.checkbox-container input[type="checkbox"]:hover ~ .checkmark-container {
+    box-shadow: 0px 0px 0px 9px $dark-text-color inset;
+}
+
+//Checkmark inside the checkbox
+.checkbox-container .checkmark {
+    position: absolute;
+    left: calc(var(--size) * -.05);
+    width: calc(var(--size) * .6);
+    height: calc(var(--size) * .6);
+    margin-left: calc(var(--size) * .14);
+    transform: rotateZ(-40deg);
+}
+
+.checkbox-container .checkmark:before,
+.checkbox-container .checkmark:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: $main-background-color;
+    border-radius: 5px;
+    opacity: 0;
+    transition: 0.2s ease transform, 0.3s ease opacity;
+}
+
+.checkbox-container .checkmark:before {
+    width: calc(var(--size) * .1);
+    height: calc(var(--size) * .3);
+    transform: translateY(calc(var(--size) * -.68));
+}
+
+.checkbox-container .checkmark:after {
+    width: 100%;
+    height: calc(var(--size) * .1);
+    transform: translateX(calc(var(--size) * .78));
+}
+
+//Animation of the checkbox when checked
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark-container {
+    max-width: var(--size);
+    box-shadow:0px 0px 0px 25px $dark-text-color inset;
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark-container .checkmark:before,
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark-container .checkmark:after {
+    opacity: 1;
+    transform: translate(0);
 }
 
 .task-delete-button{
