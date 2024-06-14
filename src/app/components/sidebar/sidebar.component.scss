@@ -1,13 +1,13 @@
 
 @use '../../../import'as *;
+
 .sidenav {
-   
     background-color:$navbar-color;
     transition: all 1.5s ease;
     z-index: 1;
     top: 0;
     width: 5rem;
-    height: 95vh;
+    height: 100vh;
     box-shadow: 0.063rem 0 1.25rem 0;
     position: fixed;
     padding-top: 140px; 
@@ -33,14 +33,12 @@
         font-weight: 900;
         cursor: pointer;
         border: none;
-
     }
     .logo-text{
         margin-left: 1.5rem;
         font-size: 24px;
         font-weight: 700;
-        color:$title-text-color
-
+        color: $title-text-color;
     }
     .btn-close{
         margin-left: auto;
@@ -78,7 +76,7 @@
             display: flex;
             align-items: center;
             height: 3rem;
-            color:$button-color;
+            color: $button-color;
             text-decoration: none;
             transition: all 0.3s ease;
             border-radius: 0.625rem;
@@ -91,33 +89,30 @@
              } 
             .sidenav-link-text{
                 margin-left: 1.5rem;
-             }
+            }
         }
     }
     .sidenav-nav-item{
         .sidenav-nav-link{
-
-                background-color:$main-background-color;
-                color:$title-text-color;
-            
+            background-color:$main-background-color;
+            color:$title-text-color;    
         }
     }
-
-
 }
+
 .active{
     background-color: $main-background-color;
     .sidenav-link-icon
     .sidenav-link-text{
         color:$title-text-color;
     }
-
 }
+
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     .sidenav {
       display: none;
     }
-  }
+}
 
    
