@@ -1,14 +1,14 @@
 <section class="user-card">
   @if(user){
-    <div class="user-img">
-      <img src="{{ user.profilImage }}" alt="user.firstname" />
-    </div>
-    <div class="user-description">
-      <h3>{{ user.firstname }} {{ user.lastname }}</h3>
-      <p>Niveau : {{ user.level }}</p>
-      <p>Recompense : {{ user.rewardPercentage }}</p>
-      <button (click)="toggleModale()">Editer</button>
-    </div>
+  <div class="user-img">
+    <img src="{{ user.profilImage }}" alt="user.firstname" />
+  </div>
+  <div class="user-description">
+    <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+    <p>Niveau : {{ user.level }}</p>
+    <p>Recompense : {{ user.rewardPercentage }}</p>
+    <button (click)="toggleModale()">Editer</button>
+  </div>
   }
 </section>
 <section class="reward">
@@ -24,7 +24,7 @@
       
       <img src="{{ user.profilImage }}" alt="firstname" />
       <input
-        class="pencil"
+      class="pencil"
         type="file"
         id="profilImage"
         name="profilImage"

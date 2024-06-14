@@ -1,4 +1,6 @@
-export const sidebarData=[  
+
+export const sidebarData=[
+    
     {
         routerLink:'/profil',
         icon :'fal fa-user-circle',
@@ -19,4 +21,5 @@ export const sidebarData=[
         icon :'fal fa-users',
         label:'Groupes'
     }
+
 ];

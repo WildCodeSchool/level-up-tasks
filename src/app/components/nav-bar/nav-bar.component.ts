@@ -18,21 +18,18 @@ export class NavBarComponent {
   }
   
   
-  @HostListener('window:resize', ['$event'])
-  onResize() : void{
-    if(typeof window !== 'undefined'){
-      this.innerWidth = window.innerWidth;
-      if(this.innerWidth < 768){
-        this.isMobileView = true;
-      }else{
-        this.isMobileView = false;
-      }
-    }
-    
+ @HostListener('window:resize', ['$event'])
+onResize() {
+  this.innerWidth = window.innerWidth;
+  if(this.innerWidth < 768){
+    this.isMobileView = true;
+  }else{
+    this.isMobileView = false;
   }
-  
-  isOpen = false;
-  
+}
+    isOpen = false;
+ 
+
   toggleNavbar() {
     this.isOpen = !this.isOpen;
   }

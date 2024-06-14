@@ -1,8 +1,7 @@
 
 <div class="login-container">
-  <h1>Connexion</h1>
   <div class="nav-buttons">
-    <button [routerLink]="['/inscription']" class="toggle-button"><a>Inscription</a>
+    <button class="toggle-button"><a [routerLink]="['/inscription']">Inscription</a>
     </button>
     <button class="toggle-button active">Connexion</button>
   </div>
@@ -18,9 +17,7 @@
     <div>
       <label for="password">Mot de passe</label>
       <input id="password" formControlName="password" [type]="isPasswordHidden ? 'password' : 'text'" [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)}"/>
-      <div class="showPasswordCheckbox">
-        <input type="checkbox" (click)="togglePasswordVisibility()">Afficher le mot de passe
-      </div>
+      <input type="checkbox" (click)="togglePasswordVisibility()">Afficher le mot de passe
       <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="error-message">
       <div *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est obligatoire.  
       </div>

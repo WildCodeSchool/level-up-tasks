@@ -1,16 +1,10 @@
 @use "../../../import" as *;
 
+
 .nav-buttons {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-}
-
-h1 {
-  font-size: 36px;
-  color: $title-text-color;
-  text-align: center;
-  margin-bottom: 1rem;
 }
 
 .nav-buttons button {
@@ -19,10 +13,10 @@ h1 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  .active {
+.active {
     background-color: $button-color;
     color: white;
-  }
+}
 }
 
 .nav-buttons button:not(.active) {
@@ -44,8 +38,8 @@ h1 {
     background-color: #f9f9f9;
   
 
-    div {
-      margin-bottom: 15px;
+  div {
+        margin-bottom: 15px;
     }
 
     input {
@@ -54,29 +48,25 @@ h1 {
       box-sizing: border-box;
     }
     
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
+  label {
+        display: block;
+        margin-bottom: 5px;
+     }
 
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: $button-color;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: $navbar-color;
-    }
-}
-
-form div {
-  padding : 8px;
-}
+  button {
+        width: 100%;
+        padding: 10px;
+        background-color: $button-color;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+         }
+  button:hover {
+        background-color: $navbar-color;
+               }
+  }
+  
   
 .signup-container input[type="text"],
 .signup-container input[type="email"],
@@ -84,40 +74,45 @@ form div {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
-    border: 1px solid $navbar-color;
-    border-radius: 10px;
-}
-
-.error-message {
+  }
+  .error-message {
     color: $title-text-color;
     margin-top: 10px;
-}
+  }
   
   
-@media (max-width: 600px) {
-  .signup-container {
+  @media (max-width: 600px) {
+    .signup-container {
       width: 90%;
       margin: 20px auto;
       padding: 15px;
-  }
+    }
   
-  .nav-buttons button {
+    .nav-buttons {
+      flex-direction: column;
+    }
+  
+    .nav-buttons button {
       width: 100%;
       margin-bottom: 10px;
-  }
+    }
+  
+    .nav-buttons button:last-child {
+      margin-bottom: 0;
+    }
   
   .signup-container input[type="text"],
   .signup-container input[type="email"],
   .signup-container input[type="password"] {
       padding: 10px;
       font-size: 14px;
-  }
+    }
   
   .signup-container button[type="submit"] {
       padding: 12px;
       font-size: 16px;
+    }
   }
-}
 
 
   
