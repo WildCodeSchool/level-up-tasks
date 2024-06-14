@@ -1,0 +1,202 @@
+@use "../../../import" as *;
+
+.user-card {
+  width: 90%;
+  margin: 5% auto;
+  background-color: $secondary-backround-color;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 10px;
+  .user-img {
+    width: 40%;
+    img {
+      width: 100%;
+    }
+  }
+  .user-description {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    h3 {
+      color: $dark-text-color;
+      font-size: 1.5em;
+    }
+    p {
+      color: $dark-text-color;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: $button-color;
+      color: $light-text-color;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 50%;
+    }
+  }
+  .modal-container {
+    button {
+      background-color: $button-color;
+      color: $light-text-color;
+      padding: 1%;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 2%;
+      width: 20%;
+    }
+  }
+}
+.reward {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  button {
+    background-color: $button-color;
+    color: $light-text-color;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px auto;
+    width: 80%;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  .img-fieldset {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    .pencil{
+      position: absolute;
+      top: 80px;
+      left: 15px;
+      opacity: 0;
+      z-index: 1;
+      width: 60%;
+    }
+    a{
+      position: absolute;
+      top: 94px;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    img {
+      width: 50%;
+      margin: auto;
+
+      
+    }
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    label {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #0a0a0a;
+      border-radius: 5px;
+      font-size: 1em;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: $secondary-backround-color;
+    }
+  }
+  button {
+    padding: 10px;
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: $button-color;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .user-card {
+    width: 50%;
+    margin: 5% 10% 5% 40%;
+    background-color: $secondary-backround-color;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+    .user-img {
+      width: 40%;
+      img {
+        width: 100%;
+      }
+    }
+    .user-description {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      h3 {
+        color: $dark-text-color;
+        font-size: 1.5em;
+      }
+      p {
+        color: $dark-text-color;
+        font-size: 1em;
+      }
+
+      button {
+        width: 50%;
+      }
+    }
+  }
+  .reward {
+    width: 50%;
+    margin: 5% 10% 5% 40%;
+    display: flex;
+    flex-direction: column;
+    button {
+      background-color: $button-color;
+      color: $light-text-color;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 20px auto;
+      width: 60%;
+    }
+  }
+}
+@media screen and (min-width: 1025px) {
+  section {
+    width: 40%;
+    .user-img {
+      width: 30%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

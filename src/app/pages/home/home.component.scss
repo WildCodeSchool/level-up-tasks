@@ -1,21 +1,263 @@
 @use "../../../import" as *;
 
-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  max-width: 1200px;
-  margin: 0 auto;
+
+
+.header {
+  position: relative;
+  text-align: center;
+  background-image: url('../../../assets/pictures/progress.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+
+  .overlay {
+    align-items: center;
+    
+    h1 {
+      font-size: 3em;
+      text-align: center;
+      padding-top: 100px;
+      color: $title-text-color ;
+      
+    }
+  }
 }
 
-h1,
-h2,
-p {
+.mobile-image {
+  display: none;
+}
+
+.description {
+  text-align: center;
+  padding: 20px;
+  background-color: $secondary-backround-color;
+  border-bottom: 1px solid #ddd;
+}
+
+.description p {
+  margin: 0;
+  font-size: 1.2em;
+  color: #555;
+  margin-top: 10px;
+}
+
+nav {
+  text-align: center;
+  padding: 10px 0;
+  width: 80%;
+  margin: auto;
+   ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    li {
+      margin: 0 15px;
+    }
+  }
+}
+
+h2{
+  color: $title-text-color;
   text-align: center;
 }
+nav ul button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: $button-color;
+  border: none;
+  border-radius: 4px;
+   a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+  }
 
-h2 {
-  margin: 0.5rem 0 1.5rem;
 }
+
+nav ul button:hover {
+  background-color: $button-color;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content {
+  padding: 20px;
+  text-align: left;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 4px;
+}
+
+.image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  box-sizing: border-box;
+  margin: 10px;
+  border: 1px solid #ddd;
+  
+}
+
+.image-item .image-and-text {
+  display: flex;
+  align-items: center;
+}
+
+.image-item .image-and-text .text {
+  margin-left: 20px;
+}
+
+.image-item img {
+  border-color: transparent;
+  border-radius:  0.375rem;
+  border-width: 2px;
+  max-width: 100%;
+  height: auto;
+  max-width: 350px;
+  max-height: auto;
+  object-fit: cover;
+}
+
+.image-item .text {
+  text-align: center;
+}
+.image-item .text h3 {
+  margin-top: 0; 
+  margin-bottom: 30px;
+  padding-top: 20px;
+}
+
+.image-item h3 {
+  color: $title-text-color;
+  margin: 10px 0 10px 0;
+  text-align: center;
+  
+}
+
+.image-item p {
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .image-container {
+    flex-direction: column;
+  }
+  .image-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .image-item img {
+    width: 50%;
+    height: auto;
+    float: right;
+  }
+
+  .image-item .text {
+    text-align: left;
+    padding-left: 10px;
+    float: right;
+     p {
+      margin: 0;
+    }
+  }
+
+  .image-item h3 {
+    margin: 0 0 5px 0;
+  }
+
+  .image-item p {
+    margin: 0;
+  }
+  .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px;
+  }
+  
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  nav ul button {
+    width: 100%;
+    padding: 8px 16px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .image-item {
+    width: 100%;
+  
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .header {
+    background-image: none;
+    display: block;
+   
+    height: 100%;
+
+    
+    
+    .overlay h1 {
+      font-size: 1.5em;
+      text-align: center;
+      color: $title-text-color ;
+      padding-top: 16px;
+      
+    }
+  }
+  
+  .mobile-image  {
+    display: block;
+    width: 142px;
+    height: 142px;
+  }
+  .description{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 8px;
+    border-radius: 10px;
+  }
+
+  nav ul button {
+    width: 100%;
+    padding: 8px 16px;
+    
+  }
+}
+
+
+
+

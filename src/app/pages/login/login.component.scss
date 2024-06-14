@@ -1,0 +1,125 @@
+@use "../../../import" as *;
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: $secondary-backround-color;
+}
+
+h1 {
+  font-size: 36px;
+  color: $title-text-color;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .active {
+    background-color: $button-color;
+    color: white;
+  }
+  button:not(.active) {
+    background-color: #f0f0f0;
+    color: $title-text-color;
+  }
+  button:hover {
+    background-color: $navbar-color;
+    color: white;
+  }
+}
+
+.login-container div {
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+ 
+}
+ 
+form div {
+  padding : 8px;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"],
+.login-container input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid $navbar-color;
+  border-radius: 10px;
+}
+
+.showPasswordCheckbox {
+  padding: 1rem;
+  input {
+    margin-right: 0.5rem;
+  }
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: $button-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  button:hover {
+    background-color: $navbar-color;
+  }
+}
+
+.error-message {
+  color: $title-text-color;
+  font-size: 0.875em;
+}
+
+.is-invalid {
+  border-color: $title-text-color;
+}
+
+.forgot-password{
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .login-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .nav-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .login-container input[type="email"],
+  .login-container input[type="password"],
+  .login-container input[type="text"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .login-container button[type="submit"] {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
+
+
