@@ -18,7 +18,7 @@ body {
   padding: 0;
   background-color: $main-background-color;
   main{
-    min-height: calc(100vh - 101px - 51px);
+    min-height: calc(90vh - 65px);
   }
 }
 a,
@@ -56,4 +56,10 @@ h2 {
 h3 {
   font-weight: 600;
   font-size: 1rem;
+}
+
+@media screen and (max-width: 768px){
+  main{
+    min-height: calc(90vh - 47px);
+  }
 }

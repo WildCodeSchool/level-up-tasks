@@ -9,6 +9,13 @@
   background-color: $secondary-backround-color;
 }
 
+h1 {
+  font-size: 36px;
+  color: $title-text-color;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 .nav-buttons {
   display: flex;
   justify-content: space-between;
@@ -35,7 +42,6 @@
 }
 
 .login-container div {
-  margin-bottom: 15px;
   label {
     display: block;
     margin-bottom: 5px;
@@ -43,6 +49,9 @@
  
 }
  
+form div {
+  padding : 8px;
+}
 
 .login-container input[type="email"],
 .login-container input[type="password"],
@@ -50,6 +59,15 @@
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  border: 1px solid $navbar-color;
+  border-radius: 10px;
+}
+
+.showPasswordCheckbox {
+  padding: 1rem;
+  input {
+    margin-right: 0.5rem;
+  }
 }
 
 .login-container button {
@@ -74,7 +92,10 @@
   border-color: $title-text-color;
 }
 
-
+.forgot-password{
+  margin-top: 1rem;
+  text-align: center;
+}
 
 @media (max-width: 600px) {
   .login-container {
@@ -83,17 +104,9 @@
     padding: 15px;
   }
 
-  .nav-buttons {
-    flex-direction: column;
-  }
-
   .nav-buttons button {
     width: 100%;
     margin-bottom: 10px;
-  }
-
-  .nav-buttons button:last-child {
-    margin-bottom: 0;
   }
 
   .login-container input[type="email"],

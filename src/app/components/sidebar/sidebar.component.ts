@@ -17,22 +17,25 @@ interface SideNavToggle{
 })
 export class SidebarComponent implements OnInit{
   
-@Output() onToggleSidenav :  EventEmitter<SideNavToggle> =new EventEmitter();
-Iscollapsed = false;
+  @Output() onToggleSidenav : EventEmitter<SideNavToggle> = new EventEmitter();
+  Iscollapsed = false;
   screenWidth = 0 ;
   navData=sidebarData;
   @HostListener('window:resize',['$event'])
   onResize(event:any):void{
-    this.screenWidth = window.innerWidth;
+    if(typeof window !== 'undefined'){
+      this.screenWidth = window.innerWidth;
+    }
   }
 
   ngOnInit(): void {
-    this.screenWidth = window.innerWidth;
-    if(this.screenWidth < 768){
-      this.Iscollapsed = false;
-      this.onToggleSidenav.emit({screenWidth:this.screenWidth,Iscollapsed:this.Iscollapsed});
+    if(typeof window !== 'undefined'){
+      this.screenWidth = window.innerWidth;
+      if(this.screenWidth < 768){
+        this.Iscollapsed = false;
+        this.onToggleSidenav.emit({screenWidth:this.screenWidth,Iscollapsed:this.Iscollapsed});
+      }
     }
-    
       
   }
   toggleCollapse(): void {

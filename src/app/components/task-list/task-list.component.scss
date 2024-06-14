@@ -1,8 +1,9 @@
 @use "./../../../import" as *;
 
 .task-list-container {
+    width: 90vw;
     max-width: 500px;
-    
+    margin: 0 auto;
 }
 
 .task-list-expendable{

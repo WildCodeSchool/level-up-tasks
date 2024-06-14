@@ -1,15 +1,14 @@
 <header>
     <nav class="nav-bar">
         <a [routerLink]="['/accueil']">
-        <div class="nav-img">
+            <div class="nav-img">
                 <img src="../../assets/pictures/logo.png" alt="logo">
                 <p>LevelUpTask</p>
-        </div>
-        
-    </a>
+            </div>
+        </a>
         @if (isMobileView) {
-            <div (click)="toggleNavbar()"   class="mobile" >
-                <div  [class.open]="isOpen"  class="burger-menu">
+            <div (click)="toggleNavbar()" class="mobile" >
+                <div  [class.open]="isOpen" class="burger-menu">
                 <div  class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
