@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
+import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
+import { whileStatement } from '@babel/types';
 
 @Component({
   selector: 'app-task',
@@ -12,11 +14,13 @@ import { CommonModule } from '@angular/common';
 })
 export class TaskComponent {
   isDeleteModalOpen : boolean = false;
-  @Input() public task : Task = new Task('Placeholder Placeholder Placeholder', new Date(), false);
+  @Input() public task : Task = new Task('Placeholder Placeholder Placeholder', new Date(), false,ImportancyLevel.Bas);
 
   @Output()
   deleteTaskToParent: EventEmitter<Task> = new EventEmitter();
-
+  
+  importancyLevels = Object.values(ImportancyLevel);
+  
   deleteTask() : void{
     this.toggleDeleteTaskModal();
     this.deleteTaskToParent.emit(this.task);
@@ -25,4 +29,5 @@ export class TaskComponent {
   toggleDeleteTaskModal() : void {
     this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
+
 }

@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskFilterComponent } from '../task-filter/task-filter.component';
+import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 
 @Component({
   selector: 'app-task-list',
@@ -13,13 +14,14 @@ import { TaskFilterComponent } from '../task-filter/task-filter.component';
   styleUrl: './task-list.component.scss'
 })
 export class TaskListComponent {
+  
   isActive = true;
   height : string = '100%';
 
   //mock data for task list, will be empty once backend is implemented
   taskList : Task[] = [
-    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true),
-    new Task('Réunion', new Date("2024-06-08"), false)
+    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true,ImportancyLevel.Haute),
+    new Task('Réunion', new Date("2024-06-08"), false,ImportancyLevel.Moyenne)
   ];
   filteredTasks : Task[] = [];
   ngOnInit():void{
