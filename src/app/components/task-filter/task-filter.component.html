@@ -1,0 +1,23 @@
+<div class="task-filter">
+   <div class="filterForm" >
+    <div class="filter-description">
+        @for (icon of icons; track icons) {
+            <button > <i [class]="icon.class"></i> </button>
+        }
+    
+            <input
+            type="search"
+            class="form-control"
+            id="description-filter"
+            name="description-filter"
+            placeholder="filtrer"
+            required
+            [(ngModel)]="filterValue"
+            (input)="onFilterDescriptionS()"
+            />
+    </div>
+       <div class="filter-date">
+            <input type="date" [(ngModel)]="filteredDate" name="filteredDate" id="filteredDate" (input)="onFilterDates()"/>
+       </div>
+   </div>
+</div>

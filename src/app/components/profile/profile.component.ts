@@ -7,6 +7,7 @@ import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { dataIcon } from './icons';
 
 @Component({
   selector: 'app-profile',
@@ -25,6 +26,7 @@ import { NgIf } from '@angular/common';
 export class ProfileComponent {
   isModalOpen: boolean = false;
   submitted: boolean = false;
+  icons = dataIcon;
   teams: UserTeams[] = [
     { id: 1, name: 'teams1', role: TeamsRoles.Admin },
     { id: 2, name: 'teams2', role: TeamsRoles.Member },

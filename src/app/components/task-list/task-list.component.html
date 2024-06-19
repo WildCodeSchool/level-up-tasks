@@ -1,3 +1,10 @@
+<section class="filter">
+    <app-task-filter 
+      (filterDescriptions)="filterByDescription($event)"
+      (filterDate)="filterByDate($event)">
+    </app-task-filter>
+  </section>
+  
 <section class="task-list-container">
     <div class="task-list-title" (click)="changeState()">
         <h1>Liste des tâches:</h1>
@@ -12,7 +19,7 @@
     </div>
     <div class="task-list-expendable"  [ngStyle]="{'max-height' : height}">
         <ul class="task-list">
-            <li *ngFor="let task of taskList" >
+            <li *ngFor="let task of filteredTasks" >
                 <app-task [task]="task" (deleteTaskToParent)="onReceiveDeleteTask($event)"></app-task>
             </li>
         </ul>

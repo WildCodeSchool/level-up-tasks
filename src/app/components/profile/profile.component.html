@@ -30,8 +30,9 @@
         name="profilImage"
         (change)="onFileSelected($event)"
       />
-      <!-- waiting for the merge with the Sirine branch to use google icon-->
-      <a > 🖉 </a>
+      @for (icon of icons; track icons) {
+      <a > <i [class]="icon.class"></i> </a>
+    }
     </fieldset>
     <fieldset>
       <input
