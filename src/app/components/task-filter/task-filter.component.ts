@@ -20,7 +20,7 @@ export class TaskFilterComponent {
   filterDate: EventEmitter<string> = new EventEmitter();
 
   
-  onFilterDescriptionS():void{
+  onFilterDescriptions():void{
     this.filterDescriptions.emit(this.filterValue);
   }
 
