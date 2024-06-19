@@ -1,0 +1,45 @@
+@use '../../../import' as *;
+
+.task-filter{
+    width: 40%;
+    margin: 0 auto;
+
+    .filterForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .filter-description{
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            background-color: $light-text-color;
+            border-radius: 10px;
+            padding-left: 4%;
+            align-items: center;
+            input{
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+    
+        }
+        .filter-date{
+            margin-top: 5%;
+            display: flex;
+            justify-content: space-evenly;
+            width: 50%;
+            background-color: $light-text-color;
+            border-radius: 10px;
+            padding-left: 4%;
+            align-items: center;
+            input{
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+        }
+    
+    }
+    
+  
+}
