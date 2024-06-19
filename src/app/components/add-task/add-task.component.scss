@@ -76,3 +76,12 @@ app-modal form button:active {
 app-modal form button:disabled {
   background-color: $navbar-color;
 }
+
+.niveau{
+  color: $navbar-color;
+  font-size: 20px;
+}
+
+select {
+  font-size: medium;
+}
