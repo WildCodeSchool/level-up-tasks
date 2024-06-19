@@ -1,0 +1,52 @@
+@use "./../../../import" as *;
+
+.task-progress-title {
+    padding: 1rem;
+    color: $title-text-color;
+    border-bottom: 1px solid $button-color;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+.task-progress-title h1 {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.task-progress {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.task-progress li {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 1rem; 
+}
+
+.task-progress i {
+    font-size: 64px;
+}
+
+.task-progress h2 {
+    font-size: 16px;
+}
+
+#taskTotal {
+    background-color: $progress-task-total;
+}
+
+#taskAssigned {
+    background-color: $progress-task-assigned;
+}
+
+#taskCompleted {
+    background-color: $progress-task-completed;
+}
