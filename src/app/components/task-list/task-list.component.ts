@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject, Input } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskFilterComponent } from '../task-filter/task-filter.component';
+import { TaskService } from '../../service/task.service';
 import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 
 @Component({
@@ -17,12 +18,8 @@ export class TaskListComponent {
   
   isActive = true;
   height : string = '100%';
-
-  //mock data for task list, will be empty once backend is implemented
-  taskList : Task[] = [
-    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true,ImportancyLevel.Haute),
-    new Task('Réunion', new Date("2024-06-08"), false,ImportancyLevel.Moyenne)
-  ];
+  private taskService = inject(TaskService);
+  taskList : Task[] = this.taskService.getTasks();
   filteredTasks : Task[] = [];
   levelImportany:ImportancyLevel[]= new Array<ImportancyLevel>();
   ngOnInit():void{
@@ -35,13 +32,11 @@ export class TaskListComponent {
   }
 
   onReceiveNewTask(event : Task) : void {
-    this.taskList.push(event);
+    this.taskService.addTask(event);
   }
 
   onReceiveDeleteTask(event : Task) : void {
-    this.taskList.filter( (task, index) => {
-      if(task.id === event.id) this.taskList.splice(index, 1);
-    });
+    this.taskService.deleteTask(event);
   }
 
   //filter tasks based on the description
