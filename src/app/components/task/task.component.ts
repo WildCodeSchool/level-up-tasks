@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
+import { TaskService } from '../../service/task.service';
 import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 import { whileStatement } from '@babel/types';
 
@@ -14,12 +15,17 @@ import { whileStatement } from '@babel/types';
 })
 export class TaskComponent {
   isDeleteModalOpen : boolean = false;
-  @Input() public task : Task = new Task('Placeholder Placeholder Placeholder', new Date(), false,ImportancyLevel.Bas);
+  importancyLevels = Object.values(ImportancyLevel);
+  private taskService = inject(TaskService);
 
+  @Input() public task !: Task;
+  
   @Output()
   deleteTaskToParent: EventEmitter<Task> = new EventEmitter();
-  
-  importancyLevels = Object.values(ImportancyLevel);
+
+  toggleTaskComplete(){
+    this.taskService.toggleTaskComplete(this.task);
+  }
   
   deleteTask() : void{
     this.toggleDeleteTaskModal();
@@ -29,5 +35,4 @@ export class TaskComponent {
   toggleDeleteTaskModal() : void {
     this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
-
 }
