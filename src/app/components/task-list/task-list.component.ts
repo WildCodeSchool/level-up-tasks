@@ -21,7 +21,6 @@ export class TaskListComponent {
   private taskService = inject(TaskService);
   taskList : Task[] = this.taskService.getTasks();
   filteredTasks : Task[] = [];
-
   ngOnInit():void{
      this.filteredTasks = this.taskList;
   }
@@ -40,25 +39,33 @@ export class TaskListComponent {
 
   //filter tasks based on the description
   filterByDescription(filtervalue:string) {
-    if(filtervalue) {
-      this.filteredTasks = this.taskList.filter((task) => 
-        { return task.description.toLowerCase().includes(filtervalue.toLowerCase());
-      });
-  }else{
-    this.filteredTasks = this.taskList;
-  }
+     this.filtertasks(filtervalue)
 }
 
 //filter tasks based on the date
 filterByDate(date:string){
-  if(date){
-    this.filteredTasks = this.taskList.filter((task) => {
-        return task.date.getTime() === new Date(date).getTime();
-    });
-  }else{
-    this.filteredTasks = this.taskList;
-  }
+    this.filtertasks(date)
 }
 
 
+
+//filter tasks based on the importance off level
+filterByImportance(importance:string){
+  this.filtertasks(importance);
+}
+
+
+//global function to filter tasks for refactor the code
+  filtertasks(filterValue:string){
+    if(filterValue ) {
+    this.filteredTasks = this.taskList.filter((task) => {
+      return task.description.toLowerCase().includes(filterValue.toLowerCase()) ||
+      task.date.getTime() === new Date(filterValue).getTime() ||
+      task.importancyLevel === filterValue;
+    });
+  }else{
+    this.filteredTasks = this.taskList;
+
+  }
+  }
 }
