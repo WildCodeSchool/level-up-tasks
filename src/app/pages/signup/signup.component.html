@@ -8,7 +8,7 @@
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="firstName">Prénom</label>
-      <input id="firstName" formControlName="firstName" type="text" required=""  placeholder=""/>
+      <input id="firstName" formControlName="firstName" type="text" required="" />
       <div *ngIf="signupForm.get('firstName')?.invalid && (signupForm.get('firstName')?.dirty || signupForm.get('firstName')?.touched)" class="error-message">
         <div *ngIf="signupForm.get('firstName')?.errors?.['required']">Le prénom est obligatoire.</div>
       </div>
