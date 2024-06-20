@@ -15,19 +15,17 @@ import { whileStatement } from '@babel/types';
 })
 export class TaskComponent {
   isDeleteModalOpen : boolean = false;
-  @Input() public task !: Task;
+  importancyLevels = Object.values(ImportancyLevel);
   private taskService = inject(TaskService);
 
+  @Input() public task !: Task;
+  
   @Output()
   deleteTaskToParent: EventEmitter<Task> = new EventEmitter();
 
   toggleTaskComplete(){
     this.taskService.toggleTaskComplete(this.task);
   }
-
-  //@Input() public task : Task = new Task('Placeholder Placeholder Placeholder', new Date(), false,ImportancyLevel.Bas);
-  
-  importancyLevels = Object.values(ImportancyLevel);
   
   deleteTask() : void{
     this.toggleDeleteTaskModal();
@@ -37,5 +35,4 @@ export class TaskComponent {
   toggleDeleteTaskModal() : void {
     this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
-
 }
