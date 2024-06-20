@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { taskIcons } from './task-icons';
 import { FormsModule } from '@angular/forms';
+import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 
 @Component({
   selector: 'app-task-filter',
@@ -13,6 +14,13 @@ export class TaskFilterComponent {
   icons=taskIcons;
   filterValue:string='';
   filteredDate:string='';
+  selectedlevel:string= "";
+  levelImportancy = Object.values(ImportancyLevel);
+
+  
+  @Output()
+  filterImportancy: EventEmitter<string> = new EventEmitter();
+  
   @Output() 
   filterDescriptions:  EventEmitter<string> = new EventEmitter();
 
@@ -26,6 +34,12 @@ export class TaskFilterComponent {
 
   onFilterDates():void{
     this.filterDate.emit(this.filteredDate);
+  }
+
+
+  onFilterImportance():void{
+    this.filterImportancy.emit(this.selectedlevel);
+
   }
 
 }
