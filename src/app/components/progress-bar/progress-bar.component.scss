@@ -1,18 +1,26 @@
-@use '../../../import'as *;
+@use "../../../import" as *;
 .progress {
   width: 100%;
   background-color: $secondary-backround-color;
   border-radius: 5px;
-  overflow: hidden; 
-  position: relative; 
-  height:  25px;
+  overflow: hidden;
+  position: relative;
+  height: 25px;
   margin: auto;
-}
 
-.progress-bar {
-  background-color: $navbar-color;
-  border-radius: 5px 0 0 5px;
-  transition: width 0.5s ease; 
-  text-align: center;
-  line-height: 25px;
+  .percentage {
+    width: 100%;
+    margin: 50%;
+  }
+
+  .progress-bar {
+    background-color: $navbar-color;
+    border-radius: 5px 0 0 5px;
+    transition: width 0.5s ease;
+    line-height: 25px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }

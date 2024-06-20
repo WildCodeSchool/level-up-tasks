@@ -3,6 +3,8 @@ import { Task } from '../../model/task/task';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../../service/task.service';
+import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
+import { whileStatement } from '@babel/types';
 
 @Component({
   selector: 'app-task',
@@ -23,6 +25,10 @@ export class TaskComponent {
     this.taskService.toggleTaskComplete(this.task);
   }
 
+  //@Input() public task : Task = new Task('Placeholder Placeholder Placeholder', new Date(), false,ImportancyLevel.Bas);
+  
+  importancyLevels = Object.values(ImportancyLevel);
+  
   deleteTask() : void{
     this.toggleDeleteTaskModal();
     this.deleteTaskToParent.emit(this.task);
@@ -31,4 +37,5 @@ export class TaskComponent {
   toggleDeleteTaskModal() : void {
     this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
+
 }

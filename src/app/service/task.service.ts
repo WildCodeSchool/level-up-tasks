@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Task } from '../model/task/task';
+import { ImportancyLevel } from '../model/importancy-level/importancy-level';
 
 
 @Injectable({
@@ -12,8 +13,8 @@ export class TaskService {
   taskUpdated : EventEmitter<Task[]> = new EventEmitter();
 
   tasks : Task[] = [
-    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true),
-    new Task('Réunion', new Date("2024-06-08"), false)
+    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true, ImportancyLevel.Bas),
+    new Task('Réunion', new Date("2024-06-08"), false, ImportancyLevel.Moyenne)
   ];
 
   getTasks() : Task[]{

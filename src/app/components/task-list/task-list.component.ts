@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject, Input } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskFilterComponent } from '../task-filter/task-filter.component';
 import { TaskService } from '../../service/task.service';
+import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 
 @Component({
   selector: 'app-task-list',
@@ -14,6 +15,7 @@ import { TaskService } from '../../service/task.service';
   styleUrl: './task-list.component.scss'
 })
 export class TaskListComponent {
+  
   isActive = true;
   height : string = '100%';
   private taskService = inject(TaskService);
