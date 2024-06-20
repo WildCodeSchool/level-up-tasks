@@ -21,10 +21,8 @@ export class TaskListComponent {
   private taskService = inject(TaskService);
   taskList : Task[] = this.taskService.getTasks();
   filteredTasks : Task[] = [];
-  levelImportany:ImportancyLevel[]= new Array<ImportancyLevel>();
   ngOnInit():void{
      this.filteredTasks = this.taskList;
-     this.levelImportany = this.taskList.map((task) => task.importancyLevel);
   }
   changeState(): void { 
     (this.height === '0') ? this.height = '100%' : this.height = '0';
