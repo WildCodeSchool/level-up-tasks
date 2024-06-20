@@ -6,6 +6,7 @@ import { AddExpeditionComponent } from '../../components/add-expedition/add-expe
 import { TaskService } from '../../service/task.service';
 import { Expedition } from '../../model/expedition/expedition';
 import { CommonModule } from '@angular/common';
+import { ExpeditionService } from '../../service/expedition.service';
 
 
 interface SideNavToggle{
@@ -20,10 +21,11 @@ interface SideNavToggle{
   styleUrl: './task-page.component.scss'
 })
 export class TaskPageComponent {
-  private taskService = inject(TaskService);
-  expeditionList : Expedition[] = this.taskService.getExpeditions();
+  private expeditionService = inject(ExpeditionService);
+  expeditionList : Expedition[] = this.expeditionService.getExpeditions();
 
   onReceiveNewExpedition(event : Expedition){
-    console.log(event);
+    this.expeditionService.addExpedition(event);
+    
   }
 }

@@ -19,25 +19,12 @@ export class TaskService {
     new Task('Réunion', new Date("2024-06-08"), false, ImportancyLevel.Haute, 2)
   ];
 
-  expeditions : Expedition[] = [
-    new Expedition("Liste des tâches"),
-    new Expedition("Travail")
-  ];
-
   getAllTasks() : Task[]{
     return this.tasks;
   }
 
   getTasks(expedition : Expedition) : Task[]{
     return this.tasks.filter( (task) => task.expeditionId == expedition.id);
-  }
-
-  getExpeditions() : Expedition[]{
-    return this.expeditions;
-  }
-
-  addExpedition(expedition : Expedition) : void{
-    this.expeditions.push(expedition);
   }
 
   addTask(task : Task) : void{

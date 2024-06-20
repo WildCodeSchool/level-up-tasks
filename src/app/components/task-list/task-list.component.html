@@ -25,6 +25,6 @@
                 <app-task [task]="task" (deleteTaskToParent)="onReceiveDeleteTask($event)"></app-task>
             </li>
         </ul>
-        <app-add-task (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
+        <app-add-task [expeditionId]="expedition.id" (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
     </div>
 </section>

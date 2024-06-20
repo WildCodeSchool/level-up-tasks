@@ -22,14 +22,15 @@ export class TaskListComponent {
   height : string = '100%';
   private taskService = inject(TaskService);
   title : string = "Expedition name";
-  //taskList : Task[] = this.taskService.getTasks(this.expedition);
   taskList : Task[] = [];
   filteredTasks : Task[] = [];
+
   ngOnInit():void{
     this.taskList = this.taskService.getTasks(this.expedition)
     this.filteredTasks = this.taskList;
     this.title = this.expedition.title;
   }
+  
   changeState(): void { 
     (this.height === '0') ? this.height = '100%' : this.height = '0';
     this.isActive = !this.isActive;
@@ -37,17 +38,17 @@ export class TaskListComponent {
 
   onReceiveNewTask(event : Task) : void {
     this.taskService.addTask(event);
-    this.taskList = this.taskService.getTasks(this.expedition);
+    this.ngOnInit();
   }
 
   onReceiveDeleteTask(event : Task) : void {
     this.taskService.deleteTask(event);
-    this.taskList = this.taskService.getTasks(this.expedition);
+    this.ngOnInit();
   }
 
   //filter tasks based on the description
   filterByDescription(filtervalue:string) {
-     this.filtertasks(filtervalue)
+    this.filtertasks(filtervalue)
 }
 
 //filter tasks based on the date
