@@ -16,15 +16,17 @@ export class TaskProgressComponent {
   taskCompleted : number = 0;
 
   ngOnInit(){
-    this.taskTotal = this.taskService.getTasks().length;
-    this.taskCompleted = this.taskService.getTasks().filter(t => t.isCompleted()).length;
-    this.taskAssigned = this.taskTotal - this.taskCompleted;
+    this.changeTaskCount(this.taskService.getTasks());
     this.taskService.taskUpdated.subscribe(
       (tasks) => {
-        this.taskTotal = tasks.length;
-        this.taskCompleted = this.taskService.getTasks().filter(t => t.isCompleted()).length;
-        this.taskAssigned = this.taskTotal - this.taskCompleted;
+        this.changeTaskCount(tasks);
       }
     );
+  }
+
+  changeTaskCount(tasks : Task[]) : void{
+    this.taskTotal = tasks.length;
+    this.taskCompleted = this.taskService.getTasks().filter(t => t.isCompleted()).length;
+    this.taskAssigned = this.taskTotal - this.taskCompleted;
   }
 }
