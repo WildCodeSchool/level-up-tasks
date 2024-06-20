@@ -29,34 +29,45 @@ a:visited {
 
 button,
 input {
-  font-family: inherit;
+ font-family: 'jetbrains mono', monospace;
   font-size: inherit;
   color: inherit;
   background-color: transparent;
   border: none;
   outline: none;
+  display: block;
+  
 }
+
 
 ul,
 li,
 p {
+ 
   list-style: none;
+  font-family: 'inika', sans-serif;
+  font-size: 1.3rem;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: 800;
+  color: $title-text-color;
 }
 
 h2 {
   font-size: 2rem;
   font-weight: 600;
+  color: $title-text-color;
+  font-family:'jetbrains mono', monospace;
 }
 
 h3 {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  font-family:'jetbrains mono', monospace;
 }
+
 
 @media screen and (max-width: 768px){
   main{

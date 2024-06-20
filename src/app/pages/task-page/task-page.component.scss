@@ -1,13 +1,15 @@
 h1 {
     text-align: center;
     font-size: 30px;
+   
 }
 
 .content {
     
-    margin-left: 250px;
+    margin-right: 200px;
     padding: 20px;
     flex-grow: 1;
+    padding-bottom:50%;
 }
 .app-container {
     display: flex;
