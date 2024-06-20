@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Task } from '../model/task/task';
 import { ImportancyLevel } from '../model/importancy-level/importancy-level';
+import { Expedition } from '../model/expedition/expedition';
 
 
 @Injectable({
@@ -13,12 +14,30 @@ export class TaskService {
   taskUpdated : EventEmitter<Task[]> = new EventEmitter();
 
   tasks : Task[] = [
-    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true, ImportancyLevel.Bas),
-    new Task('Réunion', new Date("2024-06-08"), false, ImportancyLevel.Moyenne)
+    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true, ImportancyLevel.Bas, 1),
+    new Task('Course', new Date("2024-06-08"), false, ImportancyLevel.Moyenne, 1),
+    new Task('Réunion', new Date("2024-06-08"), false, ImportancyLevel.Haute, 2)
   ];
 
-  getTasks() : Task[]{
+  expeditions : Expedition[] = [
+    new Expedition("Liste des tâches"),
+    new Expedition("Travail")
+  ];
+
+  getAllTasks() : Task[]{
     return this.tasks;
+  }
+
+  getTasks(expedition : Expedition) : Task[]{
+    return this.tasks.filter( (task) => task.expeditionId == expedition.id);
+  }
+
+  getExpeditions() : Expedition[]{
+    return this.expeditions;
+  }
+
+  addExpedition(expedition : Expedition) : void{
+    this.expeditions.push(expedition);
   }
 
   addTask(task : Task) : void{

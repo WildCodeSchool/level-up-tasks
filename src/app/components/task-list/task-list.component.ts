@@ -6,6 +6,7 @@ import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskFilterComponent } from '../task-filter/task-filter.component';
 import { TaskService } from '../../service/task.service';
 import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
+import { Expedition } from '../../model/expedition/expedition';
 
 @Component({
   selector: 'app-task-list',
@@ -15,15 +16,20 @@ import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
   styleUrl: './task-list.component.scss'
 })
 export class TaskListComponent {
-  
+  @Input()
+  expedition !: Expedition;
   isActive = true;
   height : string = '100%';
   private taskService = inject(TaskService);
-  taskList : Task[] = this.taskService.getTasks();
+  title : string = "Expedition name";
+  //taskList : Task[] = this.taskService.getTasks(this.expedition);
+  taskList : Task[] = [];
   filteredTasks : Task[] = [];
 
   ngOnInit():void{
-     this.filteredTasks = this.taskList;
+    this.taskList = this.taskService.getTasks(this.expedition)
+    this.filteredTasks = this.taskList;
+    this.title = this.expedition.title;
   }
   changeState(): void { 
     (this.height === '0') ? this.height = '100%' : this.height = '0';
@@ -32,10 +38,12 @@ export class TaskListComponent {
 
   onReceiveNewTask(event : Task) : void {
     this.taskService.addTask(event);
+    this.taskList = this.taskService.getTasks(this.expedition);
   }
 
   onReceiveDeleteTask(event : Task) : void {
     this.taskService.deleteTask(event);
+    this.taskList = this.taskService.getTasks(this.expedition);
   }
 
   //filter tasks based on the description

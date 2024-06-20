@@ -31,8 +31,8 @@ export class AddTaskComponent {
       this.description, 
       new Date(this.taskDate), 
       false,
-      this.selectedImportanceLevel
-
+      this.selectedImportanceLevel,
+      1
     ));
     this.description = "";
     this.taskDate = new Date();
