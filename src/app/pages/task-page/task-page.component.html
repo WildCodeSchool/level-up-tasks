@@ -3,9 +3,17 @@
 
 <div class="app-container">
     <div class="content">
+        <section class="filter">
+            <app-task-filter 
+              (filterDescriptions)="filterByDescription($event)"
+              (filterDate)="filterByDate($event)"
+              (filterImportancy)="filterByImportance($event)">
+        >
+            </app-task-filter>
+        </section>
         <ul class="expedition-list">
             <li *ngFor="let expedition of expeditionList" >
-                <app-task-list [expedition]="expedition"></app-task-list>
+                <app-task-list [expedition]="expedition" [filterValue]="filterValue"></app-task-list>
             </li>
         </ul>
         <app-add-expedition (addNewExpeditionToParent)="onReceiveNewExpedition($event)"></app-add-expedition>

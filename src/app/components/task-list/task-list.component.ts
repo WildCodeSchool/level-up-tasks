@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild, inject, Input } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject, Input, SimpleChanges } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
@@ -24,8 +24,21 @@ export class TaskListComponent {
   title : string = "Expedition name";
   taskList : Task[] = [];
   filteredTasks : Task[] = [];
+  @Input()
+  filterValue : string = "";
 
   ngOnInit():void{
+    this.refreshList();
+    this.filtertasks(this.filterValue);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['filterValue']) {
+      this.filtertasks(this.filterValue);
+    }
+  }
+
+  refreshList() : void {
     this.taskList = this.taskService.getTasks(this.expedition)
     this.filteredTasks = this.taskList;
     this.title = this.expedition.title;
@@ -38,33 +51,15 @@ export class TaskListComponent {
 
   onReceiveNewTask(event : Task) : void {
     this.taskService.addTask(event);
-    this.ngOnInit();
+    this.refreshList();
   }
 
   onReceiveDeleteTask(event : Task) : void {
     this.taskService.deleteTask(event);
-    this.ngOnInit();
+    this.refreshList();
   }
 
-  //filter tasks based on the description
-  filterByDescription(filtervalue:string) {
-    this.filtertasks(filtervalue)
-}
-
-//filter tasks based on the date
-filterByDate(date:string){
-    this.filtertasks(date)
-}
-
-
-
-//filter tasks based on the importance off level
-filterByImportance(importance:string){
-  this.filtertasks(importance);
-}
-
-
-//global function to filter tasks for refactor the code
+  //global function to filter tasks for refactor the code
   filtertasks(filterValue:string){
     if(filterValue ) {
     this.filteredTasks = this.taskList.filter((task) => {

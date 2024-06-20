@@ -1,12 +1,3 @@
-<section class="filter">
-    <app-task-filter 
-      (filterDescriptions)="filterByDescription($event)"
-      (filterDate)="filterByDate($event)"
-      (filterImportancy)="filterByImportance($event)">
->
-    </app-task-filter>
-  </section>
-  
 <section class="task-list-container">
     <div class="task-list-title" (click)="changeState()">
         <h1>{{title}}:</h1>

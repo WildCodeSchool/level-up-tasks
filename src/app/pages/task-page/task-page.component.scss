@@ -1,25 +1,22 @@
 h1 {
     text-align: center;
     font-size: 30px;
-   
 }
 
 .content {
-
-  margin-left: 100px;
+    margin-left: 100px;
     padding: 20px;
     flex-grow: 1;
     padding-bottom:50%;
 }
 .app-container {
-    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 5rem;
+    gap: 2rem;
     padding-right: 1rem;
-  }
-  .sidebar {
+}
+.sidebar {
     width: 250px;
     background-color: #E3D8D0;
     color: #000;
@@ -30,13 +27,13 @@ h1 {
     position: fixed;
     height: 100%;
     border-right: 1px solid #A79B93;
-  }
-  /* Media Queries for Mobile Devices */
+}
+/* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
-  .content {
-    margin: 0 auto;
-    width: fit-content;
-  }
+    .content {
+      margin: 0 auto;
+      width: fit-content;
+   }
 }
   
   
