@@ -16,8 +16,31 @@
             (input)="onFilterDescriptions()"
             />
     </div>
-       <div class="filter-date">
-            <input type="date" [(ngModel)]="filteredDate" name="filteredDate" id="filteredDate" (input)="onFilterDates()"/>
-       </div>
+    <div class="date-level">
+        <div class="filter-date">
+          <input
+            type="date"
+            [(ngModel)]="filteredDate"
+            name="filteredDate"
+            id="filteredDate"
+            (input)="onFilterDates()"
+          />
+        </div>
+        <div class="filter-level">
+          <label for="levelImportancy">
+            <select
+              id="selectedlevel"
+              name="selectedlevel"
+              [(ngModel)]="selectedlevel"
+              required
+              (change)="onFilterImportance()"
+            >
+            <option value="">Filtrer par niveau</option>
+              @for (level of levelImportancy; track level ) {
+              <option [value]="level">{{ level }}</option>
+              }
+            </select>
+          </label>
+        </div>
    </div>
 </div>
