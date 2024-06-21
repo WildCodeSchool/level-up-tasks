@@ -18,5 +18,7 @@ export const sidebarData=[
         routerLink:'/profil',
         icon :'fal fa-users',
         label:'Groupes'
-    }
+    },
+    
+    
 ];

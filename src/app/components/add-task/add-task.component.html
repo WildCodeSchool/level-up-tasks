@@ -7,6 +7,11 @@
     <form #addTaskForm="ngForm" (ngSubmit)="addTaskForm.valid && onSubmit()">
         <textarea id="task-name" (input)="autogrow()" name="task-name" type="text" [(ngModel)]="description" #name="ngModel" required minlength="1" placeholder="Nom de la tâche"></textarea>
         <input name="task-date" type="date" [(ngModel)]="taskDate" #date="ngModel" required>
-        <button type="submit"  [disabled]="!addTaskForm.valid || !date.dirty">+</button>
+        <label class ="niveau" for="task-importance">Niveau d'importance :</label>
+        <select id="task-importance" name="task-importance" [(ngModel)]="selectedImportanceLevel" required>
+            <option *ngFor="let level of importancyLevels" [value]="level">{{ level }}</option>
+        </select>
+        
+        <button type="submit" [disabled]="!addTaskForm.valid || !date.dirty">+</button>
     </form>
 </app-modal>

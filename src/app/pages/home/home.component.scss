@@ -15,12 +15,13 @@
     align-items: center;
     
     h1 {
-      font-size: 3em;
+     
       text-align: center;
       padding-top: 100px;
-      color: $title-text-color ;
+      font-family: 'jsMath-cmmi10', sans-serif;
       
     }
+   
   }
 }
 
@@ -31,15 +32,17 @@
 .description {
   text-align: center;
   padding: 20px;
-  background-color: $secondary-backround-color;
+  background-color:$main-background-color ;
   border-bottom: 1px solid #ddd;
 }
 
 .description p {
+ 
   margin: 0;
   font-size: 1.2em;
   color: #555;
   margin-top: 10px;
+
 }
 
 nav {
@@ -62,17 +65,20 @@ nav {
 h2{
   color: $title-text-color;
   text-align: center;
+  margin: 20px;
 }
 nav ul button {
-  margin: 5px;
-  padding: 10px 20px;
+  margin: 80px;
+  padding: 10px 50px;
   background-color: $button-color;
   border: none;
   border-radius: 4px;
+  
    a {
     color: white;
     text-decoration: none;
     display: flex;
+    font-family:'jetbrains mono', monospace;
   }
 
 }
@@ -111,6 +117,7 @@ nav ul button:hover {
 }
 
 .image-item .image-and-text {
+  margin: 20px;
   display: flex;
   align-items: center;
 }
@@ -207,6 +214,8 @@ nav ul button:hover {
   nav ul button {
     width: 100%;
     padding: 8px 16px;
+    margin: 8px; 
+    font-family:'jetbrains mono', monospace;
   }
 
   .content {
@@ -254,6 +263,9 @@ nav ul button:hover {
   nav ul button {
     width: 100%;
     padding: 8px 16px;
+    font-family:'jetbrains mono', monospace;
+    
+  
     
   }
 }

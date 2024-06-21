@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { Task } from '../../model/task/task';
 import { CommonModule } from '@angular/common';
+import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 
 @Component({
   selector: 'app-add-task',
@@ -15,15 +16,23 @@ export class AddTaskComponent {
   isTaskModalOpen : boolean = false;
   description : string = "";
   taskDate : Date = new Date();
+  selectedImportanceLevel = ImportancyLevel.Bas; 
 
   @Output()
   addNewTaskToParent: EventEmitter<Task> = new EventEmitter();
 
+  importancyLevels = Object.values(ImportancyLevel);
+  
+  @Input() expeditionId : number = 0;
+  
+  
   onSubmit() : void {
     this.addNewTaskToParent.emit(new Task(
       this.description, 
       new Date(this.taskDate), 
-      false
+      false,
+      this.selectedImportanceLevel,
+      this.expeditionId
     ));
     this.description = "";
     this.taskDate = new Date();

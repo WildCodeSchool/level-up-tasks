@@ -1,6 +1,6 @@
 <section class="task-list-container">
     <div class="task-list-title" (click)="changeState()">
-        <h1>Liste des tâches:</h1>
+        <h1>{{title}}:</h1>
         <div class="task-title-arrow">
             @if (isActive) {
                 ▾
@@ -12,10 +12,10 @@
     </div>
     <div class="task-list-expendable"  [ngStyle]="{'max-height' : height}">
         <ul class="task-list">
-            <li *ngFor="let task of taskList" >
+            <li *ngFor="let task of filteredTasks" >
                 <app-task [task]="task" (deleteTaskToParent)="onReceiveDeleteTask($event)"></app-task>
             </li>
         </ul>
-        <app-add-task (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
+        <app-add-task [expeditionId]="expedition.id" (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
     </div>
 </section>

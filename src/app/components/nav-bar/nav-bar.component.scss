@@ -10,10 +10,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: $dark-text-color;
+    color: $title-text-color;
     padding-left: 10px;
     padding-right: 10px;
     background-color: $navbar-color;
+   
     h2{
         font-size: 1em ;
     }
@@ -115,7 +116,8 @@ header {
         justify-content: start;
         align-items: center;
         p{
-            color: $dark-text-color;
+            color: $title-text-color;
+            font-family: 'jetbrains mono';
             font-size: 2em;
         }
     }
