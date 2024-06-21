@@ -1,5 +1,6 @@
 <div class="progress">
-    <div class="progress-bar" role="progressbar" [style.width.%]="result">
-      {{ result }}%
-    </div>
-  </div>
+  <span class="percentage">
+    {{ result }}%
+  </span>
+  <div class="progress-bar" role="progressbar" [style.width.%]="result"></div>
+</div>

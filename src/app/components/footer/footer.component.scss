@@ -1,7 +1,7 @@
 @use '../../../import'as *;
 
 footer{
-   
+    z-index: 10;
     background-color:$navbar-color;
     min-height: 10vh;
     margin: 0;

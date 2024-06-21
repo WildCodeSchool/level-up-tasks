@@ -1,10 +1,7 @@
 <nav class="sidenav" (click)="toggleCollapse()" [ngClass]="Iscollapsed ? 'sidenav-Iscollapsed' : ''">
     <div class="logo-container">
         <button class="logo" ><img src="assets/pictures/Graphic.png" class="tape"/></button>
-        <div class="logo-text" *ngIf="Iscollapsed">LevelUp Tasks</div>
-        <button class="btn-close"  *ngIf="Iscollapsed" (click)="closeSidenav()">
-            <i class="fal fa-times close-icon"></i>
-        </button>
+        <div class="logo-text" *ngIf="Iscollapsed"></div>
     </div>
     
     <ul class="sidenav-nav">

@@ -4,13 +4,17 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+ 
+  
 }
+
 
 h1 {
   font-size: 36px;
   color: $title-text-color;
   text-align: center;
   margin-bottom: 1rem;
+  font-family: 'jetbrains mono', monospace;
 }
 
 .nav-buttons button {
@@ -18,21 +22,28 @@ h1 {
   padding: 10px;
   border: none;
   border-radius: 5px;
+  font-family: 'jetbrains mono', monospace;
+  
+ 
   cursor: pointer;
   .active {
     background-color: $button-color;
     color: white;
+    
   }
 }
 
 .nav-buttons button:not(.active) {
   background-color: #f0f0f0;
   color: var(--title-text-color);
+  
+  
 }
 
 .nav-buttons button:hover {
   background-color: var(#a99892);
   color: white;
+ 
 }
 
 .signup-container {
@@ -52,11 +63,13 @@ h1 {
       width: 100%;
       padding: 10px;
       box-sizing: border-box;
+      
     }
     
     label {
       display: block;
       margin-bottom: 5px;
+      font-family: 'jetbrains mono', monospace;
     }
 
     button {
@@ -66,11 +79,14 @@ h1 {
       color: white;
       border: none;
       border-radius: 5px;
+      font-family: 'jetbrains mono', monospace;
+     
       cursor: pointer;
     }
 
     button:hover {
       background-color: $navbar-color;
+      
     }
 }
 
@@ -116,6 +132,7 @@ form div {
   .signup-container button[type="submit"] {
       padding: 12px;
       font-size: 16px;
+     
   }
 }
 

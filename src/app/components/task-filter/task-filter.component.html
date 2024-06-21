@@ -1,0 +1,46 @@
+<div class="task-filter">
+    <div class="filterForm" >
+     <div class="filter-description">
+         @for (icon of icons; track icons) {
+             <button > <i [class]="icon.class"></i> </button>
+         }
+     
+             <input
+             type="search"
+             class="form-control"
+             id="description-filter"
+             name="description-filter"
+             placeholder="Rechercher..."
+             required
+             [(ngModel)]="filterValue"
+             (input)="onFilterDescriptions()"
+             />
+     </div>
+     <div class="date-level">
+         <div class="filter-date">
+           <input
+             type="date"
+             [(ngModel)]="filteredDate"
+             name="filteredDate"
+             id="filteredDate"
+             (input)="onFilterDates()"
+           />
+         </div>
+         <div class="filter-level">
+           <label>
+             <select
+               id="selectedlevel"
+               name="selectedlevel"
+               [(ngModel)]="selectedlevel"
+               required
+               (change)="onFilterImportance()"
+             >
+             <option value="">Filtrer par priorité</option>
+               @for (level of levelImportancy; track level ) {
+               <option [value]="level">{{ level }}</option>
+               }
+             </select>
+           </label>
+         </div>
+    </div>
+ </div>

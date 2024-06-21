@@ -1,15 +1,23 @@
 @use "./../../../import" as *;
 
-.add-task-button{
-  color: $dark-text-color;
-  margin: 0 1rem;
+
+.add-expedition-button {
+  font-size: 24px;
+  padding: 1rem;
+  color: $title-text-color;
+  border-bottom: 1px solid $button-color;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  line-height: 1.4;
-  padding: 0.5rem;
 }
 
-.add-task-button button{
+.add-expedition-button h1 {
+  font-weight: 700;
+  font-size: 30px;
+  color: $dark-text-color;
+}
+
+.add-expedition-button button{
   height: 36px;
   min-width: 36px;
   background-color: $dark-text-color;
@@ -18,12 +26,8 @@
   cursor: pointer;
 }
 
-.add-task-button button:active{
+.add-expedition-button button:active{
   transform: scale(0.9);
-}
-
-.add-task-button label{
-  margin-left: 1rem;
 }
 
 //Modal styling
@@ -50,12 +54,6 @@ app-modal form textarea::placeholder {
   color: $navbar-color;
 }
 
-app-modal form input[type=date] {
-  width: 152px;
-  font-size: 20px;
-  height: 42px;
-}
-
 app-modal form button {
   justify-self: flex-end;
   align-self: flex-end;
@@ -75,13 +73,4 @@ app-modal form button:active {
 
 app-modal form button:disabled {
   background-color: $navbar-color;
-}
-
-.niveau{
-  color: $navbar-color;
-  font-size: 20px;
-}
-
-select {
-  font-size: medium;
 }
