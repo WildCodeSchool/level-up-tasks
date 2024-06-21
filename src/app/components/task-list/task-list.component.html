@@ -1,15 +1,6 @@
-<section class="filter">
-    <app-task-filter 
-      (filterDescriptions)="filterByDescription($event)"
-      (filterDate)="filterByDate($event)"
-      (filterImportancy)="filterByImportance($event)">
->
-    </app-task-filter>
-  </section>
-  
 <section class="task-list-container">
     <div class="task-list-title" (click)="changeState()">
-        <h1>Liste des tâches:</h1>
+        <h1>{{title}}:</h1>
         <div class="task-title-arrow">
             @if (isActive) {
                 ▾
@@ -25,6 +16,6 @@
                 <app-task [task]="task" (deleteTaskToParent)="onReceiveDeleteTask($event)"></app-task>
             </li>
         </ul>
-        <app-add-task (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
+        <app-add-task [expeditionId]="expedition.id" (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
     </div>
 </section>

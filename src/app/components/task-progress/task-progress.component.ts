@@ -16,7 +16,7 @@ export class TaskProgressComponent {
   taskCompleted : number = 0;
 
   ngOnInit(){
-    this.changeTaskCount(this.taskService.getTasks());
+    this.changeTaskCount(this.taskService.getAllTasks());
     this.taskService.taskUpdated.subscribe(
       (tasks) => {
         this.changeTaskCount(tasks);
@@ -26,7 +26,7 @@ export class TaskProgressComponent {
 
   changeTaskCount(tasks : Task[]) : void{
     this.taskTotal = tasks.length;
-    this.taskCompleted = this.taskService.getTasks().filter(t => t.isCompleted()).length;
+    this.taskCompleted = tasks.filter(t => t.isCompleted()).length;
     this.taskAssigned = this.taskTotal - this.taskCompleted;
   }
 }

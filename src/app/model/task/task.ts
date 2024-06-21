@@ -9,7 +9,8 @@ export class Task {
     readonly description: string,
     readonly date: Date,
     private completed: boolean,
-    importancyLevel: ImportancyLevel = ImportancyLevel.Bas
+    importancyLevel: ImportancyLevel = ImportancyLevel.Bas,
+    readonly expeditionId: number
   ) {
     Task._id++;
     this.id = Task._id;
