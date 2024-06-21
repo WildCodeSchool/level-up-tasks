@@ -14,9 +14,10 @@
   align-items: center;
 }
 
-.add-expedition-button label {
+.add-expedition-button h1 {
   font-weight: 700;
   font-size: 30px;
+  color: $dark-text-color;
 }
 
 .add-expedition-button button{

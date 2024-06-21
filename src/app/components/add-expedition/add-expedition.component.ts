@@ -28,11 +28,4 @@ export class AddExpeditionComponent {
   toggleAddExpeditionModal() : void {
     this.isExpeditionModalOpen = !this.isExpeditionModalOpen;
   }
-
-  //this function is to make the textarea expend when the user types out the task's description
-  autogrow(){
-    let textArea = document.getElementById("expedition-title")       
-    textArea!.style.height = '0px';
-    textArea!.style.height = textArea!.scrollHeight + 'px';
-  }
 }
