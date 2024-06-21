@@ -52,7 +52,7 @@
 }
 @media screen and (min-width: 768px) {
     .task-filter{
-        width: 60%;
+        width: 90%;
         .filterForm{
             .date-level{
                 width: 100%;
@@ -64,6 +64,7 @@
                 }
                 .filter-level{
                     width: 45%;
+                    min-width: 166px;
                 }
             }
         }

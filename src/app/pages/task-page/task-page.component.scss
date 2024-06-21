@@ -2,14 +2,17 @@ h1 {
     text-align: center;
     font-size: 30px;
 }
-
 .content {
-    margin-left: 100px;
     padding: 20px;
     flex-grow: 1;
-    padding-bottom:50%;
+    padding-bottom: 50%;
+    width: 90vw;
+    max-width: 500px;
+    margin: 0 auto;
+    padding-bottom: 50%;
 }
 .app-container {
+    margin-left: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,7 +36,12 @@ h1 {
     .content {
       margin: 0 auto;
       width: fit-content;
-   }
+      padding-bottom: 1rem;
+    }
+    .app-container{
+        margin-left: 0;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 0;
+    }
 }
-  
-  

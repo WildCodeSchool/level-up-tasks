@@ -29,17 +29,21 @@ export class TaskFilterComponent {
 
   
   onFilterDescriptions():void{
+    this.filteredDate='';
+    this.selectedlevel= "";
     this.filterDescriptions.emit(this.filterValue);
   }
 
   onFilterDates():void{
+    this.filterValue='';
+    this.selectedlevel= "";
     this.filterDate.emit(this.filteredDate);
   }
 
 
   onFilterImportance():void{
+    this.filterValue='';
+    this.filteredDate='';
     this.filterImportancy.emit(this.selectedlevel);
-
   }
-
 }
