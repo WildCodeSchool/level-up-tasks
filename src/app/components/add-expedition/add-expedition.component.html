@@ -5,7 +5,7 @@
 
 <app-modal id="add-expedition-modal" *ngIf="isExpeditionModalOpen" (closeModal)="toggleAddExpeditionModal()">
     <form #addExpeditionForm="ngForm" (ngSubmit)="addExpeditionForm.valid && onSubmit()">
-        <textarea id="expedition-title" (input)="autogrow()" name="expedition-title" type="text" [(ngModel)]="title" #name="ngModel" required minlength="1" maxlength="25" placeholder="Nom de l'expédition"></textarea>
+        <textarea id="expedition-title" name="expedition-title" type="text" [(ngModel)]="title" #name="ngModel" required minlength="1" maxlength="25" placeholder="Nom de l'expédition"></textarea>
         <button type="submit" [disabled]="!addExpeditionForm.valid">+</button>
     </form>
 </app-modal>
