@@ -1,0 +1,76 @@
+@use "./../../../import" as *;
+
+
+.add-expedition-button {
+  font-size: 24px;
+  padding: 1rem;
+  color: $title-text-color;
+  border-bottom: 1px solid $button-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-expedition-button h1 {
+  font-weight: 700;
+  font-size: 30px;
+  color: $dark-text-color;
+}
+
+.add-expedition-button button{
+  height: 36px;
+  min-width: 36px;
+  background-color: $dark-text-color;
+  color: $main-background-color;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.add-expedition-button button:active{
+  transform: scale(0.9);
+}
+
+//Modal styling
+app-modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+app-modal form textarea {
+  font-size: 24px;
+  color: $dark-text-color;
+  background: transparent;
+  border: 0 none;
+  resize: none;
+  overflow: hidden;
+  height: 28px;
+}
+
+app-modal form textarea:focus {
+  outline: none;
+}
+
+app-modal form textarea::placeholder {
+  color: $navbar-color;
+}
+
+app-modal form button {
+  justify-self: flex-end;
+  align-self: flex-end;
+  height: 36px;
+  width: 36px;
+  cursor: pointer;
+  border-radius: 200px;
+  color: $main-background-color;
+  background-color: $dark-text-color;
+  font-size: 32px;
+  font-weight: bolder;
+}
+
+app-modal form button:active {
+  transform: scale(0.9);
+}
+
+app-modal form button:disabled {
+  background-color: $navbar-color;
+}

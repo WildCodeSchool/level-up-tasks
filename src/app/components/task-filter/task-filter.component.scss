@@ -1,0 +1,74 @@
+@use "../../../import" as *;
+
+.task-filter {
+  width: 50%;
+  margin: 0 auto;
+  .filterForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .filter-description {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      background-color: $light-text-color;
+      border-radius: 10px;
+      padding-left: 4%;
+      align-items: center;
+      input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    }
+    .date-level {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      margin-top: 10px;
+      .filter-date {
+        background-color: $light-text-color;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+        input {
+          width: 100%;
+          padding: 10px;
+          box-sizing: border-box;
+        }
+      }
+      .filter-level {
+        width: 100%;
+        select {
+          padding: 10px;
+          box-sizing: border-box;
+          box-sizing: border-box;
+          border-radius: 10px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+    .task-filter{
+        width: 90%;
+        .filterForm{
+            .date-level{
+                width: 100%;
+                flex-direction: row;
+                margin-top: 10px;
+                justify-content: space-between;
+                .filter-date{
+                    width: 45%;
+                }
+                .filter-level{
+                    width: 45%;
+                    min-width: 166px;
+                }
+            }
+        }
+    }
+    
+    
+}
