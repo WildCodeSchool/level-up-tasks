@@ -9,7 +9,7 @@
     color: $title-text-color;
     border-bottom: 1px solid $button-color;
 }
- 
+
 .task-progress-title h1 {
     font-weight: 700;
     font-size: 30px;
@@ -54,7 +54,7 @@
     background-color: $progress-task-completed;
 }
 
-@media (max-width: 1248px) and (min-width: 768px) {
+@media (max-width: 1248px) and (min-width: 768px) and (max-width: 480px) {
     .task-progress {
         flex-direction: column;
         gap: 1rem;
