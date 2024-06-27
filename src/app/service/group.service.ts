@@ -24,9 +24,9 @@ export class GroupService {
   }
 
   
-  deleteGroup(index: number): Observable<void> {
+  deleteGroup(index: number): void {
     this.groups.splice(index, 1);
-    return of();
+    
   }
 
 

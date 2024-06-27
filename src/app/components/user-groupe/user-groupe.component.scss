@@ -10,14 +10,15 @@
     flex-wrap: wrap;
     gap: 20px;
     padding: 10px; 
+   
   }
   .group {
     background-color: $button-color;
     color: white;
-    padding: 20px;
     border-radius: 8px;
     width: 150px;
-    text-align: center;
+    height: 200px;
+    justify-content: center;
     cursor: pointer;
   }
   .add-group {
@@ -26,7 +27,7 @@
     padding: 20px;
     border-radius: 8px;
     width: 150px;
-    height: 180px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,17 +42,22 @@
     justify-content: center;
     gap: 5px;
     margin-bottom: 10px;
+    justify-content:space-between ;
+    
   }
   
   .member {
     color:white;
+    display: flex;
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    justify-content:space-between;
+    margin-right: 1rem; 
+    
   }
   .avatar {
     width: 40px;
@@ -69,10 +75,8 @@
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    display: flex;
     justify-content: center;
-    align-items: center;
-   
+  
   }
   span {
     font-size: 3rem;
@@ -80,16 +84,21 @@
     ;
   }
   h2 {
-    color: white;
+    color:$title-text-color;
     font-family:'jetbrains mono', monospace;
+    font-size: 30px;
+  }
+  h3 {
+    color:white;
+    font-family:'jetbrains mono', monospace;
+    font-size: 20px;
   }
   .delete-btn {
   color: white;
   border: none;
- padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1.2rem;
-  margin-top: 10px;
+  font-size: 2rem;
+ 
   }
   

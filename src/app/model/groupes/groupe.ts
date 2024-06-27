@@ -1,7 +1,5 @@
-export interface Member {
-  name: string;
-  avatarUrl: string;
-}
+import { Member } from "../membres/membre";
+
 
 export interface Group {
   id?: number;
