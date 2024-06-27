@@ -26,6 +26,13 @@ export class TaskPageComponent {
   filterValue : string = "";
 
   ngOnInit(){
+    this.getAll();
+    this.expeditionService.refreshRequired.subscribe(response => {
+      this.getAll();
+    });
+  }
+
+  getAll() {
     this.expeditionService.getExpeditions().subscribe(
       (data) => this.expeditionList = data
     );
@@ -42,7 +49,7 @@ export class TaskPageComponent {
 
   //filter tasks based on the date
   filterByDate(date:string){
-      this.filterValue = date;
+    this.filterValue = date;
   }
 
   //filter tasks based on the importance off level
