@@ -1,6 +1,6 @@
-import { Component, Input, inject } from '@angular/core';
-import { TaskService } from '../../service/task.service';
+import { Component, inject } from '@angular/core';
 import { Task } from '../../model/task/task';
+import { TaskService } from '../../service/task.service';
 
 @Component({
   selector: 'app-task-progress',
@@ -16,17 +16,16 @@ export class TaskProgressComponent {
   taskCompleted : number = 0;
 
   ngOnInit(){
-    this.changeTaskCount(this.taskService.getAllTasks());
-    this.taskService.taskUpdated.subscribe(
-      (tasks) => {
-        this.changeTaskCount(tasks);
+    this.taskService.getAllTasks().subscribe(
+      (data) => {
+        this.changeTaskCount(data);
       }
     );
   }
 
   changeTaskCount(tasks : Task[]) : void{
     this.taskTotal = tasks.length;
-    this.taskCompleted = tasks.filter(t => t.isCompleted()).length;
+    this.taskCompleted = tasks.filter(t => t.completed).length;
     this.taskAssigned = this.taskTotal - this.taskCompleted;
   }
 }

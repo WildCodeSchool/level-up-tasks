@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild, inject, Input, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskFilterComponent } from '../task-filter/task-filter.component';
-import { TaskService } from '../../service/task.service';
-import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 import { Expedition } from '../../model/expedition/expedition';
+import { ExpeditionService } from '../../service/expedition.service';
 
 @Component({
   selector: 'app-task-list',
@@ -18,9 +17,9 @@ import { Expedition } from '../../model/expedition/expedition';
 export class TaskListComponent {
   @Input()
   expedition !: Expedition;
+  private expeditionService = inject(ExpeditionService);
   isActive = true;
   height : string = '100%';
-  private taskService = inject(TaskService);
   title : string = "Expedition name";
   taskList : Task[] = [];
   filteredTasks : Task[] = [];
@@ -30,6 +29,7 @@ export class TaskListComponent {
   ngOnInit():void{
     this.refreshList();
     this.filtertasks(this.filterValue);
+    
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -39,9 +39,9 @@ export class TaskListComponent {
   }
 
   refreshList() : void {
-    this.taskList = this.taskService.getTasks(this.expedition)
+    this.taskList = this.expedition.tasks;
     this.filteredTasks = this.taskList;
-    this.title = this.expedition.title;
+    this.title = this.expedition.name;
   }
   
   changeState(): void { 
@@ -50,12 +50,12 @@ export class TaskListComponent {
   }
 
   onReceiveNewTask(event : Task) : void {
-    this.taskService.addTask(event);
+    this.expeditionService.addTaskToExpedition(this.expedition.id, event);
     this.refreshList();
   }
 
   onReceiveDeleteTask(event : Task) : void {
-    this.taskService.deleteTask(event);
+    this.expeditionService.deleteTaskFromExpedition(this.expedition.id, event.id);
     this.refreshList();
   }
 
@@ -64,8 +64,8 @@ export class TaskListComponent {
     if(filterValue ) {
     this.filteredTasks = this.taskList.filter((task) => {
       return task.description.toLowerCase().includes(filterValue.toLowerCase()) ||
-      task.date.getTime() === new Date(filterValue).getTime() ||
-      task.importancyLevel === filterValue;
+      task.deadline.getTime() === new Date(filterValue).getTime() ||
+      task.priority === filterValue;
     });
   }else{
     this.filteredTasks = this.taskList;

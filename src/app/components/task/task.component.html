@@ -1,6 +1,6 @@
 <div class="task-container">
     <label class="checkbox-container">
-        <input type="checkbox" [checked]="task.isCompleted()" (change)="toggleTaskComplete()"/> 
+        <input type="checkbox" [checked]="task.completed" (change)="toggleTaskComplete()"/> 
         <div class="checkmark-container">
             <div class="checkmark"></div>
         </div>    
@@ -9,8 +9,8 @@
         <p>{{task.description}}</p>
         <div class="task-date">
             <img src=".\assets\pictures\clock-icon.png" alt="ee">
-            <p>{{task.date.toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })}}</p>
-            <p class="priorite" [ngClass]="task.importancyLevel">{{task.importancyLevel}}</p>
+            <p>{{task.deadline}}</p>
+            <p class="priorite" [ngClass]="task.priority">{{task.priority}}</p>
         </div>
     </div>
     <button class="task-delete-button" (click)="toggleDeleteTaskModal()">X</button>

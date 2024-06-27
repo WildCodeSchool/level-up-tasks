@@ -1,11 +1,12 @@
+import { Task } from "../task/task";
+
 export class Expedition {
-    static _id: number = 0;
-    readonly id: number;
+    id!: number;
+    tasks: Task[] = [];
   
     constructor(
-      readonly title: string,
+      readonly name: string,
     ) {
-      Expedition._id++;
-      this.id = Expedition._id;
+
     }
 }

@@ -1,4 +1,4 @@
-import { Component, SimpleChanges, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TaskListComponent } from '../../components/task-list/task-list.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { TaskProgressComponent } from '../../components/task-progress/task-progress.component';
@@ -22,11 +22,20 @@ interface SideNavToggle{
 })
 export class TaskPageComponent {
   private expeditionService = inject(ExpeditionService);
-  expeditionList : Expedition[] = this.expeditionService.getExpeditions();
+  expeditionList : Expedition[] = [];
   filterValue : string = "";
+
+  ngOnInit(){
+    this.expeditionService.getExpeditions().subscribe(
+      (data) => this.expeditionList = data
+    );
+  }
 
   onReceiveNewExpedition(event : Expedition){
     this.expeditionService.addExpedition(event);
+    this.expeditionService.getExpeditions().subscribe(
+      (data) => this.expeditionList = data
+    );
   }
   
   //filter tasks based on the description
