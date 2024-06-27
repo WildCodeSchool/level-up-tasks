@@ -33,9 +33,6 @@ export class TaskPageComponent {
 
   onReceiveNewExpedition(event : Expedition){
     this.expeditionService.addExpedition(event);
-    this.expeditionService.getExpeditions().subscribe(
-      (data) => this.expeditionList = data
-    );
   }
   
   //filter tasks based on the description

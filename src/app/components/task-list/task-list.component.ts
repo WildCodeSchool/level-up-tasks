@@ -64,12 +64,12 @@ export class TaskListComponent {
     if(filterValue ) {
     this.filteredTasks = this.taskList.filter((task) => {
       return task.description.toLowerCase().includes(filterValue.toLowerCase()) ||
-      task.deadline.getTime() === new Date(filterValue).getTime() ||
+      new Date(task.deadline).getTime() === new Date(filterValue).getTime() ||
       task.priority === filterValue;
     });
   }else{
     this.filteredTasks = this.taskList;
-
+    
   }
   }
 }
