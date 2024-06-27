@@ -1,6 +1,6 @@
 <nav class="sidenav" (click)="toggleCollapse()" [ngClass]="Iscollapsed ? 'sidenav-Iscollapsed' : ''">
-    <div class="logo-container">
-        <button class="logo" ><img src="assets/pictures/Graphic.png" class="tape"/></button>
+    <div class="logo-container" *ngIf="user">
+        <button class="logo" ><img src="{{user.profileImage}}" class="tape"/></button>
         <div class="logo-text" *ngIf="Iscollapsed"></div>
     </div>
     

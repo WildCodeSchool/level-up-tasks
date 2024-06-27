@@ -108,7 +108,12 @@ form div {
     color: $title-text-color;
     margin-top: 10px;
 }
-  
+
+.error-message{
+  color: red;
+  margin-top: 10px;
+
+}
   
 @media (max-width: 600px) {
   .signup-container {

@@ -26,6 +26,9 @@
       </div>
       </div>
     </div>
+    <div *ngIf="loginError" class="error-message">
+      <p>{{errorMsg}}</p>
+    </div>
     
     <button type="submit">Connexion</button>
   </form>
