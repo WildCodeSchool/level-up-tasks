@@ -3,6 +3,7 @@ import {  RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { sidebarData } from './side-data';
+import { User } from '../../model/user/user';
 
 interface SideNavToggle{
   screenWidth:number;
@@ -21,6 +22,7 @@ export class SidebarComponent implements OnInit{
   Iscollapsed = false;
   screenWidth = 0 ;
   navData=sidebarData;
+  user?:User;
   @HostListener('window:resize',['$event'])
   onResize(event:any):void{
     if(typeof window !== 'undefined'){
@@ -34,6 +36,10 @@ export class SidebarComponent implements OnInit{
       if(this.screenWidth < 768){
         this.Iscollapsed = false;
         this.onToggleSidenav.emit({screenWidth:this.screenWidth,Iscollapsed:this.Iscollapsed});
+        
+    if(typeof window !== 'undefined'){
+      this.user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+      }
       }
     }
       

@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { dataIcon } from './icons';
 import { UserService } from '../../service/User/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -31,7 +32,8 @@ export class ProfileComponent {
   user?: User;
   foundedId: number = 0;
   errormsg = '';
-  selectedFile: any;
+  selectedFile: File | null = null;
+  sanitizer: DomSanitizer = inject(DomSanitizer);
   
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -39,16 +41,15 @@ export class ProfileComponent {
     });
     this.userService.getById(this.foundedId).subscribe((data) => {
       this.user = data;
+      
     });
 
   }
   editUser() {
     this.submitted = true;
     if (this.user) {
-      this.user.profileImage = this.selectedFile;
       this.userService.update(this.user).subscribe((data) => {
         this.user = data;
-        
       });
     }else{
       this.errormsg = "Une erreur est survenue. Veuillez réessayer.";
@@ -62,12 +63,17 @@ export class ProfileComponent {
   }
   //This method is called when the user selects a file. It retrieves the selected file and stores it in a variable.
   //createObjectURL() creates a DOMString containing a URL representing the selected image src
-  onFileSelected(event: any) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0 && this.user) {
-      const file = input.files[0];
-      this.selectedFile = URL.createObjectURL(file);
-    }
-    
-  }
+  // onFileSelected(event: any) {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input.files && input.files.length > 0 && this.user) {
+  //     const file = input.files[0];
+  //     this.user.profileImage = URL.createObjectURL(file);
+  //   }
+  // }
+  // onFileSelected(event:Event) {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input && input.files && input.files.length > 0) {
+  //     this.selectedFile = input.files[0];
+  //   }
+  // }
 }

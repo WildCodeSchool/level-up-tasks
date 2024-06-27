@@ -1,7 +1,7 @@
 <section class="user-card">
   @if(user){
     <div class="user-img">
-      <img src="{{user.profileImage}}" alt="{{user.firstname}}" />
+      <img [src]="user.profileImage ? user.profileImage  : 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg' " alt="{{user.firstname}}" />
     </div>
     <div class="user-description">
       <h3>{{ user.firstname }} {{ user.lastname }}</h3>
@@ -22,17 +22,18 @@
   <form #editUserform="ngForm" (ngSubmit)="editUser()" *ngIf="user">
     <fieldset class="img-fieldset">
       
-      <img src="{{ user.profileImage }}" alt="firstname" />
+      <img [src]="user.profileImage ? user.profileImage  : 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg' " alt="firstname" />
       <div class="upload">
         <input
-        class="hidden-input"
-        type="file"
+        type="text"
         id="profilImage"
         name="profilImage"
-        (change)="onFileSelected($event)"
+        [(ngModel)]="user.profileImage"
+        #profilImage="ngModel"
+  
       />
       @for (icon of icons; track icons) {
-      <a> <i [class]="icon.class"></i> </a>
+      <!-- <a> <i [class]="icon.class"></i> </a> -->
     }
       </div>
     </fieldset>

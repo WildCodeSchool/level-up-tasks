@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from '../../model/user/user';
 
 @Injectable({
@@ -19,9 +19,8 @@ export class UserService {
     return this.httpClient.get<User>(`${this.apiUrl}/users/${id}`);
   }
 
-  public login(email:string, password:string):Observable<any> {
-    return this.httpClient.post<any>(`${this.apiUrl}/users/login`, { email, password });
-  }
+  
+
 
   public save(user:User):Observable<User> {
     return this.httpClient.post<User>(`${this.apiUrl}/users`, user);
@@ -32,7 +31,12 @@ export class UserService {
   }
 
   public update(user:User):Observable<User> {
-    return this.httpClient.put<User>(`${this.apiUrl}/users/${user.id}`, user);
+    return this.httpClient.put<User>(`${this.apiUrl}/users/${user.id}`, user).pipe(map((user:User) => {
+      if(typeof window != undefined){
+       localStorage.setItem('currentUser', JSON.stringify(user));
+      }
+       return user;
+     }));
   }
   
 }
