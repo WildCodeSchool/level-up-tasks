@@ -10,7 +10,7 @@ export class User {
         public email: string,
         public password: string,
         public team: UserTeams[],
-        public profilImage: string,
+        public profileImage: string,
         public level: number,
         public rewardPercentage: number,
     ){}

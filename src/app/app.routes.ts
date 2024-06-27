@@ -43,7 +43,7 @@ export const routes: Routes = [
    },
 
   {
-    path:'profil',
+    path:'profil/:id',
     component: UserProfilComponent,
   }
 
