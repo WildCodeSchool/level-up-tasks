@@ -1,6 +1,6 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TaskService } from '../../service/task.service';
-import { Task } from '../../model/task/task';
+import { ExpeditionService } from '../../service/expedition.service';
 
 @Component({
   selector: 'app-task-progress',
@@ -11,22 +11,28 @@ import { Task } from '../../model/task/task';
 })
 export class TaskProgressComponent {
   private taskService = inject(TaskService);
+  private expeditionService = inject(ExpeditionService);
   taskTotal : number = 0;
   taskAssigned : number = 0;
   taskCompleted : number = 0;
 
   ngOnInit(){
-    this.changeTaskCount(this.taskService.getAllTasks());
-    this.taskService.taskUpdated.subscribe(
-      (tasks) => {
-        this.changeTaskCount(tasks);
-      }
-    );
+    this.changeTaskCount();
+    this.expeditionService.refreshRequired.subscribe(response => {
+      this.changeTaskCount();
+    });
+    this.taskService.refreshRequired.subscribe(response => {
+      this.changeTaskCount();
+    });
   }
 
-  changeTaskCount(tasks : Task[]) : void{
-    this.taskTotal = tasks.length;
-    this.taskCompleted = tasks.filter(t => t.isCompleted()).length;
-    this.taskAssigned = this.taskTotal - this.taskCompleted;
+  changeTaskCount() : void {
+    this.taskService.getAllTasks().subscribe(
+      (data) => {
+        this.taskTotal = data.length;
+        this.taskCompleted = data.filter(t => t.completed).length;
+        this.taskAssigned = this.taskTotal - this.taskCompleted;
+      }
+    );
   }
 }

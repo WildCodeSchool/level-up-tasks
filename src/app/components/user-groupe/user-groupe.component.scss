@@ -1,0 +1,107 @@
+@use "../../../import" as *;
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.group-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+}
+
+.group {
+  background-color: $button-color;
+  color: white;
+  border-radius: 8px;
+  width: 250px;
+  height: 200px;
+ 
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+}
+
+.add-group {
+  background-color: $button-color;
+  color: white;
+  border-radius: 8px;
+  width: 250px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.members {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  justify-content: space-evenly;
+  padding-top: 1rem;
+
+
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.more-members {
+  color:$button-color;
+  background-color: $main-background-color;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+.more-members span{
+  margin: 0 auto;
+
+}
+
+.add-group span {
+  font-size: 3rem;
+  color: white;
+}
+
+h2 {
+  color: $title-text-color;
+  font-family: 'jetbrains mono', monospace;
+  font-size: 30px;
+}
+
+h3 {
+  color: white;
+  font-family: 'jetbrains mono', monospace;
+  font-size: 20px;
+  margin: 0;
+}
+
+.delete-btn {
+  color: white;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+}
+
+  

@@ -36,14 +36,13 @@ input {
   border: none;
   outline: none;
   display: block;
-  
 }
 
 
 ul,
 li,
 p {
- 
+
   list-style: none;
   font-family: 'inika', sans-serif;
   font-size: 1.3rem;
@@ -75,3 +74,10 @@ h3 {
     min-height: calc(90vh - 47px);
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

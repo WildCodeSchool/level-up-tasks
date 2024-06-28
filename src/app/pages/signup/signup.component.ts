@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { User } from '../../model/user/user';
+import { UserService } from '../../service/User/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +13,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
+  userService:UserService = inject(UserService);
+  users:User[] = [];
   signupForm: FormGroup;
+  singUpError = false;
+  errorMsg = '';
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.signupForm = this.fb.group({
@@ -22,22 +28,33 @@ export class SignupComponent {
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
   }
-
+  ngOnInit():void{
+    this.userService.getAll().subscribe((data) => {
+      this.users = data;
+    });
+  }
   passwordMatchValidator(form: FormGroup) {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
     return password === confirmPassword ? null : { mismatch: true };
   }
-
  
   onSubmit() {
     if (this.signupForm.valid) {
-      const { firstName, lastName, email, password, confirmPassword } = this.signupForm.value;
+      const { firstName, lastName, email, password } = this.signupForm.value;
+      const user = new User(0,firstName, lastName, email, password,[],'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg',0,0);
+      this.userService.save(user).pipe().subscribe({
+        next: (data) =>{
+          this.router.navigate(['/connexion']);
+
+        }
+      });
       this.signupForm.reset();
-      this.router.navigate(['/connexion']);
-      alert('Inscription réussie. Un email de confirmation a été envoyé.');
     } else {
-      alert('Veuillez remplir correctement tous les champs du formulaire.');
+      (error: any) => {
+       this.errorMsg = "Veuillez remplir correctement tous les champs du formulaire." + error.message;
+        this.singUpError = true;
+      }
     }
   }
 }

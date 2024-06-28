@@ -1,48 +1,37 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Task } from '../model/task/task';
-import { ImportancyLevel } from '../model/importancy-level/importancy-level';
-import { Expedition } from '../model/expedition/expedition';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject, tap } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
+  private url : string = `http://localhost:8080/tasks`;
+
+  private http = inject(HttpClient);
 
   constructor() { }
 
-  taskUpdated : EventEmitter<Task[]> = new EventEmitter();
+  private _refreshrequired = new Subject<void>();
 
-  tasks : Task[] = [
-    new Task('Faire 30 minutes de yoga', new Date("2024-05-16"), true, ImportancyLevel.Bas, 1),
-    new Task('Course', new Date("2024-06-08"), false, ImportancyLevel.Moyenne, 1),
-    new Task('Réunion', new Date("2024-06-08"), false, ImportancyLevel.Haute, 2)
-  ];
-
-  getAllTasks() : Task[]{
-    return this.tasks;
+  get refreshRequired() {
+    return this._refreshrequired;
   }
 
-  getTasks(expedition : Expedition) : Task[]{
-    return this.tasks.filter( (task) => task.expeditionId == expedition.id);
+  getAllTasks() : Observable<Task[]> {
+    return this.http.get<Task[]>(this.url);
   }
 
-  addTask(task : Task) : void{
-    this.tasks.push(task);
-    this.taskUpdated.emit(this.tasks);
-  }
-
-  deleteTask(task : Task) : void {
-    this.tasks.filter( (t, index) => {
-      if(task.id === t.id) this.tasks.splice(index, 1);
-    });
-    this.taskUpdated.emit(this.tasks);
-  }
-
-  toggleTaskComplete(task : Task) : void {
-    this.tasks.filter( (t, index) => {
-      if(task.id === t.id) t.changeCompleted();
-    });
-    this.taskUpdated.emit(this.tasks);
+  updateTask(task : Task) : void {
+    if (task.completed) {
+      task.completedAt = new Date();
+    }
+    this.http.put<any>(this.url + `/${task.id}`, task).pipe(
+      tap(() => {
+        this.refreshRequired.next();
+      })
+    ).subscribe();
   }
 }
