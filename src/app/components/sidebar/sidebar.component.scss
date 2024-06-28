@@ -1,0 +1,122 @@
+
+@use '../../../import'as *;
+
+.sidenav {
+    background-color:$main-background-color;
+    transition: all 1.5s ease;
+    z-index: 1;
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+    box-shadow: 0.063rem 0 1.25rem 0;
+    position: fixed;
+    padding-top: 140px; 
+
+    .logo-container{
+        display: flex;
+        align-items :center;
+        padding: 0.938rem 0.938rem 0.938rem ;
+        width: 100%;
+    .tape{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+    }
+    
+    .logo{
+        
+        text-align: center;
+        width: 3rem;
+        min-width: 3rem;
+        border-radius: 0.313rem;
+        font-size: 24px;
+        font-weight: 900;
+        cursor: pointer;
+        border: none;
+    }
+    .logo-text{
+        margin-left: 1.5rem;
+        font-size: 24px;
+        font-weight: 700;
+        color: $title-text-color;
+    }
+    .btn-close{
+        margin-left: auto;
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: transparent;
+        border: none;
+        .fa-times{
+            color:$secondary-backround-color;
+            font-size: 24px;
+        }
+    }
+  }
+}
+.sidenav-Iscollapsed{
+    width: 16.5625rem;
+    background-color: $navbar-color;
+
+}
+.sidenav-nav{
+    list-style: none;
+    padding: 0.938rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 3.65rem);
+    cursor: pointer;
+
+    .sidenav-nav-item{
+        width: 100%;
+        margin-bottom: 0.625rem;
+        .sidenav-nav-link{
+            display: flex;
+            align-items: center;
+            height: 3rem;
+            color: $button-color;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 0.625rem;
+           .sidenav-link-icon{
+                font-size: 22px;
+                width: 2rem;
+                min-width: 2rem;
+                margin: 0 0.5rem;
+                text-align: center;
+             } 
+            .sidenav-link-text{
+                margin-left: 1.5rem;
+                font-family: 'jetbrains mono', monospace;
+            }
+        }
+    }
+    .sidenav-nav-item{
+        .sidenav-nav-link{
+            background-color:$main-background-color;
+            color:$title-text-color;    
+        }
+    }
+}
+
+.active{
+    
+    .sidenav-link-icon
+    .sidenav-link-text{
+        color:$title-text-color;
+        background-color: $navbar-color ;
+       
+    }
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .sidenav {
+      display: none;
+    }
+}
+
+   

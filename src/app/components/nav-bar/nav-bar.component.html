@@ -1,25 +1,27 @@
 <header>
     <nav class="nav-bar">
-        <div class="nav-img">
-            <img src="../../assets/pictures/logo.png" alt="logo">
-            <p>LevelUpTask</p>
-        </div>
+        <a [routerLink]="['/accueil']">
+            <div class="nav-img">
+                <img src="../../assets/pictures/logo.png" alt="logo">
+                <p>LevelUpTasks</p>
+            </div>
+        </a>
         @if (isMobileView) {
-            <div (click)="toggleNavbar()"   class="mobile" >
-                <div  [class.open]="isOpen"  class="burger-menu">
+            <div (click)="toggleNavbar()" class="mobile" >
+                <div  [class.open]="isOpen" class="burger-menu">
                 <div  class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
                 </div>
                 <div *ngIf="isOpen" class="menu-mobile">
                     <ul class="top-items">
-                        <li><a [routerLink]="['/home']" >Profil</a></li>
-                        <li><a [routerLink]="['/tasks']">Tasks</a></li>
-                        <li><a [routerLink]="['/message']">Message</a></li>
+                        <li *ngIf="authService.isLogged() && user"><a [routerLink]="['/profil/'+user.id]" >Profil</a></li>
+                        <li *ngIf="authService.isLogged()"><a [routerLink]="['/taches']">Tasks</a></li>
+                        <li *ngIf="authService.isLogged()"><a [routerLink]="['/message']">Message</a></li>
                     </ul> 
                     <ul class="botom-items">
                         <li><a [routerLink]="['/teams']" >About us</a></li>
-                        <li><a [routerLink]="['/logout']" >LogOut</a></li>
+                        <li *ngIf="authService.isLogged()"><a [routerLink]="['/logout']" (click)="logOut()" >Déconnexion</a></li>
                     </ul>
                   </div> 
               </div>
@@ -27,10 +29,13 @@
             @if (!isMobileView)  {
               <div  class="menu-desktop">
                 <ul>
-                    <li>
-                        <a [routerLink]="['/home']" >Home</a></li>
-                        <li><a [routerLink]="['/tasks']">Tasks</a></li>
-                    <li><a [routerLink]="['/teams']">About us</a></li>
+                    <li *ngIf="authService.isLogged()"><a [routerLink]="['/taches']">Taches</a></li>
+                    <li *ngIf="authService.isLogged() && user"><a [routerLink]="['/profil/'+user.id]">Profil</a></li>
+                    <li ><a [routerLink]="['/teams']">About us</a></li>
+                    <li *ngIf="!authService.isLogged()"><a [routerLink]="['/connexion']">Connexion</a></li>
+                    <li *ngIf="authService.isLogged()"><a [routerLink]="['/logout']" (click)="logOut()">Déconnexion</a></li>
+
+
                 </ul>
               </div>
             }

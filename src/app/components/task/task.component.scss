@@ -1,5 +1,9 @@
 @use "./../../../import" as *;
 
+:root {
+    --size : 36px;
+}
+
 .task-container {
     color: $dark-text-color;
     border-bottom: 1px solid $button-color;
@@ -10,15 +14,10 @@
     padding: 0.5rem;
 }
 
-.checkbox-container {
-    height: 36px;
-    min-width: 36px;
-    border: 2px solid $dark-text-color;
-    border-radius: 50%;
-}
-
 .task-information {
     margin-left: 1rem;
+    inline-size: 80%;
+    overflow-wrap: break-word;
 }
 
 .task-date{
@@ -29,4 +28,161 @@
 .task-date img{
     height: 24px;
     margin-right: 0.5rem;
+}
+
+//Checkmark Styling
+.checkmark {
+    left: calc(var(--size) * -.05);
+    width: calc(var(--size) * .6);
+    height: calc(var(--size) * .6);
+    margin-left: calc(var(--size) * .14);
+    transform: rotateZ(-40deg);
+}
+
+.checkmark:before, .checkmark:after {
+    content: "";
+    position: absolute;
+    background-color: $main-background-color;
+    border-radius: 5px;
+}
+
+.checkmark:before {
+    width: calc(var(--size) * .1);
+    height: calc(var(--size) * .3);
+}
+
+.checkmark:after {
+    width: 100%;
+    height: calc(var(--size) * .1);
+}
+
+//Checkbox
+.checkbox-container {
+    --size: 36px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-container:active {
+    transform: scale(0.9);
+}
+
+//Checkbox exterior
+.checkmark-container {
+    cursor: pointer;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 7px $dark-text-color inset;
+    transition: 0.2s ease transform, 0.2s ease box-shadow;
+}
+
+.checkbox-container input[type="checkbox"]:hover ~ .checkmark-container {
+    box-shadow: 0px 0px 0px 9px $dark-text-color inset;
+}
+
+//Checkmark inside the checkbox
+.checkbox-container .checkmark {
+    position: absolute;
+}
+
+.checkbox-container .checkmark:before,
+.checkbox-container .checkmark:after {
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.2s ease transform, 0.3s ease opacity;
+}
+
+.checkbox-container .checkmark:before {
+    transform: translateY(calc(var(--size) * -.68));
+}
+
+.checkbox-container .checkmark:after {
+    transform: translateX(calc(var(--size) * .78));
+}
+
+//Animation of the checkbox when checked
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark-container {
+    max-width: var(--size);
+    box-shadow:0px 0px 0px 25px $dark-text-color inset;
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark-container .checkmark:before,
+.checkbox-container input[type="checkbox"]:checked ~ .checkmark-container .checkmark:after {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.task-delete-button{
+    cursor: pointer;
+    align-self: flex-start;
+    padding-left: 8px;
+    padding-top: 2px;
+    margin-left: auto;
+    color: $navbar-color;
+}
+
+.task-delete-button:hover{
+    color: $title-text-color;
+    font-weight: bolder;
+}
+
+.task-delete-button:active{
+    transform: scale(0.9);
+}
+
+//Modal styling
+.confirmation-message{
+    display: flex;
+    flex-direction: column;
+    gap : 8px;
+    --size : 36px;
+}
+
+.confirmation-message button {
+    cursor: pointer;
+    height: var(--size);
+    width: var(--size);
+    border-radius: 50%;
+    color: $main-background-color;
+    background-color: $dark-text-color;
+    align-self: flex-end;
+}
+
+.confirmation-message button:active {
+    transform: scale(0.9);
+}
+
+//Checkmark inside the confirm button
+.confirmation-message button .checkmark {
+    position: relative;
+}
+
+.confirmation-message button .checkmark:before,
+.confirmation-message button .checkmark:after {
+    left: 4px;
+    bottom: 4px;
+}
+
+.priorite{
+    margin-left: 10px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.Bas{
+  background-color: #A2ECAA;
+}
+
+.Moyenne{
+    background-color: #E0CC86;
+
+}
+
+.Haute{
+    background-color: #DF9191;
 }

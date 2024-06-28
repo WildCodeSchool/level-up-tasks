@@ -1,0 +1,145 @@
+@use "../../../import" as *;
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+ 
+  
+}
+
+
+h1 {
+  font-size: 36px;
+  color: $title-text-color;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-family: 'jetbrains mono', monospace;
+}
+
+.nav-buttons button {
+  width: 48%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'jetbrains mono', monospace;
+  
+ 
+  cursor: pointer;
+  .active {
+    background-color: $button-color;
+    color: white;
+    
+  }
+}
+
+.nav-buttons button:not(.active) {
+  background-color: #f0f0f0;
+  color: var(--title-text-color);
+  
+  
+}
+
+.nav-buttons button:hover {
+  background-color: var(#a99892);
+  color: white;
+ 
+}
+
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  
+
+    div {
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-family: 'jetbrains mono', monospace;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: $button-color;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-family: 'jetbrains mono', monospace;
+     
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: $navbar-color;
+      
+    }
+}
+
+form div {
+  padding : 8px;
+}
+  
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid $navbar-color;
+    border-radius: 10px;
+}
+
+.error-message {
+    color: $title-text-color;
+    margin-top: 10px;
+}
+
+.error-message{
+  color: red;
+  margin-top: 10px;
+
+}
+  
+@media (max-width: 600px) {
+  .signup-container {
+      width: 90%;
+      margin: 20px auto;
+      padding: 15px;
+  }
+  
+  .nav-buttons button {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+  
+  .signup-container input[type="text"],
+  .signup-container input[type="email"],
+  .signup-container input[type="password"] {
+      padding: 10px;
+      font-size: 14px;
+  }
+  
+  .signup-container button[type="submit"] {
+      padding: 12px;
+      font-size: 16px;
+     
+  }
+}
+
+
+  

@@ -1,11 +1,26 @@
 <div class="task-container">
-    <div class="checkbox-container"></div>
+    <label class="checkbox-container">
+        <input type="checkbox" [checked]="task.completed" (change)="toggleTaskComplete()"/> 
+        <div class="checkmark-container">
+            <div class="checkmark"></div>
+        </div>    
+    </label>
     <div class="task-information">
         <p>{{task.description}}</p>
         <div class="task-date">
             <img src=".\assets\pictures\clock-icon.png" alt="ee">
-            <p>{{task.date.toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })}}</p>
+            <p>{{task.deadline}}</p>
+            <p class="priorite" [ngClass]="task.priority">{{task.priority}}</p>
         </div>
     </div>
+    <button class="task-delete-button" (click)="toggleDeleteTaskModal()">X</button>
 </div>
 
+<app-modal id="add-task-modal" *ngIf="isDeleteModalOpen" (closeModal)="toggleDeleteTaskModal()">
+    <div class="confirmation-message">
+        <span>Voulez-vous supprimer cette tâche ?</span>
+        <button (click)="deleteTask()">
+            <div class="checkmark"></div>
+        </button>
+    </div>
+</app-modal>

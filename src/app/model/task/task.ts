@@ -1,8 +1,27 @@
+import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
+
 export class Task {
+  id !: number;
+  readonly priority: ImportancyLevel;
+  completed: boolean;
+  completedAt?: Date;
+
   constructor(
-    readonly id: number,
     readonly description: string,
-    readonly date: Date,
-    readonly completed: boolean
-  ) {}
+    readonly deadline: Date,
+    completed: boolean,
+    importancyLevel: ImportancyLevel = ImportancyLevel.Bas,
+    readonly expeditionId: number
+  ) {
+    this.priority = importancyLevel;
+    this.completed = completed; 
+  }
+
+  public isCompleted() : boolean {
+    return this.completed;
+  }
+
+  public changeCompleted() {
+    this.completed = !this.completed;
+  }
 }

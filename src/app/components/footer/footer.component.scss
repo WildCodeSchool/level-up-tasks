@@ -1,7 +1,7 @@
 @use '../../../import'as *;
 
 footer{
-   
+    z-index: 10;
     background-color:$navbar-color;
     min-height: 10vh;
     margin: 0;
@@ -26,22 +26,19 @@ footer{
 }
 
 @media screen and (min-width: 768px){
-
-   footer{
-   padding: 2px;
-    .footer-text{
-        display: flex;
-        flex-direction: row;
-        margin: auto ;
-        gap: 20px;
-        padding-top: 10px;
-        justify-content: center;
-        p{
-            
-        color: $light-text-color;
-        font-size: 1.2rem;
+    footer{
+    padding: 2px;
+        .footer-text{
+            display: flex;
+            flex-direction: row;
+            margin: auto ;
+            gap: 20px;
+            padding-top: 10px;
+            justify-content: center;
+            p{  
+                color: $light-text-color;
+                font-size: 1.2rem;
+            }
         }
     }
-   }
-
 }
