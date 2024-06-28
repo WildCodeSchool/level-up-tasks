@@ -17,17 +17,16 @@
     color: white;
     border-radius: 8px;
     width: 150px;
-    height: 200px;
+    height: 180px;
     justify-content: center;
     cursor: pointer;
   }
   .add-group {
     background-color: $button-color;
     color: white;
-    padding: 20px;
     border-radius: 8px;
     width: 150px;
-    height: 200px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +66,7 @@
     margin-right: 5px;
     gap: 10px;
     display: flex;
+    justify-content: center;
  
   }
   
