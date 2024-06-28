@@ -29,7 +29,7 @@ export class UserGroupeComponent  implements OnInit {
 
   openCreateGroupDialog(): void {
     const dialogRef = this.dialog.open(CreateGroupDialogComponent, {
-      width: '350px'
+      width: '450px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -42,7 +42,7 @@ export class UserGroupeComponent  implements OnInit {
 
   openEditGroupDialog(group: Group, index: number): void {
     const dialogRef = this.dialog.open(EditGroupDialogComponent, {
-      width: '350px',
+      width: '450px',
       data: { group }
     });
 
@@ -53,7 +53,7 @@ export class UserGroupeComponent  implements OnInit {
     });
   }
 
-  deleteGroup(index: number,): void {
+  deleteGroup(index: number): void {
     this.groupService.deleteGroup(index);
   }
 }

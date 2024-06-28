@@ -1,9 +1,10 @@
-import { Component, EventEmitter, HostListener, OnInit, Output, output } from '@angular/core';
+import { Component, EventEmitter, HostListener, inject, OnInit, Output, output } from '@angular/core';
 import {  RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { sidebarData } from './side-data';
 import { User } from '../../model/user/user';
+import { AuthenticationService } from '../../service/User/authentication.service';
 
 interface SideNavToggle{
   screenWidth:number;
@@ -23,6 +24,7 @@ export class SidebarComponent implements OnInit{
   screenWidth = 0 ;
   navData=sidebarData;
   user?:User;
+  authService:AuthenticationService = inject(AuthenticationService);
   @HostListener('window:resize',['$event'])
   onResize(event:any):void{
     if(typeof window !== 'undefined'){
@@ -31,15 +33,12 @@ export class SidebarComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.user = this.authService.getUser();
     if(typeof window !== 'undefined'){
       this.screenWidth = window.innerWidth;
       if(this.screenWidth < 768){
         this.Iscollapsed = false;
         this.onToggleSidenav.emit({screenWidth:this.screenWidth,Iscollapsed:this.Iscollapsed});
-        
-    if(typeof window !== 'undefined'){
-      this.user = JSON.parse(localStorage.getItem('currentUser') || '{}');
-      }
       }
     }
       

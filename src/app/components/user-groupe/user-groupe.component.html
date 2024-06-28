@@ -8,7 +8,7 @@
             <img [src]="member.avatarUrl" alt="{{ member.name }}" class="avatar">
           </div>
           <div *ngIf="group.members.length > 2" class="more-members">
-            +{{ group.members.length - 2 }}
+            <span>+ {{ group.members.length - 2 }}</span>
           </div>
         </div>
         
