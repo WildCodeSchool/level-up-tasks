@@ -1,104 +1,107 @@
 @use "../../../import" as *;
 .container {
-    text-align: center;
-    padding: 20px;
-   
-  }
-  .group-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 10px; 
-   
-  }
-  .group {
-    background-color: $button-color;
-    color: white;
-    border-radius: 8px;
-    width: 150px;
-    height: 180px;
-    justify-content: center;
-    cursor: pointer;
-  }
-  .add-group {
-    background-color: $button-color;
-    color: white;
-    border-radius: 8px;
-    width: 150px;
-    height: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    cursor: pointer;
-    
-  }
-  .members {
-    color: white;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    margin-bottom: 10px;
-    justify-content:space-between ;
-    
-  }
-  
-  .member {
-    color:white;
-    display: flex;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    justify-content:space-between;
-    margin-right: 1rem; 
-    
-  }
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 5px;
-    gap: 10px;
-    display: flex;
-    justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.group-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+}
+
+.group {
+  background-color: $button-color;
+  color: white;
+  border-radius: 8px;
+  width: 250px;
+  height: 200px;
  
-  }
-  
-  .more-members {
-    color: white;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    justify-content: center;
-  
-  }
-  span {
-    font-size: 3rem;
-    color: white;
-    ;
-  }
-  h2 {
-    color:$title-text-color;
-    font-family:'jetbrains mono', monospace;
-    font-size: 30px;
-  }
-  h3 {
-    color:white;
-    font-family:'jetbrains mono', monospace;
-    font-size: 20px;
-  }
-  .delete-btn {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+}
+
+.add-group {
+  background-color: $button-color;
+  color: white;
+  border-radius: 8px;
+  width: 250px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.members {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  justify-content: space-evenly;
+  padding-top: 1rem;
+
+
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.more-members {
+  color:$button-color;
+  background-color: $main-background-color;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+.more-members span{
+  margin: 0 auto;
+
+}
+
+.add-group span {
+  font-size: 3rem;
+  color: white;
+}
+
+h2 {
+  color: $title-text-color;
+  font-family: 'jetbrains mono', monospace;
+  font-size: 30px;
+}
+
+h3 {
+  color: white;
+  font-family: 'jetbrains mono', monospace;
+  font-size: 20px;
+  margin: 0;
+}
+
+.delete-btn {
   color: white;
   border: none;
-  border-radius: 5px;
+  background: none;
   cursor: pointer;
-  font-size: 2rem;
- 
-  }
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+}
+
   

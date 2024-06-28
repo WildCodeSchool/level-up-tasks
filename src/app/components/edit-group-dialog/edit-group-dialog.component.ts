@@ -41,7 +41,7 @@ export class EditGroupDialogComponent implements OnInit{
         this.totalMembers = group.members.length;
         group.members.forEach(member => {
           this.membersFormArray.push(this.fb.group({
-            name: [member.name],
+            name: [member.name, Validators.required],
             avatarUrl: [member.avatarUrl]
           }));
         });
