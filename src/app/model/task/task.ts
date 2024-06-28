@@ -4,6 +4,7 @@ export class Task {
   id !: number;
   readonly priority: ImportancyLevel;
   completed: boolean;
+  completedAt?: Date;
 
   constructor(
     readonly description: string,
