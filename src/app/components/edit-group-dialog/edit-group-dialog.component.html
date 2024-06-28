@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Éditer le groupe</h2>
+<div mat-dialog-content>
+  <form [formGroup]="groupForm">
+    <mat-form-field>
+      <mat-label>Nom du groupe</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <div formArrayName="members">
+      <div *ngFor="let memberControl of membersFormArray.controls; let i = index" [formGroupName]="i" class="member-control">
+        <mat-form-field>
+          <mat-label>Nom du membre</mat-label>
+          <div>
+          <input matInput formControlName="name">
+          <button mat-icon-button color="warn" aria-label="Supprimer" (click)="removeMember(i)" class="delete-icon">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        </mat-form-field>
+      </div>
+    </div>
+    <button class="button-add"mat-button color="primary" (click)="addMember()">Ajouter un membre</button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="button-cancel" mat-button (click)="cancel()">Annuler</button>
+  <button class="button-save" mat-button (click)="submit()" [disabled]="!groupForm.valid">Enregistrer</button>
+</div>
