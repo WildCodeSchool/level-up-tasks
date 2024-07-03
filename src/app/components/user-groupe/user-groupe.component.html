@@ -5,7 +5,7 @@
         <h3>{{ group.name }}</h3>
         <div class="members">
           <div *ngFor="let member of group.members.slice(0, 2) ; let j = index" class="member">
-            <img [src]="member.avatarUrl" alt="{{ member.name }}" class="avatar">
+            <img [src]="member.profileImage" alt="{{ member.firstname }}" class="avatar">
           </div>
           <div *ngIf="group.members.length > 2" class="more-members">
             <span>+ {{ group.members.length - 2 }}</span>

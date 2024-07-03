@@ -4,8 +4,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Group } from '../../model/groupes/groupe';
-import { Member } from '../../model/membres/membre';
-
 @Component({
   selector: 'app-create-group-dialog',
   standalone: true,
@@ -21,23 +19,16 @@ export class CreateGroupDialogComponent implements OnInit{
     private fb: FormBuilder
   ) {
     this.groupForm = this.fb.group({
-      name: ['', Validators.required],
-      members: ['', Validators.required]
+      name: ['', Validators.required]
     });
   }
   ngOnInit(): void {}
 
     submit(): void {
       if (this.groupForm.valid) {
-        const membersString = this.groupForm.value.members;
-        const membersArray: Member[] = membersString.split(',').map((name: string) => ({
-          name: name.trim(),
-          avatarUrl: 'assets/pictures/photo.png'
-        }));
-  
         const newGroup: Group = {
           name: this.groupForm.value.name,
-          members: membersArray
+          members: []
         };
         this.dialogRef.close(newGroup);
       }
