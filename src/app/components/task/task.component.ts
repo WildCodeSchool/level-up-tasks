@@ -23,8 +23,6 @@ export class TaskComponent {
   
   @Output()
   deleteTaskToParent: EventEmitter<Task> = new EventEmitter();
-  @Output()
-  editTaskToParent: EventEmitter<Task> = new EventEmitter();
 
 
   toggleTaskComplete(){
@@ -46,7 +44,7 @@ export class TaskComponent {
   }
 
   onSubmit(): void {
-    this.editTaskToParent.emit(this.task);
+    this.isEditTaskModalOpen = !this.isEditTaskModalOpen;
   }
 
 }
