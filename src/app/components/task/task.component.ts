@@ -18,9 +18,7 @@ export class TaskComponent {
   isEditTaskModalOpen : boolean = false;
   importancyLevels = Object.values(ImportancyLevel);
   private taskService = inject(TaskService);
-  description : string = "";
-  taskDate : Date = new Date();
-  selectedImportanceLevel = ImportancyLevel.Bas;
+  
 
   @Input() public task !: Task;
   
@@ -41,13 +39,11 @@ export class TaskComponent {
     this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
   
-  openEditTaskModal(task: Task): void {
+  toggleTaskModal(task: Task): void {
     this.task = task;
-    this.isEditTaskModalOpen = true;
+    this.isEditTaskModalOpen = !this.isEditTaskModalOpen;
   }
-  closeEditTaskModal(): void {
-    this.isEditTaskModalOpen = false;
-  }
+
   onSubmit(): void {
     this.taskService.updateTask(this.task);
   }
