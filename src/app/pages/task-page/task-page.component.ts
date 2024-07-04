@@ -5,8 +5,13 @@ import { TaskProgressComponent } from '../../components/task-progress/task-progr
 import { AddExpeditionComponent } from '../../components/add-expedition/add-expedition.component';
 import { Expedition } from '../../model/expedition/expedition';
 import { CommonModule } from '@angular/common';
-import { ExpeditionService } from '../../service/expedition.service';
 import { TaskFilterComponent } from '../../components/task-filter/task-filter.component';
+import { User } from '../../model/user/user';
+import { AuthenticationService } from '../../service/User/authentication.service';
+import { UserService } from '../../service/User/user.service';
+import { AddTaskComponent } from '../../components/add-task/add-task.component';
+import { TaskService } from '../../service/tasks/task.service';
+import { ExpeditionService } from '../../service/expedition/expedition.service';
 
 
 interface SideNavToggle{
@@ -16,44 +21,53 @@ interface SideNavToggle{
 @Component({
   selector: 'app-task-page',
   standalone: true,
-  imports: [TaskListComponent, SidebarComponent, TaskProgressComponent, AddExpeditionComponent, CommonModule, TaskFilterComponent],
+  imports: [TaskListComponent, SidebarComponent, TaskProgressComponent, AddExpeditionComponent, CommonModule, TaskFilterComponent,AddTaskComponent],
   templateUrl: './task-page.component.html',
   styleUrl: './task-page.component.scss'
 })
 export class TaskPageComponent {
   private expeditionService = inject(ExpeditionService);
+  private authService = inject(AuthenticationService);
   expeditionList : Expedition[] = [];
-  filterValue : string = "";
+  filteredExps : Expedition[] = [];
+  user?:User;
+  userService = inject(UserService);
+  taskService = inject(TaskService);
+  filterValue: string = "";
+  
+  ngOnInit():void{
+    this.user = this.authService.getUser();
+    this.getUserExpeditions();
+  }
 
-  ngOnInit(){
-    this.getAll();
-    this.expeditionService.refreshRequired.subscribe(response => {
-      this.getAll();
+  getUserExpeditions(){
+    if(!this.user) return;
+    this.userService.getUserExpeditions(this.user.id).subscribe((expeditions) => {
+      this.expeditionList = expeditions;
+      this.filteredExps = this.expeditionList;
     });
   }
-
-  getAll() {
-    this.expeditionService.getExpeditions().subscribe(
-      (data) => this.expeditionList = data
-    );
-  }
-
+  
   onReceiveNewExpedition(event : Expedition){
-    this.expeditionService.addExpedition(event);
+    this.expeditionService.addExpedition(event, this.user?.id || 0).subscribe((ex) => {
+      this.expeditionList.push(ex);
+    });
   }
   
   //filter tasks based on the description
-  filterByDescription(filtervalue:string) {
-    this.filterValue = filtervalue;
+  filterByDescription(description:string) {
+    this.filterValue = description;
   }
 
   //filter tasks based on the date
-  filterByDate(date:string){
-    this.filterValue = date;
+  filterByDate(date: string){
+      this.filterValue = date;
   }
 
   //filter tasks based on the importance off level
-  filterByImportance(importance:string){
+  filterByPrioties(importance:string){
     this.filterValue = importance;
   }
+ 
+
 }

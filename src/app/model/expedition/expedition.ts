@@ -1,12 +1,13 @@
 import { Task } from "../task/task";
+import { User } from "../user/user";
 
 export class Expedition {
-    id!: number;
-    tasks: Task[] = [];
   
     constructor(
-      readonly name: string,
+      public id: number,
+      public name: string,
+      public user:User,
+      public tasks: Task[]
     ) {
-
     }
 }

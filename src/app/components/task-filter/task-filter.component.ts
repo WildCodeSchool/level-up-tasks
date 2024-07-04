@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { taskIcons } from './task-icons';
 import { FormsModule } from '@angular/forms';
-import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
+import { Priority } from '../../model/priority/Priority';
 
 @Component({
   selector: 'app-task-filter',
@@ -12,14 +12,14 @@ import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 })
 export class TaskFilterComponent {
   icons=taskIcons;
-  filterValue:string='';
-  filteredDate:string='';
-  selectedlevel:string= "";
-  levelImportancy = Object.values(ImportancyLevel);
+  description:string='';
+  filteredDate=new Date();
+  selectedPriority:string= "";
+  Priorities = Object.values(Priority);
 
   
   @Output()
-  filterImportancy: EventEmitter<string> = new EventEmitter();
+  filterPriority: EventEmitter<string> = new EventEmitter();
   
   @Output() 
   filterDescriptions:  EventEmitter<string> = new EventEmitter();
@@ -29,21 +29,21 @@ export class TaskFilterComponent {
 
   
   onFilterDescriptions():void{
-    this.filteredDate='';
-    this.selectedlevel= "";
-    this.filterDescriptions.emit(this.filterValue);
+    this.filteredDate=new Date();
+    this.selectedPriority= "";
+    this.filterDescriptions.emit(this.description);
   }
 
   onFilterDates():void{
-    this.filterValue='';
-    this.selectedlevel= "";
-    this.filterDate.emit(this.filteredDate);
+    this.description='';
+    this.selectedPriority= "";
+    this.filterDate.emit(this.filteredDate.toString());
   }
 
 
-  onFilterImportance():void{
-    this.filterValue='';
-    this.filteredDate='';
-    this.filterImportancy.emit(this.selectedlevel);
+  onFilterPriorities():void{
+    this.description='';
+    this.filteredDate=new Date();
+    this.filterPriority.emit(this.selectedPriority);
   }
 }

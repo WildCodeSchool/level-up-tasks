@@ -1,6 +1,6 @@
 <div class="task-container">
     <label class="checkbox-container">
-        <input type="checkbox" [checked]="task.completed" (change)="toggleTaskComplete()"/> 
+        <!-- <input type="checkbox" [checked]="task.isCompleted()" (change)="toggleTaskComplete()"/>  -->
         <div class="checkmark-container">
             <div class="checkmark"></div>
         </div>    
@@ -10,7 +10,7 @@
         <div class="task-date">
             <i class="far fa-clock"></i>
             <p>{{task.deadline}}</p>
-            <p class="priorite" [ngClass]="task.priority">{{task.priority}}</p>
+            <p class="priority" [ngClass]="task.priority">{{task.priority}}</p>
         </div>
     </div>
     <button (click)="toggleTaskModal(task)">Edit</button>
