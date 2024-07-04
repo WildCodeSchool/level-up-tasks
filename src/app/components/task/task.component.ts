@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
-import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
-import { TaskService } from '../../service/task.service';
+import { TaskService } from '../../service/tasks/task.service';
+import { FormsModule } from '@angular/forms';
+import { Priority } from '../../model/priority/Priority';
 
 @Component({
   selector: 'app-task',
@@ -14,13 +15,17 @@ import { TaskService } from '../../service/task.service';
 })
 export class TaskComponent {
   isDeleteModalOpen : boolean = false;
-  importancyLevels = Object.values(ImportancyLevel);
+  isEditTaskModalOpen : boolean = false;
   private taskService = inject(TaskService);
+  priorities = Object.values(Priority);
 
   @Input() public task !: Task;
   
   @Output()
   deleteTaskToParent: EventEmitter<Task> = new EventEmitter();
+  @Output()
+  editTaskToParent: EventEmitter<Task> = new EventEmitter();
+
 
   toggleTaskComplete(){
     //this.taskService.toggleTaskComplete(this.task);
@@ -41,7 +46,7 @@ export class TaskComponent {
   }
 
   onSubmit(): void {
-    this.taskService.updateTask(this.task);
+    this.editTaskToParent.emit(this.task);
   }
 
 }
