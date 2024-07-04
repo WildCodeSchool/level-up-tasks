@@ -19,7 +19,8 @@ export class TaskProgressComponent {
       (exp) => {
        exp.forEach((e) => {
           this.taskTotal += e.tasks.length;
-          this.taskCompleted += e.tasks.filter(t => t.isCompleted()).length;
+          this.taskAssigned += e.tasks.filter(t => !t.completed).length;
+          this.taskCompleted += e.tasks.filter(t => t.completed).length;
 
        });
       }

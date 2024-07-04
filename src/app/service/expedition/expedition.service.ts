@@ -24,5 +24,13 @@ export class ExpeditionService {
     return this.httpClient.get<Task[]>(`${this.apiUrl}/expeditions/${expId}/tasks`);
   }
 
+  completeTask(expId:number,taskId:number) : Observable<Task> {
+    return this.httpClient.post<Task>(`${this.apiUrl}/expeditions/complete/${expId}/${taskId}`,null);
+  }
+
+  getById(id:number) : Observable<Expedition> {
+    return this.httpClient.get<Expedition>(`${this.apiUrl}/expeditions/${id}`);
+  }
+
  
 }
