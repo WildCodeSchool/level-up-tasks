@@ -29,7 +29,7 @@ a:visited {
 
 button,
 input {
- font-family: 'jetbrains mono', monospace;
+  font-family: 'jetbrains mono', monospace;
   font-size: inherit;
   color: inherit;
   background-color: transparent;
@@ -41,7 +41,9 @@ input {
 
 ul,
 li,
-p {
+p,
+label,
+span {
 
   list-style: none;
   font-family: 'inika', sans-serif;
