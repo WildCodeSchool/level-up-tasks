@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Groupes</h2>
+    <div class="group-container">
+      <div class="group" *ngFor="let group of groups,let i = index"  (click)="openEditGroupDialog(group, i)">
+        <h3>{{ group.name }}</h3>
+        <div class="members">
+          <div *ngFor="let member of group.members.slice(0, 2) ; let j = index" class="member">
+            <img [src]="member.profileImage" alt="{{ member.firstname }}" class="avatar">
+          </div>
+          <div *ngIf="group.members.length > 2" class="more-members">
+            <span>+ {{ group.members.length - 2 }}</span>
+          </div>
+        </div>
+        
+        <button class="delete-btn" (click)="deleteGroup(i)">🗑</button>
+      </div>
+      <div class="add-group" (click)="openCreateGroupDialog()">
+        <span>+</span>
+      </div>
+    </div>
+</div>
+  

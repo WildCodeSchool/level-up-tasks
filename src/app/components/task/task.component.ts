@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
-import { TaskService } from '../../service/tasks/task.service';
 import { Priority } from '../../model/priority/Priority';
 
 @Component({

@@ -11,7 +11,7 @@ export class Task {
   ) {
   }
 
-  public isCompleted() {
+  public isCompleted() : boolean {
     return this.completed;
   }
 

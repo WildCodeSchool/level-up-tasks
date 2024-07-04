@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component,inject, Input, SimpleChanges } from '@angular/core';
+import { Component,inject, Input } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { TaskComponent } from '../task/task.component';
 import { AddTaskComponent } from '../add-task/add-task.component';

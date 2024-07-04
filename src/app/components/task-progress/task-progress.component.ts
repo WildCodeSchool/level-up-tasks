@@ -1,7 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
-import { TaskService } from '../../service/tasks/task.service';
-import { Task } from '../../model/task/task';
-import { Expedition } from '../../model/expedition/expedition';
+import { Component, inject } from '@angular/core';
 import { ExpeditionService } from '../../service/expedition/expedition.service';
 
 @Component({
@@ -27,11 +24,5 @@ export class TaskProgressComponent {
        });
       }
     );
-  }
-
-  changeTaskCount(tasks : Task[]) : void{
-    this.taskTotal = tasks.length;
-    this.taskCompleted = tasks.filter(t => t.isCompleted()).length;
-    this.taskAssigned = this.taskTotal - this.taskCompleted;
   }
 }

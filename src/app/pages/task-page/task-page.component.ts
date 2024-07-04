@@ -1,4 +1,4 @@
-import { Component, SimpleChanges, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TaskListComponent } from '../../components/task-list/task-list.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { TaskProgressComponent } from '../../components/task-progress/task-progress.component';
