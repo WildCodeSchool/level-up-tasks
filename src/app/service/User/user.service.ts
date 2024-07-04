@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { User } from '../../model/user/user';
+import { Expedition } from '../../model/expedition/expedition';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,6 @@ export class UserService {
     return this.httpClient.get<User>(`${this.apiUrl}/users/${id}`);
   }
 
-  
-
 
   public save(user:User):Observable<User> {
     return this.httpClient.post<User>(`${this.apiUrl}/users`, user);
@@ -37,6 +36,10 @@ export class UserService {
       }
        return user;
      }));
+  }
+
+  public getUserExpeditions(id:number):Observable<Expedition[]> {
+    return this.httpClient.get<Expedition[]>(`${this.apiUrl}/users/${id}/expeditions`);
   }
   
 }

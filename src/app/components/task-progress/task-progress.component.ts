@@ -1,6 +1,8 @@
 import { Component, Input, inject } from '@angular/core';
-import { TaskService } from '../../service/task.service';
+import { TaskService } from '../../service/tasks/task.service';
 import { Task } from '../../model/task/task';
+import { Expedition } from '../../model/expedition/expedition';
+import { ExpeditionService } from '../../service/expedition/expedition.service';
 
 @Component({
   selector: 'app-task-progress',
@@ -10,16 +12,19 @@ import { Task } from '../../model/task/task';
   styleUrl: './task-progress.component.scss'
 })
 export class TaskProgressComponent {
-  private taskService = inject(TaskService);
+  private expeditionService = inject(ExpeditionService);
   taskTotal : number = 0;
   taskAssigned : number = 0;
   taskCompleted : number = 0;
 
   ngOnInit(){
-    this.changeTaskCount(this.taskService.getAllTasks());
-    this.taskService.taskUpdated.subscribe(
-      (tasks) => {
-        this.changeTaskCount(tasks);
+    this.expeditionService.getExpeditions().subscribe(
+      (exp) => {
+       exp.forEach((e) => {
+          this.taskTotal += e.tasks.length;
+          this.taskCompleted += e.tasks.filter(t => t.isCompleted()).length;
+
+       });
       }
     );
   }

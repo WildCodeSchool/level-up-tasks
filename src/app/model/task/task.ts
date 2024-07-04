@@ -1,20 +1,14 @@
-import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
+import { Priority } from '../priority/Priority';
 
 export class Task {
-  static _id: number = 0;
-  readonly id: number;
-  readonly importancyLevel: ImportancyLevel;
-
   constructor(
-    readonly description: string,
-    readonly date: Date,
+    public id: number,
+    public description: string,
+    public deadline: Date,
     private completed: boolean,
-    importancyLevel: ImportancyLevel = ImportancyLevel.Bas,
-    readonly expeditionId: number
+    public priority: Priority = Priority.Bas,
+    public completedAt :Date,
   ) {
-    Task._id++;
-    this.id = Task._id;
-    this.importancyLevel = importancyLevel;
   }
 
   public isCompleted() {

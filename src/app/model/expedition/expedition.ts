@@ -1,11 +1,13 @@
+import { Task } from "../task/task";
+import { User } from "../user/user";
+
 export class Expedition {
-    static _id: number = 0;
-    readonly id: number;
   
     constructor(
-      readonly title: string,
+      public id: number,
+      public name: string,
+      public user:User,
+      public tasks: Task[]
     ) {
-      Expedition._id++;
-      this.id = Expedition._id;
     }
 }

@@ -43,7 +43,7 @@ export class LoginComponent {
           }
         },
         error: (error) => {
-          this.errorMsg =  error.message;
+          this.errorMsg =  "Email ou mot de passe incorrect.";
           this.loginError = true;
         }
        

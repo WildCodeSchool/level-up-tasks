@@ -12,7 +12,7 @@
              name="description-filter"
              placeholder="Rechercher..."
              required
-             [(ngModel)]="filterValue"
+             [(ngModel)]="description"
              (input)="onFilterDescriptions()"
              />
      </div>
@@ -31,13 +31,13 @@
              <select
                id="selectedlevel"
                name="selectedlevel"
-               [(ngModel)]="selectedlevel"
+               [(ngModel)]="selectedPriority"
                required
-               (change)="onFilterImportance()"
+               (change)="onFilterPriorities()"
              >
              <option value="">Filtrer par priorité</option>
-               @for (level of levelImportancy; track level ) {
-               <option [value]="level">{{ level }}</option>
+               @for (Priority of Priorities; track Priority ) {
+               <option [value]="Priority">{{ Priority }}</option>
                }
              </select>
            </label>
