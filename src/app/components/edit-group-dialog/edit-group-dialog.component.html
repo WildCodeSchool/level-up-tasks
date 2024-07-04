@@ -10,11 +10,24 @@
         <mat-form-field>
           <mat-label>Nom du membre</mat-label>
           <div>
-          <input matInput formControlName="name">
-          <button mat-icon-button color="warn" aria-label="Supprimer" (click)="removeMember(i)" class="delete-icon">
-            <mat-icon>close</mat-icon>
-          </button>
-        </div>
+            <input 
+            matInput 
+            formControlName="email"
+            [matAutocomplete]="auto"
+            (ngModelChange)="changeCurrentMember(i)"
+            (click)="changeCurrentMember(i)">
+            <mat-autocomplete #auto="matAutocomplete">
+              @for (user of filteredUsers | slice : 0 : 5; track user) {
+                <mat-option [value]="user.email" (click)="memberIdUpdate(i, user)">
+                  <span>{{user.firstname}} {{user.lastname}}</span> | 
+                  <span>{{user.email}}</span>
+                </mat-option>
+              }
+            </mat-autocomplete>
+            <button mat-icon-button color="warn" aria-label="Supprimer" (click)="removeMember(i)" class="delete-icon">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
         </mat-form-field>
       </div>
     </div>

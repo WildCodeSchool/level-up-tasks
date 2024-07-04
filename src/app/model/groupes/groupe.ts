@@ -1,12 +1,12 @@
-import { Member } from "../membres/membre";
+import { User } from "../user/user";
 
 
 export class Group {
   id?: number;
   name: string;
-  members: Member[];
+  members: User[];
 
-  constructor(name: string, members: Member[], id?: number) {
+  constructor(name: string, members: User[], id?: number) {
     this.id = id;
     this.name = name;
     this.members = members;
