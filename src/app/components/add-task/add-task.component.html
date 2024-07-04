@@ -9,7 +9,7 @@
         <input name="task-date" type="date" [(ngModel)]="taskDate" #date="ngModel" required>
         <label class ="niveau" for="task-importance">Niveau d'importance :</label>
         <select id="task-importance" name="task-importance" [(ngModel)]="selectedImportanceLevel" required>
-            <option *ngFor="let level of importancyLevels" [value]="level">{{ level }}</option>
+            <option *ngFor="let level of Priority" [value]="level">{{ level }}</option>
         </select>
         
         <button type="submit" [disabled]="!addTaskForm.valid || !date.dirty">+</button>
