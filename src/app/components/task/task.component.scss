@@ -10,7 +10,7 @@
     margin: 0 1rem;
     display: flex;
     align-items: center;
-    line-height: 1.4;
+    line-height: 1.2;
     padding: 0.5rem;
 }
 
@@ -20,14 +20,14 @@
     overflow-wrap: break-word;
 }
 
-.task-date{
-    display: flex;
-    align-items: center;
+.task-information * {
+    margin: 0;
 }
 
-.task-date img{
-    height: 24px;
-    margin-right: 0.5rem;
+.task-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 //Checkmark Styling
@@ -175,12 +175,11 @@
 }
 
 .Bas{
-  background-color: #A2ECAA;
+    background-color: #A2ECAA;
 }
 
 .Moyenne{
     background-color: #E0CC86;
-
 }
 
 .Haute{
