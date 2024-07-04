@@ -26,10 +26,10 @@
       width: 100%;
       flex-direction: column;
       margin-top: 10px;
+      height: 36px;
       .filter-date {
         background-color: $light-text-color;
         border-radius: 10px;
-        margin-bottom: 10px;
         width: 100%;
         input {
           width: 100%;
@@ -40,8 +40,10 @@
       .filter-level {
         width: 100%;
         select {
+          background-color: $light-text-color;
+          height: 36px;
+          font-size: 14px;
           padding: 10px;
-          box-sizing: border-box;
           box-sizing: border-box;
           border-radius: 10px;
           width: 100%;
