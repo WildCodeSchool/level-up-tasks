@@ -28,14 +28,14 @@ import { Observable, map, of, startWith } from 'rxjs';
   templateUrl: './edit-group-dialog.component.html',
   styleUrl: './edit-group-dialog.component.scss'
 })
-export class EditGroupDialogComponent implements OnInit{
+export class EditGroupDialogComponent {
   groupForm: FormGroup;
   totalMembers: number = 0;
   currentMember : number = 0;
 
   private userService : UserService = inject(UserService);
   users : User[] = [];
-  filteredUsers !: Observable<User[]>;
+  filteredUsers !: User[];
 
   constructor(
     private dialogRef: MatDialogRef<EditGroupDialogComponent>,
@@ -113,7 +113,7 @@ export class EditGroupDialogComponent implements OnInit{
   changeCurrentMember(index : number) : void {
     this.currentMember = index;
     const filterValue = this.groupForm.value.members[index].email.toLowerCase();
-    this.filteredUsers = of(this.users.filter(user => user.email.toLowerCase().includes(filterValue)));
+    this.filteredUsers = this.users.filter(user => user.email.toLowerCase().includes(filterValue));
   }
 
   //Temporary function, will be deleted after some chages in backend
