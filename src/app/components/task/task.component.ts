@@ -4,18 +4,23 @@ import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { ImportancyLevel } from '../../model/importancy-level/importancy-level';
 import { TaskService } from '../../service/task.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [ModalComponent, CommonModule],
+  imports: [ModalComponent, CommonModule, FormsModule],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
 export class TaskComponent {
   isDeleteModalOpen : boolean = false;
+  isEditTaskModalOpen : boolean = false;
   importancyLevels = Object.values(ImportancyLevel);
   private taskService = inject(TaskService);
+  description : string = "";
+  taskDate : Date = new Date();
+  selectedImportanceLevel = ImportancyLevel.Bas;
 
   @Input() public task !: Task;
   
@@ -35,4 +40,16 @@ export class TaskComponent {
   toggleDeleteTaskModal() : void {
     this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
+  
+  openEditTaskModal(task: Task): void {
+    this.task = task;
+    this.isEditTaskModalOpen = true;
+  }
+  closeEditTaskModal(): void {
+    this.isEditTaskModalOpen = false;
+  }
+  onSubmit(): void {
+    this.taskService.updateTask(this.task);
+  }
+
 }

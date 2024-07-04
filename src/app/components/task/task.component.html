@@ -13,6 +13,7 @@
             <p class="priorite" [ngClass]="task.priority">{{task.priority}}</p>
         </div>
     </div>
+    <button (click)="openEditTaskModal(task)">Edit</button>
     <button class="task-delete-button" (click)="toggleDeleteTaskModal()">X</button>
 </div>
 
@@ -24,3 +25,15 @@
         </button>
     </div>
 </app-modal>
+
+<app-modal id="add-task-modal" *ngIf="isEditTaskModalOpen" (closeModal)="closeEditTaskModal()">
+    <form #editTaskForm="ngForm" (ngSubmit)="editTaskForm.valid && onSubmit()">
+      <textarea id="task-name" name="task-name" type="text" [(ngModel)]="description" #name="ngModel" required minlength="1" placeholder="Nom de la tâche"></textarea>
+      <input name="task-date" type="date" [(ngModel)]="taskDate" #date="ngModel" required>
+      <select name="task-importance" [(ngModel)]="selectedImportanceLevel">
+        <option *ngFor="let level of importancyLevels" [value]="level">{{ level }}</option>
+      </select>
+      <button type="submit" [disabled]="!editTaskForm.valid || !date.dirty">Mettre à jour</button>
+    </form>
+  </app-modal>
+
