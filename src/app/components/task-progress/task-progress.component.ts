@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { ExpeditionService } from '../../service/expedition/expedition.service';
+import { Expedition } from '../../model/expedition/expedition';
 
 @Component({
   selector: 'app-task-progress',
@@ -10,20 +11,22 @@ import { ExpeditionService } from '../../service/expedition/expedition.service';
 })
 export class TaskProgressComponent {
   private expeditionService = inject(ExpeditionService);
+  
   taskTotal : number = 0;
   taskAssigned : number = 0;
   taskCompleted : number = 0;
 
-  ngOnInit(){
-    this.expeditionService.getExpeditions().subscribe(
-      (exp) => {
-       exp.forEach((e) => {
-          this.taskTotal += e.tasks.length;
-          this.taskAssigned += e.tasks.filter(t => !t.completed).length;
-          this.taskCompleted += e.tasks.filter(t => t.completed).length;
+  @Input()
+  expeditions: Expedition[] = [];
 
-       });
-      }
-    );
+  ngOnChanges(changes: SimpleChanges){
+    console.log(this.expeditions)
+    if(this.expeditions.length > 0){
+      this.expeditions.map((exp)=>{
+        this.taskTotal += exp.tasks.length;
+        this.taskAssigned += exp.tasks.filter(task => !task.completed).length;
+        this.taskCompleted += exp.tasks.filter(task => task.completed).length;
+      });
+    }
   }
 }

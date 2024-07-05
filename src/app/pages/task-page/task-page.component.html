@@ -18,5 +18,5 @@
         </ul>
         <app-add-expedition (addNewExpeditionToParent)="onReceiveNewExpedition($event)"></app-add-expedition>
     </div>
-    <app-task-progress></app-task-progress>
+    <app-task-progress [expeditions]="expeditionList"></app-task-progress>
 </div>

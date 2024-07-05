@@ -29,7 +29,6 @@ export class TaskPageComponent {
   private expeditionService = inject(ExpeditionService);
   private authService = inject(AuthenticationService);
   expeditionList : Expedition[] = [];
-  filteredExps : Expedition[] = [];
   user?:User;
   userService = inject(UserService);
   taskService = inject(TaskService);
@@ -44,7 +43,6 @@ export class TaskPageComponent {
     if(!this.user) return;
     this.userService.getUserExpeditions(this.user.id).subscribe((expeditions) => {
       this.expeditionList = expeditions;
-      this.filteredExps = this.expeditionList;
     });
   }
   
