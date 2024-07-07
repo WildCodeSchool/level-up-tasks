@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Group } from '../../model/groupes/groupe';
-import { GroupService } from '../../service/group.service';
+import { GroupService } from '../../service/group/group.service';
 import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-dialog.component';
 import { EditGroupDialogComponent } from '../edit-group-dialog/edit-group-dialog.component';
 import { MatDialog } from '@angular/material/dialog';

@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Group } from '../model/groupes/groupe';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject, Observable, catchError, map, of, tap } from 'rxjs';
+import { Group } from '../../model/groupes/groupe';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -45,3 +47,6 @@ export class GroupService {
     return of(updatedGroup);
   }
 }
+
+    
+
