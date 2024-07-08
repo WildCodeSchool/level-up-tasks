@@ -21,6 +21,10 @@ export class TaskService {
      return this.httpClient.delete<Task>(`${this.apiUrl}/expeditions/${expId}/tasks/${taskId}`)
   }
 
+  //updateTask(task: Task, expId: number): Observable<Task> {
+   // return this.httpClient.put<Task>(`${this.apiUrl}/expeditions/${expId}/tasks/${task.id}`, task);
+  //}
+
   // toggleTaskComplete(task : Task) : void {
   //   this.tasks.filter( (t, index) => {
   //     if(task.id === t.id) t.changeCompleted();
