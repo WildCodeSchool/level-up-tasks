@@ -71,15 +71,12 @@ h3 {
 }
 
 
-@media screen and (max-width: 768px){
+@media screen and (min-width: 768px){
   main{
-    min-height: calc(100vh - $header-height - $footer-desktop-height);
+    min-height: calc(100% - $header-height - $footer-desktop-height);
   }
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
