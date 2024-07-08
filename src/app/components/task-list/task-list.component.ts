@@ -26,11 +26,7 @@ export class TaskListComponent {
   expService = inject(ExpeditionService);
   @Input()
   filterValue:string = "";
-
-  ngOnInit():void{
-
-  }
-
+  
   changeState(): void { 
     (this.height === '0') ? this.height = '100%' : this.height = '0';
     this.isActive = !this.isActive;
@@ -39,12 +35,14 @@ export class TaskListComponent {
   onReceiveNewTask(event:Task,id:number) : void {
     this.taskService.addTask(event,id).subscribe((task) => {
       this.expedition.tasks = [...this.expedition.tasks,task];
-      });
+      this.expService.updateTaskCounters([this.expedition]);
+    });
   }
 
   onReceiveDeleteTask(expId:number,taskId:number) : void {
     this.taskService.deleteTask(expId,taskId).subscribe(()=>{
-      this.expedition.tasks = this.expedition.tasks.filter(t => t.id !== taskId);
+      this.expedition.tasks = this.expedition.tasks.filter(t => t.id !== taskId)
+      this.expService.updateTaskCounters([this.expedition]);;
     });
 
   

@@ -47,8 +47,9 @@ export class TaskPageComponent {
   }
   
   onReceiveNewExpedition(event : Expedition){
-    this.expeditionService.addExpedition(event, this.user?.id || 0).subscribe((ex) => {
+      this.expeditionService.addExpedition(event, this.user?.id || 0).subscribe((ex) => {
       this.expeditionList.push(ex);
+
     });
   }
   

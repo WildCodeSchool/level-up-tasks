@@ -31,8 +31,9 @@ export class TaskComponent {
   }
   completeTask(){
     if(this.expedition === undefined) return;
-    this.expService.completeTask(this.task.id,this.expedition.id).subscribe();
-    this.task.completed = true;
+    this.expService.completeTask(this.task.id,this.expedition.id).subscribe(()=>{
+    this.expService.updateTaskCounters([this.expedition as Expedition]);
+    });
   }
   
   deleteTask() : void{

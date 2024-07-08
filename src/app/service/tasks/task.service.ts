@@ -1,4 +1,4 @@
-import { EventEmitter, inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
