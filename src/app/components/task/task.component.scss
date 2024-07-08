@@ -185,3 +185,36 @@
 .Haute{
     background-color: #DF9191;
 }
+
+
+.app-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $secondary-backround-color;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  textarea, input, select {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  button[type="submit"] {
+    background:$main-background-color;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

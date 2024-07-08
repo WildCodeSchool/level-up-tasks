@@ -2,15 +2,16 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { ModalComponent } from '../modal/modal.component';
 import { CommonModule } from '@angular/common';
+import { TaskService } from '../../service/tasks/task.service';
+import { FormsModule } from '@angular/forms';
 import { Priority } from '../../model/priority/Priority';
 import { ExpeditionService } from '../../service/expedition/expedition.service';
 import { Expedition } from '../../model/expedition/expedition';
-import { TaskService } from '../../service/tasks/task.service';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [ModalComponent, CommonModule],
+  imports: [ModalComponent, CommonModule, FormsModule],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -20,6 +21,9 @@ export class TaskComponent {
   expService = inject(ExpeditionService);
   taskService = inject(TaskService);
   expedition?:Expedition;
+  isEditTaskModalOpen : boolean = false;
+  priorities = Object.values(Priority);
+
   @Input() public task !: Task;
   
   @Output()
@@ -44,4 +48,14 @@ export class TaskComponent {
   toggleDeleteTaskModal() : void {
     this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
+  
+  toggleTaskModal(task: Task): void {
+    this.task = task;
+    this.isEditTaskModalOpen = !this.isEditTaskModalOpen;
+  }
+
+  onSubmit(): void {
+    this.isEditTaskModalOpen = !this.isEditTaskModalOpen;
+  }
+
 }
