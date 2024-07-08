@@ -3,26 +3,18 @@
 footer{
     z-index: 10;
     background-color:$navbar-color;
-    min-height: 10vh;
-    margin: 0;
-    position: relative;
-    bottom: 0;
     width: 100%;
     padding: 16px;
     .footer-text{
         display: flex;
         flex-direction: column;
         align-items: center;
-        p{
-            
-        color: $light-text-color;
-        font-size: 1.2rem;
-        margin-top: 4px;
+        p{     
+            color: $light-text-color;
+            font-size: 1.2rem;
+            margin-top: 4px;
         }
-
-
-    }
-    
+    } 
 }
 
 @media screen and (min-width: 768px){

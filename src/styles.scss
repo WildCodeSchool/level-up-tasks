@@ -18,7 +18,7 @@ body {
   padding: 0;
   background-color: $main-background-color;
   main{
-    min-height: calc(90vh - 65px);
+    min-height: calc(100% - $header-height - $footer-mobile-height);
   }
 }
 a,
@@ -73,7 +73,7 @@ h3 {
 
 @media screen and (max-width: 768px){
   main{
-    min-height: calc(90vh - 47px);
+    min-height: calc(100vh - $header-height - $footer-desktop-height);
   }
 }
 
