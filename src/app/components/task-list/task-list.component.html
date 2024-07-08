@@ -15,7 +15,7 @@
             <li *ngFor="let task of expedition.tasks | taskFilter:filterValue:filterValue:filterValue" >
                 <app-task [task]="task" 
                 (deleteTaskToParent)="onReceiveDeleteTask(expedition.id,task.id)"
-                (editTaskToParent)="onReceiveEditTask($event, expedition.id)">
+                (editTaskToParent)="onReceiveEditTask(task, expedition.id)">
             </app-task>
             </li>
         </ul>

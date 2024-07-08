@@ -35,22 +35,21 @@ export class TaskListComponent {
   onReceiveNewTask(event:Task,id:number) : void {
     this.taskService.addTask(event,id).subscribe((task) => {
       this.expedition.tasks = [...this.expedition.tasks,task];
-      this.expService.updateTaskCounters([this.expedition]);
     });
   }
 
   onReceiveDeleteTask(expId:number,taskId:number) : void {
     this.taskService.deleteTask(expId,taskId).subscribe(()=>{
       this.expedition.tasks = this.expedition.tasks.filter(t => t.id !== taskId)
-      this.expService.updateTaskCounters([this.expedition]);;
     });
-  }
-    onReceiveEditTask(updatedTask: Task, expId: number): void {
-      this.taskService.updateTask(updatedTask, expId).subscribe((task) => {
-        const index = this.expedition.tasks.findIndex(t => t.id === task.id);
-        if (index !== -1) {
-          this.expedition.tasks[index] = task;
-        }
-      });
+}
+onReceiveEditTask(updatedTask: Task, expId: number): void {
+  this.taskService.updateTask(updatedTask, expId).subscribe((task) => {
+    const index = this.expedition.tasks.findIndex(t => t.id === task.id);
+    if (index !== -1) {
+      this.expedition.tasks[index] = task;
     }
-  }
+  });
+}
+  
+}

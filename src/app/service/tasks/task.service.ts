@@ -25,4 +25,8 @@ export class TaskService {
   getTaskExpedition(taskIs:number) : Observable<Expedition> {
     return this.httpClient.get<Expedition>(`${this.apiUrl}/tasks/${taskIs}/expedition`);
   }
+  updateTask(task: Task, expId: number): Observable<Task> {
+   return this.httpClient.put<Task>(`${this.apiUrl}/expeditions/${expId}/tasks/${task.id}`, task);
+  }
+
 }
