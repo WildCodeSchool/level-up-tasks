@@ -1,7 +1,8 @@
-import { EventEmitter, inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Task } from '../../model/task/task';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Expedition } from '../../model/expedition/expedition';
 
 
 @Injectable({
@@ -21,10 +22,11 @@ export class TaskService {
      return this.httpClient.delete<Task>(`${this.apiUrl}/expeditions/${expId}/tasks/${taskId}`)
   }
 
-  // toggleTaskComplete(task : Task) : void {
-  //   this.tasks.filter( (t, index) => {
-  //     if(task.id === t.id) t.changeCompleted();
-  //   });
-  //   this.taskUpdated.emit(this.tasks);
-  // }
+  getTaskExpedition(taskIs:number) : Observable<Expedition> {
+    return this.httpClient.get<Expedition>(`${this.apiUrl}/tasks/${taskIs}/expedition`);
+  }
+  updateTask(task: Task, expId: number): Observable<Task> {
+   return this.httpClient.put<Task>(`${this.apiUrl}/expeditions/${expId}/tasks/${task.id}`, task);
+  }
+
 }

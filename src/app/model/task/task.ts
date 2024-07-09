@@ -5,17 +5,10 @@ export class Task {
     public id: number,
     public description: string,
     public deadline: Date,
-    private completed: boolean,
+    public completed: boolean,
     public priority: Priority = Priority.Bas,
     public completedAt :Date,
   ) {
   }
 
-  public isCompleted() : boolean {
-    return this.completed;
-  }
-
-  public changeCompleted() {
-    this.completed = !this.completed;
-  }
 }
