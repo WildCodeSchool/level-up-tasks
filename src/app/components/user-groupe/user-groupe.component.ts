@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Group } from '../../model/groupes/groupe';
 import { GroupService } from '../../service/group/group.service';
 import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-dialog.component';
 import { EditGroupDialogComponent } from '../edit-group-dialog/edit-group-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { group } from 'console';
 
 @Component({
   selector: 'app-user-groupe',
@@ -16,8 +17,10 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './user-groupe.component.html',
   styleUrl: './user-groupe.component.scss'
 })
-export class UserGroupeComponent  implements OnInit {
+export class UserGroupeComponent   {
   groups: Group[] = [];
+  groupservice = inject(GroupService);
+  
 
   constructor(private groupService: GroupService, public dialog: MatDialog) {}
 
@@ -41,6 +44,7 @@ export class UserGroupeComponent  implements OnInit {
      }
 
   openEditGroupDialog(group: Group, index: number): void {
+    console.log(group);
     const dialogRef = this.dialog.open(EditGroupDialogComponent, {
       width: '450px',
       data: { group }
@@ -54,7 +58,10 @@ export class UserGroupeComponent  implements OnInit {
   }
 
   deleteGroup(index: number): void {
-    this.groupService.deleteGroup(index);
+    const groupId = this.groups[index].idgroup;
+    this.groupService.deleteGroup(groupId).subscribe(() => {
+      this.groups.splice(index, 1);
+    });
   }
 }
 

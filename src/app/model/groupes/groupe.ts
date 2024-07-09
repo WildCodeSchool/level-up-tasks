@@ -1,14 +1,15 @@
 import { User } from "../user/user";
 
+export interface userHasGroups
+{ id:number,
+  user:User;}
 
 export class Group {
-  id?: number;
-  name: string;
-  members: User[];
-
-  constructor(name: string, members: User[], id?: number) {
-    this.id = id;
-    this.name = name;
-    this.members = members;
-  }
+ 
+  constructor(
+    public idgroup: number,
+    public  name: string,
+    public userHasGroups : userHasGroups[]
+   
+){}
 }

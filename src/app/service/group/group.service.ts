@@ -1,5 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, of, tap } from 'rxjs';
+import { Injectable,} from '@angular/core';
+import {  Observable,} from 'rxjs';
 import { Group } from '../../model/groupes/groupe';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,44 +8,32 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GroupService {
-  private groupsSubject: BehaviorSubject<Group[]> = new BehaviorSubject<Group[]>([]);
-  private groups: Group[] = [];
+  private baseUrl = 'http://localhost:8080/groupes'; 
 
-  constructor() { 
-    this.groupsSubject.next(this.groups);
-  }
+  constructor(private http: HttpClient) { }
+
+
+
   getGroups(): Observable<Group[]> {
-    return  this.groupsSubject.asObservable();
+    return this.http.get<Group[]>(`${this.baseUrl}`);
+  }
+  createGroup(group: Group): Observable<Group> {
+    return this.http.post<Group>(`${this.baseUrl}`, group);
   }
 
-  createGroup(group: Group): Observable<Group>  {
-    group.members = group.members.map(member => ({...member,avatarUrl: 'assets/pictures/photo.png'}));
-    this.groups.push(group);
-    this.groupsSubject.next(this.groups);
-    return new BehaviorSubject<Group>(group).asObservable();
+  deleteGroup(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
+  getGroupById(id: number): Observable<Group> {
+    return this.http.get<Group>(`${this.baseUrl}/${id}`);
+  }
   
-  deleteGroup(index: number): void {
-    this.groups.splice(index, 1);
-    
+  updateUserToGroupe(id: number ,listEmail:String[] ){
+    return this.http.put(`${this.baseUrl}/${id}/addUser`,listEmail);
   }
-
-
-  getGroupById(id: number): Observable<Group | undefined> {
-    const group = this.groups.find(g => g.id === id);
-    return of(group);
-  }
-
-  updateGroup(updatedGroup: Group): Observable<Group> {
-    const index = this.groups.findIndex(g => g.id === updatedGroup.id);
-    if (index !== -1) {
-      this.groups[index] = updatedGroup;
-      this.groupsSubject.next(this.groups);
-      return of(updatedGroup);
-    }
-    return of(updatedGroup);
-  }
+ 
+ 
 }
 
     
