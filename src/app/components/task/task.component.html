@@ -13,8 +13,8 @@
             <p class="priority" [ngClass]="task.priority">{{task.priority}}</p>
         </div>
     </div>
-    <button (click)="toggleTaskModal(task)">Edit</button>
-    <button class="task-delete-button" (click)="toggleDeleteTaskModal()">X</button>
+    <button class="edit-delete-button" (click)="toggleTaskModal(task)">Edit</button>
+    <button class="edit-delete-button" (click)="toggleDeleteTaskModal()">X</button>
 </div>
 
 <app-modal id="add-task-modal" *ngIf="isDeleteModalOpen" (closeModal)="toggleDeleteTaskModal()">

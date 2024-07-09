@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'inika', sans-serif;
   margin: 0;
   padding: 0;
   background-color: $main-background-color;
@@ -33,6 +33,7 @@ select {
   border: none;
   outline: none;
   display: block;
+  font-family:'jetbrains mono', monospace;
 }
 
 

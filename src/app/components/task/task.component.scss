@@ -117,7 +117,7 @@
     transform: translate(0);
 }
 
-.task-delete-button{
+.edit-delete-button{
     cursor: pointer;
     align-self: flex-start;
     padding-left: 8px;
@@ -126,12 +126,12 @@
     color: $navbar-color;
 }
 
-.task-delete-button:hover{
+.edit-delete-button:hover{
     color: $title-text-color;
     font-weight: bolder;
 }
 
-.task-delete-button:active{
+.edit-delete-button:active{
     transform: scale(0.9);
 }
 
