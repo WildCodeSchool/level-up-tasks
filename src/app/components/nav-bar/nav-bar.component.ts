@@ -21,7 +21,7 @@ export class NavBarComponent {
   router:Router = inject(Router);
   userInfo: any = {};
   ngOnInit():void{
-    this.userInfo = this.tokenService.getUserId();
+    this.userInfo = this.tokenService.getUserInfo();
     this.onResize();
   }
   

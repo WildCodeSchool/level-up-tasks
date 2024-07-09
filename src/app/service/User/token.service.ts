@@ -15,7 +15,7 @@ export class TokenService {
   }
 }
 
-  getUserId(): any {
+  getUserInfo(): any {
     const decodedToken = this.getDecodedToken();
     if (decodedToken) {
       return {

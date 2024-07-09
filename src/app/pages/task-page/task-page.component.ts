@@ -36,7 +36,7 @@ export class TaskPageComponent {
   userInfo:any;
   
   ngOnInit():void{
-    this.userInfo = this.tokenService.getUserId();
+    this.userInfo = this.tokenService.getUserInfo();
     this.getUserExpeditions();
     this.expeditionService.refreshRequired.subscribe(response => {
       this.getUserExpeditions();
