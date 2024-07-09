@@ -8,6 +8,7 @@ import { NgIf } from '@angular/common';
 import { dataIcon } from './icons';
 import { UserService } from '../../service/User/user.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { TokenService } from '../../service/User/token.service';
 
 @Component({
   selector: 'app-profile',
@@ -29,6 +30,7 @@ export class ProfileComponent {
   icons = dataIcon;
   private route: ActivatedRoute = inject(ActivatedRoute);
   private userService:UserService = inject(UserService);
+  private tokenService = inject(TokenService);
   user?: User;
   foundedId: number = 0;
   errormsg = '';

@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { User } from '../../model/user/user';
 
 @Injectable({
@@ -12,34 +12,31 @@ export class AuthenticationService {
 
   constructor() { }
 
-  public login(email:string, password:string):Observable<User> {
-    return this.httpClient.post<any>(`${this.apiUrl}/users/login`,{ email, password }).pipe(map((user:User) => {
-    if(typeof window != undefined){
-     localStorage.setItem('currentUser', JSON.stringify(user));
+  public login(email:string, password:string):Observable<any> {
+    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpClient.post<any>(`${this.apiUrl}/users/login`,{ email, password },{headers,responseType: 'text' as 'json'}).pipe(tap(response => {
+    if(response && typeof window != undefined){
+     localStorage.setItem('token', response);
     }
-     return user;
    }));
   }
 
-  public isLogged(): boolean {
-    if(typeof(Storage) !== "undefined"){
-      return localStorage.getItem('currentUser') !== null;
-    }
-    return false;
-  }
- 
-  public getUser(): User {
-    if(typeof(Storage) !== "undefined"){
-      return JSON.parse(localStorage.getItem('currentUser') || '{}');
-
-    }else{
-      return {} as User;
+  logout() {
+    if(typeof window != undefined){
+      localStorage.removeItem('token');
     }
   }
 
- 
+  getToken(): string | null {
+    if(typeof(Storage) !== "undefined"){
+      return localStorage.getItem('token');
+    }
+    return null;
+  }
 
- public logout():void {
-  localStorage.removeItem('currentUser');
-}
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+
 }

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Expedition } from '../../model/expedition/expedition';
 import { AuthenticationService } from '../../service/User/authentication.service';
+import { User } from '../../model/user/user';
 
 @Component({
   selector: 'app-add-expedition',
@@ -17,8 +18,8 @@ export class AddExpeditionComponent {
   isExpeditionModalOpen : boolean = false;
   title : string = "";
   authService:AuthenticationService = inject(AuthenticationService);
-  user = this.authService.getUser();
-
+  //user = this.authService.getUser();
+  user!:User ;
   ngOnInit():void{
     
 

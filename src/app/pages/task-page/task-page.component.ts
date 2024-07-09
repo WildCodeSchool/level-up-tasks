@@ -12,6 +12,7 @@ import { UserService } from '../../service/User/user.service';
 import { AddTaskComponent } from '../../components/add-task/add-task.component';
 import { TaskService } from '../../service/tasks/task.service';
 import { ExpeditionService } from '../../service/expedition/expedition.service';
+import { TokenService } from '../../service/User/token.service';
 
 
 interface SideNavToggle{
@@ -27,27 +28,26 @@ interface SideNavToggle{
 })
 export class TaskPageComponent {
   private expeditionService = inject(ExpeditionService);
-  private authService = inject(AuthenticationService);
+  private tokenService = inject(TokenService);
   expeditionList : Expedition[] = [];
-  user?:User;
   userService = inject(UserService);
   taskService = inject(TaskService);
   filterValue: string = "";
+  userInfo:any;
   
   ngOnInit():void{
-    this.user = this.authService.getUser();
+    this.userInfo = this.tokenService.getUserId();
     this.getUserExpeditions();
   }
 
   getUserExpeditions(){
-    if(!this.user) return;
-    this.userService.getUserExpeditions(this.user.id).subscribe((expeditions) => {
+    this.userService.getUserExpeditions(this.userInfo.id).subscribe((expeditions) => {
       this.expeditionList = expeditions;
     });
   }
   
   onReceiveNewExpedition(event : Expedition){
-      this.expeditionService.addExpedition(event, this.user?.id || 0).subscribe((ex) => {
+      this.expeditionService.addExpedition(event, this.userInfo.id || 0).subscribe((ex) => {
       this.expeditionList.push(ex);
 
     });

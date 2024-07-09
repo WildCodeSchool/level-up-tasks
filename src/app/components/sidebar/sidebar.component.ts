@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.user = this.authService.getUser();
+    //this.user = this.authService.getUser();
     if(typeof window !== 'undefined'){
       this.screenWidth = window.innerWidth;
       if(this.screenWidth < 768){
