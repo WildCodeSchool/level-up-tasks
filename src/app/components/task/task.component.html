@@ -1,6 +1,6 @@
 <div class="task-container">
     <label class="checkbox-container">
-        <!-- <input type="checkbox" [checked]="task.isCompleted()" (change)="toggleTaskComplete()"/>  -->
+        <input type="checkbox" [checked]="task.completed" (change)="completeTask()"/> 
         <div class="checkmark-container">
             <div class="checkmark"></div>
         </div>    
