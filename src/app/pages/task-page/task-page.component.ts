@@ -37,6 +37,12 @@ export class TaskPageComponent {
   ngOnInit():void{
     this.user = this.authService.getUser();
     this.getUserExpeditions();
+    this.expeditionService.refreshRequired.subscribe(response => {
+      this.getUserExpeditions();
+    });
+    this.taskService.refreshRequired.subscribe(response => {
+      this.getUserExpeditions();
+    });
   }
 
   getUserExpeditions(){
