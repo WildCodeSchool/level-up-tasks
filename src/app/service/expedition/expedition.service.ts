@@ -70,4 +70,12 @@ export class ExpeditionService {
     return this.httpClient.get<Expedition>(`${this.apiUrl}/expeditions/${id}`);
   }
 
+  deleteExpedition(id:number) : Observable<Expedition> {
+    return this.httpClient.delete<Expedition>(`${this.apiUrl}/expeditions/${id}`).pipe(
+      tap(() => {
+        this.refreshRequired.next();
+      })
+    );
+  }
+
 }

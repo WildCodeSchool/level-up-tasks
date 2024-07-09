@@ -8,13 +8,14 @@ import { TaskService } from '../../service/tasks/task.service';
 import { Expedition } from '../../model/expedition/expedition';
 import { ExpeditionService } from '../../service/expedition/expedition.service';
 import { TaskFilterPipe } from "../../pipes/task-filter.pipe";
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
     selector: 'app-task-list',
     standalone: true,
     templateUrl: './task-list.component.html',
     styleUrl: './task-list.component.scss',
-    imports: [CommonModule, TaskComponent, AddTaskComponent, TaskFilterComponent, TaskFilterPipe]
+    imports: [CommonModule, TaskComponent, AddTaskComponent, TaskFilterComponent, TaskFilterPipe,ModalComponent]
 })
 export class TaskListComponent {
   @Input()
@@ -26,6 +27,7 @@ export class TaskListComponent {
   expService = inject(ExpeditionService);
   @Input()
   filterValue:string = "";
+  isDeleteModalOpen : boolean = false;
   
   changeState(): void { 
     (this.height === '0') ? this.height = '100%' : this.height = '0';
@@ -51,5 +53,15 @@ onReceiveEditTask(updatedTask: Task, expId: number): void {
     }
   });
 }
+
+deleteExp(id:number):void{
+  this.expService.deleteExpedition(id).subscribe(()=>{
+    this.expService.refreshRequired.next();
+  });
+}
+toogleDeleteExp():void{
+  this.isDeleteModalOpen = !this.isDeleteModalOpen;
+}
+
   
 }
