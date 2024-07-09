@@ -18,7 +18,7 @@ export class LoginComponent {
   isPasswordHidden = true;
   errorMsg='';
   loginError = false;
-  token: any = {};
+  id = 0;
   private authService:AuthenticationService = inject(AuthenticationService);
   private tokenService = inject(TokenService);
   constructor(private fb: FormBuilder, private router: Router) {
@@ -37,8 +37,8 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login( email, password).subscribe({
         next: () => {
-         this.token = this.tokenService.getUserInfo();
-          this.router.navigate([`/profile/${this.token.id}`]);
+         this.id = this.tokenService.getUserInfo().id;
+          this.router.navigate([`/profile/${this.id}`]);
         },
         error: err => this.errorMsg = 'Email ou mot de passse incorret'
       });

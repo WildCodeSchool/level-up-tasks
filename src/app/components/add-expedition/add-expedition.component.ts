@@ -21,10 +21,10 @@ export class AddExpeditionComponent {
   tokenService:TokenService = inject(TokenService);
   user!:User;
 
-  userInfo:any ;
+  id=0;
   ngOnInit():void{
-    this.userInfo = this.tokenService.getUserInfo();
-    this.userService.getById(this.userInfo.id).subscribe((user:User) => {
+    this.id = this.tokenService.getUserInfo().id;
+    this.userService.getById(this.id).subscribe((user:User) => {
       this.user = user;
     });
 

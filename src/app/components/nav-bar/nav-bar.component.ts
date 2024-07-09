@@ -19,9 +19,9 @@ export class NavBarComponent {
   public isMobileView!: boolean;
   public innerWidth: any;
   router:Router = inject(Router);
-  userInfo: any = {};
+  id =0;
   ngOnInit():void{
-    this.userInfo = this.tokenService.getUserInfo();
+    this.id = this.tokenService.getUserInfo().id;
     this.onResize();
   }
   
