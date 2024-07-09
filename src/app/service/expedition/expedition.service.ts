@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Expedition } from '../../model/expedition/expedition';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { Task } from '../../model/task/task';
 
 @Injectable({
@@ -12,6 +12,11 @@ export class ExpeditionService {
   httpClient:HttpClient = inject(HttpClient);
   constructor() { }
 
+  private _refreshrequired = new Subject<void>();
+
+  get refreshRequired() {
+    return this._refreshrequired;
+  }
   
   private taskTotalSubject = new BehaviorSubject<number>(0);
   private taskAssignedSubject = new BehaviorSubject<number>(0);
@@ -54,7 +59,11 @@ export class ExpeditionService {
   }
 
   completeTask(expId:number,taskId:number) : Observable<Task> {
-    return this.httpClient.post<Task>(`${this.apiUrl}/expeditions/complete/${expId}/${taskId}`,null);
+    return this.httpClient.post<Task>(`${this.apiUrl}/expeditions/complete/${expId}/${taskId}`,null).pipe(
+      tap(() => {
+        this.refreshRequired.next();
+      })
+    );
   }
 
   getById(id:number) : Observable<Expedition> {
