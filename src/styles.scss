@@ -7,7 +7,7 @@
   padding: 0;
   box-sizing: border-box;
   color: inherit;
-  font-family: "Roboto", sans-serif;
+  font-family: 'inika', sans-serif;
   font-weight: inherit;
   font-size: inherit;
 }
@@ -17,9 +17,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: $main-background-color;
-  main{
-    min-height: calc(100% - $header-height - $footer-mobile-height);
-  }
 }
 a,
 a:visited {
@@ -29,7 +26,6 @@ a:visited {
 
 button,
 input {
-  font-family: 'jetbrains mono', monospace;
   font-size: inherit;
   color: inherit;
   background-color: transparent;
@@ -44,9 +40,7 @@ li,
 p,
 label,
 span {
-
   list-style: none;
-  font-family: 'inika', sans-serif;
   font-size: 1.3rem;
 }
 
@@ -70,13 +64,13 @@ h3 {
   font-family:'jetbrains mono', monospace;
 }
 
+main{
+  min-height: calc(100vh - $header-height - $footer-mobile-height);
+  height: 100%;
+}
 
 @media screen and (min-width: 768px){
   main{
-    min-height: calc(100% - $header-height - $footer-desktop-height);
+    min-height: calc(100vh - $header-height - $footer-desktop-height);
   }
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-

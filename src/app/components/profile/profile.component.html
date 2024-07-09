@@ -13,7 +13,7 @@
 </section>
 <section class="reward" *ngIf="user">
   <app-progress-bar [result]="user.rewardPercentage"></app-progress-bar>
-  <button><a [routerLink]="['/reward']"></a>Voir les recompences</button>
+  <button disabled><a [routerLink]="['/reward']"></a>Voir les recompences</button>
 </section>
 
 @if (isModalOpen) {
