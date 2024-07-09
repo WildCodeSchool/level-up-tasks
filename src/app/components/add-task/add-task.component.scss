@@ -67,6 +67,7 @@ app-modal form button {
   background-color: $dark-text-color;
   font-size: 32px;
   font-weight: bolder;
+  margin-top: 0.5rem;
 }
 
 app-modal form button:active {
@@ -80,8 +81,16 @@ app-modal form button:disabled {
 .niveau{
   color: $navbar-color;
   font-size: 20px;
+  height: 28px;
 }
 
 select {
-  font-size: medium;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: $light-text-color;
+  height: 36px;
+  padding: 4px;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
 }

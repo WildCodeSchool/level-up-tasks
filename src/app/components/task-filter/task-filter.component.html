@@ -1,6 +1,6 @@
 <div class="task-filter">
     <div class="filterForm" >
-     <div class="filter-description">
+      <div class="filter-description">
          @for (icon of icons; track icons) {
              <button > <i [class]="icon.class"></i> </button>
          }
@@ -15,8 +15,8 @@
              [(ngModel)]="description"
              (input)="onFilterDescriptions()"
              />
-     </div>
-     <div class="date-level">
+      </div>
+      <div class="date-level">
          <div class="filter-date">
            <input
              type="date"
@@ -41,6 +41,6 @@
                }
              </select>
            </label>
-         </div>
+      </div>
     </div>
- </div>
+</div>

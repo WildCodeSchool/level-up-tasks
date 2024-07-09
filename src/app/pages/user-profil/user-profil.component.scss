@@ -1,2 +1,11 @@
+@use "../../../import" as *;
 
+.main-content {
+    padding: 1rem;
+}
  
+@media (min-width: 768px) {
+    .main-content {
+        margin-left: $sidenav-width;
+    }
+}
