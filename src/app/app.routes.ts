@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { TeamsComponent } from './pages/teams/teams.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UserProfilComponent } from './pages/user-profil/user-profil.component';
+import { AuthGuard } from './service/guard/auth.guard';
 
 
 export const routes: Routes = [
@@ -27,6 +28,7 @@ export const routes: Routes = [
   {
     path: 'taches',
     component: TaskPageComponent,
+    canActivate : [AuthGuard]
   },
 
   {
@@ -43,8 +45,9 @@ export const routes: Routes = [
    },
 
   {
-    path:'profil/:id',
+    path:'profile/:id',
     component: UserProfilComponent,
+    canActivate : [AuthGuard]
   }
 
 

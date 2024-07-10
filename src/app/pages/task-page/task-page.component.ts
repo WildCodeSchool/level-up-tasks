@@ -12,6 +12,7 @@ import { UserService } from '../../service/User/user.service';
 import { AddTaskComponent } from '../../components/add-task/add-task.component';
 import { TaskService } from '../../service/tasks/task.service';
 import { ExpeditionService } from '../../service/expedition/expedition.service';
+import { TokenService } from '../../service/User/token.service';
 
 
 interface SideNavToggle{
@@ -27,15 +28,15 @@ interface SideNavToggle{
 })
 export class TaskPageComponent {
   private expeditionService = inject(ExpeditionService);
-  private authService = inject(AuthenticationService);
+  private tokenService = inject(TokenService);
   expeditionList : Expedition[] = [];
-  user?:User;
   userService = inject(UserService);
   taskService = inject(TaskService);
   filterValue: string = "";
+  id =0;
   
   ngOnInit():void{
-    this.user = this.authService.getUser();
+    this.id = this.tokenService.getUserInfo().id;
     this.getUserExpeditions();
     this.expeditionService.refreshRequired.subscribe(response => {
       this.getUserExpeditions();
@@ -46,14 +47,13 @@ export class TaskPageComponent {
   }
 
   getUserExpeditions(){
-    if(!this.user) return;
-    this.userService.getUserExpeditions(this.user.id).subscribe((expeditions) => {
+    this.userService.getUserExpeditions(this.id).subscribe((expeditions) => {
       this.expeditionList = expeditions;
     });
   }
   
   onReceiveNewExpedition(event : Expedition){
-      this.expeditionService.addExpedition(event, this.user?.id || 0).subscribe((ex) => {
+      this.expeditionService.addExpedition(event, this.id).subscribe((ex) => {
       this.expeditionList.push(ex);
 
     });

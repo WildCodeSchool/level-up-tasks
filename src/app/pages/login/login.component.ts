@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../service/User/user.service';
 import { AuthenticationService } from '../../service/User/authentication.service';
+import { TokenService } from '../../service/User/token.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,9 @@ export class LoginComponent {
   isPasswordHidden = true;
   errorMsg='';
   loginError = false;
+  id = 0;
   private authService:AuthenticationService = inject(AuthenticationService);
+  private tokenService = inject(TokenService);
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -33,20 +35,12 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      this.authService.login(email, password).pipe().subscribe({
-        next: (data) => {
-          if (data) {
-            this.router.navigate([`/profil/${data.id}`]);
-          } else {
-            this.errorMsg = 'Email ou mot de passe incorrect.';
-            this.loginError = true;
-          }
+      this.authService.login( email, password).subscribe({
+        next: () => {
+         this.id = this.tokenService.getUserInfo().id;
+          this.router.navigate([`/profile/${this.id}`]);
         },
-        error: (error) => {
-          this.errorMsg =  "Email ou mot de passe incorrect.";
-          this.loginError = true;
-        }
-       
+        error: err => this.errorMsg = 'Email ou mot de passse incorret'
       });
     } else {
       this.errorMsg = 'Veuillez remplir correctement tous les champs du formulaire.';
