@@ -7,6 +7,7 @@ import { User } from '../../model/user/user';
 import { AuthenticationService } from '../../service/User/authentication.service';
 import { TokenService } from '../../service/User/token.service';
 import { UserService } from '../../service/User/user.service';
+import { UserInfo } from '../../model/user/token';
 
 interface SideNavToggle{
   screenWidth:number;
@@ -26,7 +27,7 @@ export class SidebarComponent implements OnInit{
   screenWidth = 0 ;
   navData=sidebarData;
   user?:User;
-  id = 0;
+  userInfo!:UserInfo | null;
   userService:UserService = inject(UserService);
   tokenService = inject(TokenService);
   @HostListener('window:resize',['$event'])
@@ -37,8 +38,8 @@ export class SidebarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.id = this.tokenService.getUserInfo().id;
-    this.userService.getById(this.id).subscribe((user:User) => {
+    this.userInfo = this.tokenService.getUserInfo();
+    this.userService.getById(this.userInfo!.id).subscribe((user:User) => {
       this.user = user;
     });
     if(typeof window !== 'undefined'){
