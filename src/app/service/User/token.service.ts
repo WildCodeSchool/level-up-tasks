@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { UserInfo } from '../../model/user/token';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,11 @@ export class TokenService {
   }
 }
 
-  getUserInfo(): any {
+  getUserInfo(): UserInfo | null {
     const decodedToken = this.getDecodedToken();
     if (decodedToken) {
       return {
-       username: decodedToken.user_fullName,
+        fullName: decodedToken.user_fullName,
         id: decodedToken.user_id
       };
     }

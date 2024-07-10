@@ -1,5 +1,13 @@
 @use "./../../../import" as *;
+@use "../../../assets/btns.scss" as *;
 
+.expedition{
+    display: flex;
+    justify-content: space-between;
+    h1{
+        padding-right: 15px;
+    }
+}
 .task-list-expendable {
     overflow: hidden;
 }
