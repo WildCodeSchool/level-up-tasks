@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit{
   screenWidth = 0 ;
   navData=sidebarData;
   user?:User;
-  userInfo:any;
+  id = 0;
   userService:UserService = inject(UserService);
   tokenService = inject(TokenService);
   @HostListener('window:resize',['$event'])
@@ -37,8 +37,8 @@ export class SidebarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.userInfo = this.tokenService.getUserInfo();
-    this.userService.getById(this.userInfo.id).subscribe((user:User) => {
+    this.id = this.tokenService.getUserInfo().id;
+    this.userService.getById(this.id).subscribe((user:User) => {
       this.user = user;
     });
     if(typeof window !== 'undefined'){

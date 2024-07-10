@@ -33,10 +33,10 @@ export class TaskPageComponent {
   userService = inject(UserService);
   taskService = inject(TaskService);
   filterValue: string = "";
-  userInfo:any;
+  id =0;
   
   ngOnInit():void{
-    this.userInfo = this.tokenService.getUserInfo();
+    this.id = this.tokenService.getUserInfo().id;
     this.getUserExpeditions();
     this.expeditionService.refreshRequired.subscribe(response => {
       this.getUserExpeditions();
@@ -47,13 +47,13 @@ export class TaskPageComponent {
   }
 
   getUserExpeditions(){
-    this.userService.getUserExpeditions(this.userInfo.id).subscribe((expeditions) => {
+    this.userService.getUserExpeditions(this.id).subscribe((expeditions) => {
       this.expeditionList = expeditions;
     });
   }
   
   onReceiveNewExpedition(event : Expedition){
-      this.expeditionService.addExpedition(event, this.userInfo.id || 0).subscribe((ex) => {
+      this.expeditionService.addExpedition(event, this.id).subscribe((ex) => {
       this.expeditionList.push(ex);
 
     });
