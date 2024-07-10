@@ -45,8 +45,8 @@ export class TaskListComponent {
       this.expedition.tasks = this.expedition.tasks.filter(t => t.id !== taskId)
     });
 }
-onReceiveEditTask(updatedTask: Task, expId: number): void {
-  this.taskService.updateTask(updatedTask, expId).subscribe((task) => {
+onReceiveEditTask(updatedTask: Task): void {
+  this.taskService.updateTask(updatedTask).subscribe((task) => {
     const index = this.expedition.tasks.findIndex(t => t.id === task.id);
     if (index !== -1) {
       this.expedition.tasks[index] = task;
