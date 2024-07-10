@@ -57,10 +57,8 @@ export class EditGroupDialogComponent implements OnInit{
   }
 
   loadGroupData(): void {
-   console.log(this.data.group)
     this.groupService.getGroupById(this.data.group.idgroup).subscribe(group => {
       if (group) {
-        console.log(group);
         this.totalMembers = group.userHasGroups
         .length;
         group.userHasGroups

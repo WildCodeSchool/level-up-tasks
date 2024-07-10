@@ -44,7 +44,6 @@ export class UserGroupeComponent   {
      }
 
   openEditGroupDialog(group: Group, index: number): void {
-    console.log(group);
     const dialogRef = this.dialog.open(EditGroupDialogComponent, {
       width: '450px',
       data: { group }
