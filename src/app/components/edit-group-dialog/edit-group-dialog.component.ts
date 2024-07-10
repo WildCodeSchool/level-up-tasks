@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AsyncPipe } from '@angular/common';
-import { GroupService } from '../../service/group.service';
+import { GroupService } from '../../service/group/group.service';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../service/User/user.service';
@@ -28,7 +28,7 @@ import { Observable, map, of, startWith } from 'rxjs';
   templateUrl: './edit-group-dialog.component.html',
   styleUrl: './edit-group-dialog.component.scss'
 })
-export class EditGroupDialogComponent {
+export class EditGroupDialogComponent implements OnInit{
   groupForm: FormGroup;
   totalMembers: number = 0;
   currentMember : number = 0;
@@ -39,7 +39,7 @@ export class EditGroupDialogComponent {
 
   constructor(
     private dialogRef: MatDialogRef<EditGroupDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { groupId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { group: Group },
     private fb: FormBuilder,
     private groupService: GroupService
   ) {
@@ -57,13 +57,14 @@ export class EditGroupDialogComponent {
   }
 
   loadGroupData(): void {
-    this.groupService.getGroupById(this.data.groupId).subscribe(group => {
+    this.groupService.getGroupById(this.data.group.idgroup).subscribe(group => {
       if (group) {
-        this.totalMembers = group.members.length;
-        group.members.forEach(member => {
+        this.totalMembers = group.userHasGroups
+        .length;
+        group.userHasGroups
+        .forEach(member => {
           this.membersFormArray.push(this.fb.group({
-            id: [member.id],
-            email: [member.email, Validators.required]
+            email: [member.user.email, Validators.required]
           }));
         });
         this.groupForm.patchValue({
@@ -73,7 +74,7 @@ export class EditGroupDialogComponent {
     });
   }
   get membersFormArray(): FormArray {
-    return this.groupForm.get('members') as FormArray;
+      return this.groupForm.get('members') as FormArray;
   }
 
   addMember(): void {
@@ -84,24 +85,19 @@ export class EditGroupDialogComponent {
     this.totalMembers++;
   }
   removeMember(index: number): void {
+    
     this.membersFormArray.removeAt(index);
     this.totalMembers--;
   }
 
   submit(): void {
     if (this.groupForm.valid) {
-      let newMembers : User[] = [];
-      //Temporary foreach, will be deleted after some changes in backend
-      for(let i = 0 ; i < this.totalMembers ; i++){
-        newMembers.push(this.groupForm.value.members[i].id);
+      let newMembers : string[]=[];
+      for(let member of this.groupForm.value.members){
+        newMembers.push(member.email);
       }
-      const updatedGroup: Group = {
-        id: this.data.groupId,
-        name: this.groupForm.value.name,
-        members: newMembers
-      };
-      this.groupService.updateGroup(updatedGroup).subscribe(() => {
-        this.dialogRef.close(updatedGroup);
+      this.groupService.updateUserToGroupe(this.data.group.idgroup,newMembers).subscribe(() => {
+        this.dialogRef.close();
       });
     }
   }
@@ -116,7 +112,6 @@ export class EditGroupDialogComponent {
     this.filteredUsers = this.users.filter(user => user.email.toLowerCase().includes(filterValue));
   }
 
-  //Temporary function, will be deleted after some chages in backend
   memberIdUpdate(index : number, user : User) : void {
     this.groupForm.value.members[index].id = user.id;
   }
