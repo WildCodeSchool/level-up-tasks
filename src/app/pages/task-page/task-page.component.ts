@@ -13,6 +13,7 @@ import { AddTaskComponent } from '../../components/add-task/add-task.component';
 import { TaskService } from '../../service/tasks/task.service';
 import { ExpeditionService } from '../../service/expedition/expedition.service';
 import { TokenService } from '../../service/User/token.service';
+import { UserInfo } from '../../model/user/token';
 
 
 interface SideNavToggle{
@@ -33,10 +34,10 @@ export class TaskPageComponent {
   userService = inject(UserService);
   taskService = inject(TaskService);
   filterValue: string = "";
-  id =0;
+  userInfo:UserInfo | null = null;
   
   ngOnInit():void{
-    this.id = this.tokenService.getUserInfo().id;
+    this.userInfo = this.tokenService.getUserInfo();
     this.getUserExpeditions();
     this.expeditionService.refreshRequired.subscribe(response => {
       this.getUserExpeditions();
@@ -47,13 +48,13 @@ export class TaskPageComponent {
   }
 
   getUserExpeditions(){
-    this.userService.getUserExpeditions(this.id).subscribe((expeditions) => {
+    this.userService.getUserExpeditions(this.userInfo!.id).subscribe((expeditions) => {
       this.expeditionList = expeditions;
     });
   }
   
   onReceiveNewExpedition(event : Expedition){
-      this.expeditionService.addExpedition(event, this.id).subscribe((ex) => {
+      this.expeditionService.addExpedition(event, this.userInfo!.id).subscribe((ex) => {
       this.expeditionList.push(ex);
 
     });

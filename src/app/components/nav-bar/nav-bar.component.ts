@@ -3,6 +3,7 @@ import { Component, HostListener, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../service/User/authentication.service';
 import { TokenService } from '../../service/User/token.service';
+import { UserInfo } from '../../model/user/token';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,9 +18,11 @@ export class NavBarComponent {
   public isMobileView!: boolean;
   public innerWidth: any;
   router:Router = inject(Router);
-  id =0;
+  userInfo: UserInfo | null = null;
   ngOnInit():void{
-    this.id = this.tokenService.getUserInfo().id;
+    if(this.tokenService.getUserInfo() != null){
+      this.userInfo = this.tokenService.getUserInfo();
+    }
     this.onResize();
   }
   

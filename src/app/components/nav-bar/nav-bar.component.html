@@ -15,7 +15,7 @@
                 </div>
                 <div *ngIf="isOpen" class="menu-mobile">
                     <ul class="top-items">
-                        <li *ngIf="this.authService.isLoggedIn() "><a [routerLink]="['/profile/'+id]" >Profil</a></li>
+                        <li *ngIf="this.authService.isLoggedIn() &&userInfo "><a [routerLink]="['/profile/'+userInfo.id]" >Profil</a></li>
                         <li *ngIf="this.authService.isLoggedIn()"><a [routerLink]="['/taches']">Tasks</a></li>
                         <li *ngIf="this.authService.isLoggedIn()"><a [routerLink]="['/message']">Message</a></li>
                     </ul> 
@@ -30,7 +30,7 @@
               <div  class="menu-desktop">
                 <ul>
                     <li *ngIf="this.authService.isLoggedIn()"><a [routerLink]="['/taches']">Taches</a></li>
-                    <li *ngIf="this.authService.isLoggedIn() "><a [routerLink]="['/profile/'+id]">Profil</a></li>
+                    <li *ngIf="this.authService.isLoggedIn() && userInfo"><a [routerLink]="['/profile/'+userInfo.id]">Profil</a></li>
                     <li ><a [routerLink]="['/teams']">About us</a></li>
                     <li *ngIf="!this.authService.isLoggedIn()"><a [routerLink]="['/connexion']">Connexion</a></li>
                     <li *ngIf="this.authService.isLoggedIn()"><a [routerLink]="['/logout']" (click)="logOut()">Déconnexion</a></li>
