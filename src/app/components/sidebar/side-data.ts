@@ -1,9 +1,9 @@
 export const sidebarData=[  
     {
-        routerLink:'/profil',
+        routerLink:'/profile',
         icon :'fal fa-user-circle',
         label:'Profil',
-        deadLink: 'active-link'
+        deadLink: 'dead-link'
     },
     {
         routerLink :'/taches',
