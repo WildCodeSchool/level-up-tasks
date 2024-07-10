@@ -43,7 +43,9 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login( email, password).subscribe({
         next: () => {
-            this.router.navigate([`/profile/${this.userInfo!.id}`]);
+          if(this.userInfo != null){
+            this.router.navigate([`/profile/${this.userInfo.id}`]);
+          }
         },
         error: err => this.errorMsg = 'Email ou mot de passse incorret'
       });
