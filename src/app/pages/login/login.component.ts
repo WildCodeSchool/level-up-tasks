@@ -2,8 +2,9 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../service/User/user.service';
 import { AuthenticationService } from '../../service/User/authentication.service';
+import { TokenService } from '../../service/User/token.service';
+import { UserInfo } from '../../model/user/token';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,9 @@ export class LoginComponent {
   isPasswordHidden = true;
   errorMsg='';
   loginError = false;
+  userInfo:UserInfo | null = null;
   private authService:AuthenticationService = inject(AuthenticationService);
+  private tokenService = inject(TokenService);
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,24 +32,22 @@ export class LoginComponent {
   togglePasswordVisibility() {
     this.isPasswordHidden = !this.isPasswordHidden;
   }
+  ngOnInit():void{
+    if(this.tokenService.getUserInfo() != null){
+    this.userInfo= this.tokenService.getUserInfo();
+    }
+  }
 
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      this.authService.login(email, password).pipe().subscribe({
-        next: (data) => {
-          if (data) {
-            this.router.navigate([`/profil/${data.id}`]);
-          } else {
-            this.errorMsg = 'Email ou mot de passe incorrect.';
-            this.loginError = true;
+      this.authService.login( email, password).subscribe({
+        next: () => {
+          if(this.userInfo != null){
+            this.router.navigate([`/profile/${this.userInfo.id}`]);
           }
         },
-        error: (error) => {
-          this.errorMsg =  error.message;
-          this.loginError = true;
-        }
-       
+        error: err => this.errorMsg = 'Email ou mot de passse incorret'
       });
     } else {
       this.errorMsg = 'Veuillez remplir correctement tous les champs du formulaire.';

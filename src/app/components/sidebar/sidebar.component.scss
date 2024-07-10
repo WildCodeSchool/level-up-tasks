@@ -3,57 +3,44 @@
 
 .sidenav {
     background-color:$main-background-color;
-    transition: all 1.5s ease;
+    transition: width 1.5s ease, background-color 1.5s ease;
     z-index: 1;
     top: 0;
-    width: 5rem;
+    width: $sidenav-width;
     height: 100vh;
     box-shadow: 0.063rem 0 1.25rem 0;
     position: fixed;
     padding-top: 140px; 
 
-    .logo-container{
-        display: flex;
+    .user-image-container{
         align-items :center;
-        padding: 0.938rem 0.938rem 0.938rem ;
-        width: 100%;
-    .tape{
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-    }
-    
-    .logo{
-        
-        text-align: center;
-        width: 3rem;
-        min-width: 3rem;
-        border-radius: 0.313rem;
-        font-size: 24px;
-        font-weight: 900;
-        cursor: pointer;
-        border: none;
-    }
-    .logo-text{
-        margin-left: 1.5rem;
-        font-size: 24px;
-        font-weight: 700;
-        color: $title-text-color;
-    }
-    .btn-close{
-        margin-left: auto;
-        cursor: pointer;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background-color: transparent;
-        border: none;
-        .fa-times{
-            color:$secondary-backround-color;
-            font-size: 24px;
+        padding: 1rem;
+        .user-image{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            img{
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        .btn-close{
+            margin-left: auto;
+            cursor: pointer;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: transparent;
+            border: none;
+            .fa-times{
+                color:$secondary-backround-color;
+                font-size: 24px;
+            }
         }
     }
-  }
 }
 .sidenav-Iscollapsed{
     width: 16.5625rem;
@@ -79,7 +66,7 @@
             height: 3rem;
             color: $button-color;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: width 0.3s ease;
             border-radius: 0.625rem;
            .sidenav-link-icon{
                 font-size: 22px;
@@ -91,7 +78,17 @@
             .sidenav-link-text{
                 margin-left: 1.5rem;
                 font-family: 'jetbrains mono', monospace;
+                animation: animate 1.5s linear forwards;
+                overflow: hidden;
             }
+            @keyframes animate {
+                0% { 
+                  width: 0px;
+                }
+                100% {
+                  width: 100%;
+                }
+              }
         }
     }
     .sidenav-nav-item{
@@ -102,14 +99,19 @@
     }
 }
 
-.active{
-    
+.active{ 
     .sidenav-link-icon
     .sidenav-link-text{
         color:$title-text-color;
         background-color: $navbar-color ;
        
     }
+}
+
+//dead link styling
+.dead-link {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* Media Queries for Mobile Devices */

@@ -1,6 +1,17 @@
 <section class="task-list-container">
     <div class="task-list-title" (click)="changeState()">
-        <h1>{{title}}:</h1>
+        <section class="expedition">
+            <button class="edit-delete-button" (click)="toogleDeleteExp()">X</button>
+            <h1>{{expedition.name}}:</h1>
+        </section>
+        <app-modal id="add-task-modal" *ngIf="isDeleteModalOpen" (closeModal)="toogleDeleteExp()">
+            <div class="confirmation-message">
+                <span>Voulez-vous supprimer cette expedition ?</span>
+                <button (click)="deleteExp(expedition.id)">
+                    <div class="checkmark"></div>
+                </button>
+            </div>
+        </app-modal>
         <div class="task-title-arrow">
             @if (isActive) {
                 ▾
@@ -12,10 +23,14 @@
     </div>
     <div class="task-list-expendable"  [ngStyle]="{'max-height' : height}">
         <ul class="task-list">
-            <li *ngFor="let task of filteredTasks" >
-                <app-task [task]="task" (deleteTaskToParent)="onReceiveDeleteTask($event)"></app-task>
+            <li *ngFor="let task of expedition.tasks | taskFilter:filterValue:filterValue:filterValue" >
+                <app-task [task]="task" 
+                (deleteTaskToParent)="onReceiveDeleteTask(expedition.id,task.id)"
+                (editTaskToParent)="onReceiveEditTask(task)">
+            </app-task>
             </li>
         </ul>
-        <app-add-task [expeditionId]="expedition.id" (addNewTaskToParent)="onReceiveNewTask($event)"></app-add-task>
+        <app-add-task [expeditionId]="expedition.id" (addNewTaskToParent)="onReceiveNewTask($event,expedition.id)"></app-add-task>
     </div>
+    
 </section>

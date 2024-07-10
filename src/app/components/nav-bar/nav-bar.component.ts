@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { UserService } from '../../service/User/user.service';
-import { User } from '../../model/user/user';
 import { AuthenticationService } from '../../service/User/authentication.service';
+import { TokenService } from '../../service/User/token.service';
+import { UserInfo } from '../../model/user/token';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,16 +14,16 @@ import { AuthenticationService } from '../../service/User/authentication.service
 })
 export class NavBarComponent { 
   authService:AuthenticationService = inject(AuthenticationService)
+  tokenService:TokenService = inject(TokenService)
   public isMobileView!: boolean;
   public innerWidth: any;
   router:Router = inject(Router);
-  user?:User
-  id=0;
-  isLogged =false;
+  userInfo: UserInfo | null = null;
   ngOnInit():void{
+    if(this.tokenService.getUserInfo() != null){
+      this.userInfo = this.tokenService.getUserInfo();
+    }
     this.onResize();
-    this.user = this.authService.getUser()
-    this.user ? this.isLogged : !this.isLogged
   }
   
   
@@ -47,7 +47,6 @@ export class NavBarComponent {
   }
   logOut(){
     this.authService.logout();
-    this.isLogged= false;
     this.router.navigate(['/connexion']);
     
 

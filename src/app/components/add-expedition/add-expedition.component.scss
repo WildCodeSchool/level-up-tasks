@@ -13,8 +13,8 @@
 
 .add-expedition-button h1 {
   font-weight: 700;
-  font-size: 30px;
-  color: $dark-text-color;
+  font-size: 28px;
+  margin: 0;
 }
 
 .add-expedition-button button{
@@ -24,6 +24,7 @@
   color: $main-background-color;
   border-radius: 50%;
   cursor: pointer;
+  margin-left: 0.5rem;
 }
 
 .add-expedition-button button:active{
@@ -34,6 +35,7 @@
 app-modal form {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 app-modal form textarea {

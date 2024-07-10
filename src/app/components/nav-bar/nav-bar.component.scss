@@ -4,8 +4,11 @@ header {
     position: sticky;
     top: 0;
     z-index: 8;
+    height: $header-height;
 }
-
+.message{
+    opacity: 0.5;
+}
 .nav-bar{
     display: flex;
     justify-content: space-between;
@@ -14,95 +17,91 @@ header {
     padding-left: 10px;
     padding-right: 10px;
     background-color: $navbar-color;
-
+    height: 100%;
     h2{
         font-size: 1em ;
     }
     .nav-img{
-        width: 50%;
         display: flex;
         justify-content: space-around;
         align-items: center;
         img{
             margin-right: 10px;
-            width: 40%;
+            width: 56px;
+        }
+        p {
+            margin-bottom: 4px;
         }
     }
 }
 
-    .burger-menu {
-        width: 30px;
-        height: 21px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        cursor: pointer;
-        margin-right: 3%;
+.burger-menu {
+    width: 30px;
+    height: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-right: 3%;
+}
 
+.bar {
+    height: 3px;
+    width: 100%;
+    background-color: $dark-text-color;
+    transition: all 0.3s;
+}
 
-      }
-
-      .bar {
-        height: 3px;
-        width: 100%;
-        background-color: $dark-text-color;
-        transition: all 0.3s;
-      }
-
-      .menu-mobile {
-        display: flex;
-        flex-direction: column;
-        background-color: $navbar-color;
-        position: absolute;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        height: 100%;
-        position: fixed;
-        width: 50%;
-        top: 0;
-        right: 0px;
-        bottom: 0;
-        border-radius: 2%;
-        //z-index: 3;
-       .top-items{
+.menu-mobile {
+    display: flex;
+    flex-direction: column;
+    background-color: $navbar-color;
+    position: absolute;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    position: fixed;
+    width: 50%;
+    top: 0;
+    right: 0px;
+    bottom: 0;
+    border-radius: 2%;
+    .top-items{
         position: fixed;
         top: 10%;
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
         color: $light-text-color;
+    }
+    .botom-items{
+        position: absolute;
+        bottom: 2%;
+        display: flex;
+        flex-direction: column;
+        color: $dark-text-color;
+        gap: 10px;
+    }
+}
 
-        }
-        .botom-items{
-            position: absolute;
-            bottom: 2%;
-            display: flex;
-            flex-direction: column;
-            color: $dark-text-color;
-            gap: 10px;
+.menu-mobile a {
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
 
+.burger-menu.open .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+    z-index: 9;
+}
 
-            }
-      }
+.burger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
 
-      .menu-mobile a {
-        padding: 10px 20px;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      .burger-menu.open .bar:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-       z-index: 9;
-      }
-
-      .burger-menu.open .bar:nth-child(2) {
-        opacity: 0;
-      }
-
-      .burger-menu.open .bar:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-        z-index: 9;
-      }
+.burger-menu.open .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+    z-index: 9;
+}
 
 @media screen and (min-width: 768px){
 .nav-bar{
@@ -122,7 +121,6 @@ header {
         }
     }
 
-
     .menu-desktop{
         color: $light-text-color;
         ul{
@@ -134,14 +132,10 @@ header {
             li{
                 margin: 0 10px;
                 a{
-
                     cursor: pointer;
                 }
             }
         }
     }
-
 }
-
-
 }

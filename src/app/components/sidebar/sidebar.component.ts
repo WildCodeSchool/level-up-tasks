@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { sidebarData } from './side-data';
 import { User } from '../../model/user/user';
 import { AuthenticationService } from '../../service/User/authentication.service';
+import { TokenService } from '../../service/User/token.service';
+import { UserService } from '../../service/User/user.service';
+import { UserInfo } from '../../model/user/token';
 
 interface SideNavToggle{
   screenWidth:number;
@@ -24,7 +27,9 @@ export class SidebarComponent implements OnInit{
   screenWidth = 0 ;
   navData=sidebarData;
   user?:User;
-  authService:AuthenticationService = inject(AuthenticationService);
+  userInfo!:UserInfo | null;
+  userService:UserService = inject(UserService);
+  tokenService = inject(TokenService);
   @HostListener('window:resize',['$event'])
   onResize(event:any):void{
     if(typeof window !== 'undefined'){
@@ -33,7 +38,10 @@ export class SidebarComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.user = this.authService.getUser();
+    this.userInfo = this.tokenService.getUserInfo();
+    this.userService.getById(this.userInfo!.id).subscribe((user:User) => {
+      this.user = user;
+    });
     if(typeof window !== 'undefined'){
       this.screenWidth = window.innerWidth;
       if(this.screenWidth < 768){

@@ -1,23 +1,27 @@
 export const sidebarData=[  
     {
-        routerLink:'/profil',
+        routerLink:'/profile',
         icon :'fal fa-user-circle',
-        label:'Profil'
+        label:'Profile',
+        deadLink: 'active-link'
     },
     {
         routerLink :'/taches',
         icon :'fal fa-tasks',
-        label:'Tâches'
+        label:'Tâches',
+        deadLink: 'active-link'
     },
     {
         routerLink:'message-page',
         icon :'fal fa-envelope',
-        label:'Messages'
+        label:'Messages',
+        deadLink: 'dead-link'
     },
     {
-        routerLink:'/profil',
+        routerLink:'/profile',
         icon :'fal fa-users',
-        label:'Groupes'
+        label:'Groupes',
+        deadLink: 'dead-link'
     },
     
     

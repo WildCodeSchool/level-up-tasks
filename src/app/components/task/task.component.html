@@ -1,6 +1,6 @@
 <div class="task-container">
     <label class="checkbox-container">
-        <input type="checkbox" [checked]="task.completed" (change)="toggleTaskComplete()"/> 
+        <input type="checkbox" [checked]="task.completed" (change)="completeTask()"/> 
         <div class="checkmark-container">
             <div class="checkmark"></div>
         </div>    
@@ -8,12 +8,13 @@
     <div class="task-information">
         <p>{{task.description}}</p>
         <div class="task-date">
-            <img src=".\assets\pictures\clock-icon.png" alt="ee">
+            <i class="far fa-clock"></i>
             <p>{{task.deadline}}</p>
-            <p class="priorite" [ngClass]="task.priority">{{task.priority}}</p>
+            <p class="priority" [ngClass]="task.priority">{{task.priority}}</p>
         </div>
     </div>
-    <button class="task-delete-button" (click)="toggleDeleteTaskModal()">X</button>
+    <button class="edit-delete-button" (click)="toggleModalEdit()">Edit</button>
+    <button class="edit-delete-button" (click)="toggleDeleteTaskModal()">X</button>
 </div>
 
 <app-modal id="add-task-modal" *ngIf="isDeleteModalOpen" (closeModal)="toggleDeleteTaskModal()">
@@ -24,3 +25,16 @@
         </button>
     </div>
 </app-modal>
+
+<app-modal id="add-task-modal" *ngIf="isEditTaskModalOpen" (closeModal)="toggleModalEdit()">
+    <form #editTaskForm="ngForm" (ngSubmit)="editTaskForm.valid && onSubmit()" (submit)="editTask(task)">
+      <textarea id="task-name" name="task-name" type="text" [(ngModel)]="task.description" #name="ngModel" required minlength="1" placeholder="Nom de la tâche"></textarea>
+      <input name="task-date" type="date" [(ngModel)]="task.deadline" #date="ngModel" required>
+      <select name="task-priority" [(ngModel)]="task.priority">
+        <option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</option>
+      </select>
+      <button type="submit" [disabled]="editTaskForm.invalid">Mettre à jour</button>
+    </form>
+  </app-modal>
+
+

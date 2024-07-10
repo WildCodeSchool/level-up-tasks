@@ -1,11 +1,13 @@
 @use "../../../import" as *;
 
+.content {
+  padding-top: 8vh;
+}
+
 .nav-buttons {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
- 
-  
 }
 
 
@@ -23,21 +25,18 @@ h1 {
   border: none;
   border-radius: 5px;
   font-family: 'jetbrains mono', monospace;
-  
  
   cursor: pointer;
   .active {
     background-color: $button-color;
     color: white;
-    
   }
 }
 
 .nav-buttons button:not(.active) {
   background-color: #f0f0f0;
   color: var(--title-text-color);
-  
-  
+
 }
 
 .nav-buttons button:hover {
@@ -48,16 +47,11 @@ h1 {
 
 .signup-container {
     max-width: 400px;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
-  
-
-    div {
-      margin-bottom: 15px;
-    }
 
     input {
       width: 100%;
@@ -80,7 +74,6 @@ h1 {
       border: none;
       border-radius: 5px;
       font-family: 'jetbrains mono', monospace;
-     
       cursor: pointer;
     }
 
@@ -92,6 +85,10 @@ h1 {
 
 form div {
   padding : 8px;
+}
+
+button[type="submit"]{
+  margin-top: 2rem;
 }
   
 .signup-container input[type="text"],
@@ -116,9 +113,12 @@ form div {
 }
   
 @media (max-width: 600px) {
+  .content {
+    padding-top: 2rem;
+  }
+
   .signup-container {
       width: 90%;
-      margin: 20px auto;
       padding: 15px;
   }
   

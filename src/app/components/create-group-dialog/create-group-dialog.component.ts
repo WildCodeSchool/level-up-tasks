@@ -4,8 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Group } from '../../model/groupes/groupe';
-import { Member } from '../../model/membres/membre';
-
+import { GroupService } from '../../service/group/group.service';
 @Component({
   selector: 'app-create-group-dialog',
   standalone: true,
@@ -15,35 +14,37 @@ import { Member } from '../../model/membres/membre';
 })
 export class CreateGroupDialogComponent implements OnInit{
   groupForm: FormGroup;
+  groupes: Group[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<CreateGroupDialogComponent>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private groupService: GroupService
   ) {
     this.groupForm = this.fb.group({
-      name: ['', Validators.required],
-      members: ['', Validators.required]
+      name: ['', Validators.required]
     });
   }
-  ngOnInit(): void {}
 
-    submit(): void {
-      if (this.groupForm.valid) {
-        const membersString = this.groupForm.value.members;
-        const membersArray: Member[] = membersString.split(',').map((name: string) => ({
-          name: name.trim(),
-          avatarUrl: 'assets/pictures/photo.png'
-        }));
-  
-        const newGroup: Group = {
-          name: this.groupForm.value.name,
-          members: membersArray
-        };
-        this.dialogRef.close(newGroup);
-      }
+  ngOnInit(): void {
+    this.groupService.getGroups().subscribe((data) => {
+      this.groupes = data;
+    });
+  }
+  submit(): void {
+    if (this.groupForm.valid) {
+      const newGroup: Group = {
+        idgroup: 0,
+        name: this.groupForm.value.name,
+        userHasGroups: [],                               
+      };
+      this.groupService.createGroup(newGroup).subscribe((group) => {
+        this.groupes.push(group);
+      })
+      this.dialogRef.close(newGroup);
     }
+  }
   cancel(): void {
     this.dialogRef.close();
   }
-
 }

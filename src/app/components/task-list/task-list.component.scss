@@ -1,11 +1,18 @@
 @use "./../../../import" as *;
+@use "../../../assets/btns.scss" as *;
 
-.task-list-expendable{
+.expedition{
+    display: flex;
+    justify-content: space-between;
+    h1{
+        padding-right: 15px;
+    }
+}
+.task-list-expendable {
     overflow: hidden;
-    font-size: 24px;
 }
 
-.task-list-title{
+.task-list-title {
     padding: 1rem;
     color: $title-text-color;
     border-bottom: 1px solid $button-color;
@@ -15,15 +22,8 @@
     align-items: center;
 }
 
-.task-list-title h1 {
+.task-list-title h1, .task-title-arrow {
     font-weight: 700;
-    font-size: 30px;
-    font-family: 'jetbrains mono', monospace;
+    font-size: 28px;
+    margin : 0;
 }
-
-.task-title-arrow{
-    color: $title-text-color;
-    font-weight: bold;
-    font-size: 30px;
-}
-
