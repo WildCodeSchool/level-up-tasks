@@ -7,14 +7,14 @@
     </label>
     <div class="task-information">
         <p>{{task.description}}</p>
-        <div class="task-deadline">
+        <div class="task-date">
             <i class="far fa-clock"></i>
             <p>{{task.deadline}}</p>
             <p class="priority" [ngClass]="task.priority">{{task.priority}}</p>
         </div>
     </div>
-    <button class="edit-delete-button" (click)="toggleModalEdit()"><i class="fa fa-pencil"></i></button>
-    <button class="edit-delete-button delete-button" (click)="toggleDeleteTaskModal()">X</button>
+    <button class="edit-delete-button" (click)="toggleModalEdit()">Edit</button>
+    <button class="edit-delete-button" (click)="toggleDeleteTaskModal()">X</button>
 </div>
 
 <app-modal id="add-task-modal" *ngIf="isDeleteModalOpen" (closeModal)="toggleDeleteTaskModal()">
