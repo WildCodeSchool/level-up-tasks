@@ -1,4 +1,5 @@
 @use "./../../../import" as *;
+@use "../../../assets/modal.scss" as *;
 
 .add-task-button{
   color: $dark-text-color;
@@ -24,73 +25,4 @@
 
 .add-task-button label{
   margin-left: 1rem;
-}
-
-//Modal styling
-app-modal form {
-  display: flex;
-  flex-direction: column;
-}
-
-app-modal form textarea {
-  font-size: 24px;
-  color: $dark-text-color;
-  background: transparent;
-  border: 0 none;
-  resize: none;
-  overflow: hidden;
-  height: 28px;
-}
-
-app-modal form textarea:focus {
-  outline: none;
-}
-
-app-modal form textarea::placeholder {
-  color: $navbar-color;
-}
-
-app-modal form input[type=date] {
-  width: 152px;
-  font-size: 20px;
-  height: 42px;
-}
-
-app-modal form button {
-  justify-self: flex-end;
-  align-self: flex-end;
-  height: 36px;
-  width: 36px;
-  cursor: pointer;
-  border-radius: 200px;
-  color: $main-background-color;
-  background-color: $dark-text-color;
-  font-size: 32px;
-  font-weight: bolder;
-  margin-top: 0.5rem;
-}
-
-app-modal form button:active {
-  transform: scale(0.9);
-}
-
-app-modal form button:disabled {
-  background-color: $navbar-color;
-}
-
-.niveau{
-  color: $navbar-color;
-  font-size: 20px;
-  height: 28px;
-}
-
-select {
-  font-size: 18px;
-  font-weight: 500;
-  background-color: $light-text-color;
-  height: 36px;
-  padding: 4px;
-  border-radius: 10px;
-  width: 100%;
-  cursor: pointer;
 }

@@ -4,6 +4,9 @@ import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { User } from '../../model/user/user';
 import { UserService } from '../../service/User/user.service';
+import { UserInfo } from '../../model/user/token';
+import { TokenService } from '../../service/User/token.service';
+import { AuthenticationService } from '../../service/User/authentication.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,6 +21,9 @@ export class SignupComponent {
   signupForm: FormGroup;
   singUpError = false;
   errorMsg = '';
+  userInfo:UserInfo | null = null;
+  tokenService = inject(TokenService);
+  authService = inject(AuthenticationService);
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.signupForm = this.fb.group({
@@ -29,6 +35,11 @@ export class SignupComponent {
     }, { validator: this.passwordMatchValidator });
   }
   ngOnInit():void{
+    this.userInfo= this.tokenService.getUserInfo();
+    if(this.userInfo && this.authService.isLoggedIn()){
+        this.router.navigate([`/profile/${this.userInfo.id}`]); 
+    }
+  
     this.userService.getAll().subscribe((data) => {
       this.users = data;
     });
