@@ -30,12 +30,7 @@ export class UserService {
   }
 
   public update(user:User):Observable<User> {
-    return this.httpClient.put<User>(`${this.apiUrl}/users/${user.id}`, user).pipe(map((user:User) => {
-      if(typeof window != undefined){
-       localStorage.setItem('currentUser', JSON.stringify(user));
-      }
-       return user;
-     }));
+    return this.httpClient.put<User>(`${this.apiUrl}/users/${user.id}`, user);
   }
 
   public getUserExpeditions(id:number):Observable<Expedition[]> {
