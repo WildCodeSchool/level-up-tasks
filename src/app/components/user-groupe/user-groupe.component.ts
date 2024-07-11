@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Group } from '../../model/groupes/groupe';
 import { GroupService } from '../../service/group/group.service';
 import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-dialog.component';
 import { EditGroupDialogComponent } from '../edit-group-dialog/edit-group-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { group } from 'console';
 
 @Component({
   selector: 'app-user-groupe',
@@ -17,7 +16,7 @@ import { group } from 'console';
   templateUrl: './user-groupe.component.html',
   styleUrl: './user-groupe.component.scss'
 })
-export class UserGroupeComponent   {
+export class UserGroupeComponent {
   groups: Group[] = [];
   groupservice = inject(GroupService);
   
@@ -25,6 +24,10 @@ export class UserGroupeComponent   {
   constructor(private groupService: GroupService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.getAllGroups();
+  }
+
+  getAllGroups() : void {
     this.groupService.getGroups().subscribe(groups => {
       this.groups = groups;
     });
@@ -37,11 +40,11 @@ export class UserGroupeComponent   {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-          this.groups.push(result);
-        };
+          this.getAllGroups();
+      };
       
-      });
-     }
+    });
+  }
 
   openEditGroupDialog(group: Group, index: number): void {
     const dialogRef = this.dialog.open(EditGroupDialogComponent, {
