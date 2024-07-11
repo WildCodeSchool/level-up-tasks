@@ -33,8 +33,9 @@ export class LoginComponent {
     this.isPasswordHidden = !this.isPasswordHidden;
   }
   ngOnInit():void{
-    if(this.tokenService.getUserInfo() != null){
     this.userInfo= this.tokenService.getUserInfo();
+    if(this.userInfo && this.authService.isLoggedIn()){
+        this.router.navigate([`/profile/${this.userInfo.id}`]); 
     }
   }
 
@@ -43,8 +44,10 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login( email, password).subscribe({
         next: () => {
-          if(this.userInfo != null){
-            this.router.navigate([`/profile/${this.userInfo.id}`]);
+          if(this.tokenService.getUserInfo() != null){
+            if(this.userInfo != null){
+              this.router.navigate([`/profile/${this.userInfo.id}`]);
+            }
           }
         },
         error: err => this.errorMsg = 'Email ou mot de passse incorret'
