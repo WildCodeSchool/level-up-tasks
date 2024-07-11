@@ -7,7 +7,7 @@
 .task-container {
     color: $dark-text-color;
     border-bottom: 1px solid $button-color;
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     display: flex;
     align-items: center;
     line-height: 1.2;
@@ -24,14 +24,20 @@
     margin: 0;
 }
 
-.task-date {
+.task-deadline {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
+.task-deadline * {
+    font-size: 16px;
+}
 
-
+.delete-button {
+    font-size: 24px;
+    margin-left: 4px;
+}
 
 .priority{
     margin-left: 10px;
@@ -58,28 +64,34 @@
     align-items: center;
     justify-content: center;
     background: $secondary-backround-color;
-  }
+}
   
-  form {
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
     background: white;
     padding: 20px;
     border-radius: 10px;
-  }
+}
   
-  textarea, input, select {
+textarea, input, select {
     margin-bottom: 10px;
     width: 100%;
-  }
+}
   
-  button[type="submit"] {
+button[type="submit"] {
     background:$button-color;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
+}
+
+/* Media Queries for Desktop */
+@media (min-width: 768px) {
+    .task-container {
+        margin: 0 1rem;
+    }
+}
