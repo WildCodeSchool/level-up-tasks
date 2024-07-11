@@ -1,5 +1,6 @@
 @use "./../../../import" as *;
 @use '../../../assets/btns.scss'as *;
+@use '../../../assets/modal.scss' as *;
 :root {
     --size : 36px;
 }
@@ -58,54 +59,4 @@
 }
 
 
-.app-modal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: $secondary-backround-color;
-}
-  
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    border-radius: 10px;
-}
-  
-textarea, input, select {
-    background-color: $secondary-backround-color;
-    margin-bottom: 10px;
-    width: 100%;
-    height: 40px;
-    padding: 0.5rem;
-    border-radius: 10px;
-    font-size: 20px;
-}
 
-textarea {
-    height: 72px;
-    color: $dark-text-color;
-    border: 0 none;
-}
-
-select {
-    cursor: pointer;
-}
-  
-button[type="submit"] {
-    background:$button-color;
-    color: $secondary-backround-color;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Media Queries for Desktop */
-@media (min-width: 768px) {
-    .task-container {
-        margin: 0 1rem;
-    }
-}

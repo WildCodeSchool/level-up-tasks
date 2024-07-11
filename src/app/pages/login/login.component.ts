@@ -45,6 +45,7 @@ export class LoginComponent {
       this.authService.login( email, password).subscribe({
         next: () => {
           if(this.tokenService.getUserInfo() != null){
+             this.userInfo= this.tokenService.getUserInfo();
             if(this.userInfo != null){
               this.router.navigate([`/profile/${this.userInfo.id}`]);
             }

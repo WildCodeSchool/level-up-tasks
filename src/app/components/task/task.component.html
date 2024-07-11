@@ -33,7 +33,7 @@
       <select name="task-priority" [(ngModel)]="task.priority">
         <option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</option>
       </select>
-      <button type="submit" [disabled]="editTaskForm.invalid">Mettre à jour</button>
+      <button type="submit" class="editBtn" [disabled]="editTaskForm.invalid"><i class="fa fa-pencil"></i></button>
     </form>
   </app-modal>
 
