@@ -5,7 +5,7 @@
     
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a class="sidenav-nav-link" [routerLink]="data.routerLink"routerLinkActive="active"
+            <a class="sidenav-nav-link"  [routerLink]="data.label === 'Profile' ? [data.routerLink, user?.id] : [data.routerLink]"routerLinkActive="active"
             [routerLinkActiveOptions]="{exact:true}" [class]="data.deadLink">
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
                 <span class="sidenav-link-text" *ngIf="Iscollapsed">{{data.label}}</span>

@@ -28,6 +28,9 @@ export class TaskComponent {
   
   @Output()
   deleteTaskToParent: EventEmitter<Task> = new EventEmitter();
+  @Output()
+  editTaskToParent: EventEmitter<Task> = new EventEmitter();
+
   ngOnInit():void{
     this.taskService.getTaskExpedition(this.task.id).subscribe((expedition)=>{
       this.expedition = expedition;
@@ -48,10 +51,13 @@ export class TaskComponent {
   toggleDeleteTaskModal() : void {
     this.isDeleteModalOpen = !this.isDeleteModalOpen;
   }
-  
-  toggleTaskModal(task: Task): void {
-    this.task = task;
+  toggleModalEdit(){
     this.isEditTaskModalOpen = !this.isEditTaskModalOpen;
+  }
+
+editTask(task: Task): void {
+    this.editTaskToParent.emit(task)
+    this.isEditTaskModalOpen = false;
   }
 
   onSubmit(): void {

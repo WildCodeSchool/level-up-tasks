@@ -13,7 +13,7 @@
             <p class="priority" [ngClass]="task.priority">{{task.priority}}</p>
         </div>
     </div>
-    <button class="edit-delete-button" (click)="toggleTaskModal(task)">Edit</button>
+    <button class="edit-delete-button" (click)="toggleModalEdit()">Edit</button>
     <button class="edit-delete-button" (click)="toggleDeleteTaskModal()">X</button>
 </div>
 
@@ -26,14 +26,14 @@
     </div>
 </app-modal>
 
-<app-modal id="add-task-modal" *ngIf="isEditTaskModalOpen" (closeModal)="toggleTaskModal(task)">
-    <form #editTaskForm="ngForm" (ngSubmit)="editTaskForm.valid && onSubmit()">
+<app-modal id="add-task-modal" *ngIf="isEditTaskModalOpen" (closeModal)="toggleModalEdit()">
+    <form #editTaskForm="ngForm" (ngSubmit)="editTaskForm.valid && onSubmit()" (submit)="editTask(task)">
       <textarea id="task-name" name="task-name" type="text" [(ngModel)]="task.description" #name="ngModel" required minlength="1" placeholder="Nom de la tâche"></textarea>
       <input name="task-date" type="date" [(ngModel)]="task.deadline" #date="ngModel" required>
       <select name="task-priority" [(ngModel)]="task.priority">
         <option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</option>
       </select>
-      <button type="submit" [disabled]="!editTaskForm.valid || !date.dirty">Mettre à jour</button>
+      <button type="submit" class="editBtn" [disabled]="editTaskForm.invalid"><i class="fa fa-pencil"></i></button>
     </form>
   </app-modal>
 

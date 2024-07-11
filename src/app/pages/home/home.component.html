@@ -15,7 +15,7 @@
 </section>
 <section>
   <nav>
-    <ul>
+    <ul *ngIf="!authService.isLoggedIn()">
       <li><button> <a [routerLink]="['/inscription']">Inscription</a></button></li>
       <li><button> <a [routerLink]="['/connexion']">Connexion</a></button></li>
     </ul>
